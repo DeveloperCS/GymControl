@@ -17,6 +17,9 @@ namespace Control_Gimmnacio
         {
             InitializeComponent();
             txt1.Enabled = false;
+            txt2.Enabled = false;
+            txt3.Enabled = false;
+            num4.Enabled = false;
         }
         // Arrastrar formulario
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -54,13 +57,19 @@ namespace Control_Gimmnacio
                 txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
                 txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 txt3.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                txt2.Enabled = true;
+                txt3.Enabled = true;
             }
             else if (lb4.Visible.Equals(true))
             {
+                txt2.Enabled = true;
+                txt3.Enabled = true;
+                num4.Enabled = true;
                 txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
                 txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 txt3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 num4.Value = Convert.ToInt64(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                
             }
         }
         public void limpiar()
