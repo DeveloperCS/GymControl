@@ -90,6 +90,7 @@ namespace Control_Gimmnacio
             edit.lb4.Text = "Cantidad";
             edit.lb4.Visible = true;
             edit.num4.Visible = true;
+            edit.caso = 2;
             limpiarT();
             edit.ShowDialog();
           
@@ -105,6 +106,7 @@ namespace Control_Gimmnacio
             edit.lb3.Text = "Precio";
             edit.lb4.Visible = false;
             edit.num4.Visible = false;
+            edit.caso = 2;
             limpiarT();
             edit.ShowDialog();
            
@@ -120,6 +122,7 @@ namespace Control_Gimmnacio
             edit.lb3.Text = "Descuento";
             edit.lb4.Visible = false;
             edit.num4.Visible = false;
+            edit.caso = 1;
             limpiarT();
             edit.ShowDialog();
             
@@ -350,6 +353,43 @@ namespace Control_Gimmnacio
                     limpiaProm();
                 }
             }
+        }
+
+        #endregion
+
+        #region validacionesTextBox
+       
+        restricciones validaciones = new restricciones();
+        private void txtProcentProm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validaciones.solonumerosEnteros(e);
+        }
+        private void txtPMem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validaciones.solonumerosDecimal(e);
+        }
+        private void txtPrecioProduc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validaciones.solonumerosDecimal(e);
+        }
+        //validacion de letras mayus
+        public void LetrasMayus(TextBox textBox)
+        {
+            //Letra despues de cada espacion en Mayuscula
+            textBox.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBox.Text);
+            textBox.SelectionStart = textBox.Text.Length;
+        }
+        private void txtNMem_TextChanged(object sender, EventArgs e)
+        {
+            LetrasMayus(txtNMem);
+        }
+        private void txtNP1_TextChanged(object sender, EventArgs e)
+        {
+            LetrasMayus(txtNP1);
+        }
+        private void txtNombreProduc_TextChanged(object sender, EventArgs e)
+        {
+            LetrasMayus(txtNombreProduc);
         }
         #endregion
 

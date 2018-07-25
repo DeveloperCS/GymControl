@@ -15,6 +15,7 @@ namespace Control_Gimmnacio
     {
         public ventanConfEdit()
         {
+            
             InitializeComponent();
             txt1.Enabled = false;
             txt2.Enabled = false;
@@ -124,5 +125,27 @@ namespace Control_Gimmnacio
             
             
         }
+        #region validaciones
+        restricciones vl = new restricciones();
+        private void txt2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            vl.letrassignos(e);
+        }
+       public int caso = 0;
+        private void txt3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            switch (caso)
+            {
+                case 1:
+                    vl.solonumerosEnteros(e);
+                    break;
+                case 2:
+                    vl.solonumerosDecimal(e);
+                    break;
+                
+            }
+        }
+        #endregion
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(confVentana));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtOtroProm = new System.Windows.Forms.TextBox();
             this.btnCancelarProm = new System.Windows.Forms.Button();
@@ -61,6 +62,8 @@
             this.productoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verListaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtProcentProm = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnCProm = new System.Windows.Forms.Button();
@@ -82,8 +85,6 @@
             this.btnCancelaProduc = new System.Windows.Forms.Button();
             this.txtNombreProduc = new System.Windows.Forms.TextBox();
             this.btnAProduc = new System.Windows.Forms.Button();
-            this.txtProcentProm = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -470,6 +471,27 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Promociones";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.DimGray;
+            this.label15.Location = new System.Drawing.Point(270, 107);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(30, 25);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "%";
+            // 
+            // txtProcentProm
+            // 
+            this.txtProcentProm.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProcentProm.ForeColor = System.Drawing.Color.DimGray;
+            this.txtProcentProm.Location = new System.Drawing.Point(164, 107);
+            this.txtProcentProm.MaxLength = 3;
+            this.txtProcentProm.Name = "txtProcentProm";
+            this.txtProcentProm.Size = new System.Drawing.Size(100, 27);
+            this.txtProcentProm.TabIndex = 5;
+            this.txtProcentProm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProcentProm_KeyPress);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -517,6 +539,7 @@
             this.txtNP1.Name = "txtNP1";
             this.txtNP1.Size = new System.Drawing.Size(299, 27);
             this.txtNP1.TabIndex = 2;
+            this.txtNP1.TextChanged += new System.EventHandler(this.txtNP1_TextChanged);
             // 
             // btnAProm
             // 
@@ -579,10 +602,12 @@
             this.txtPMem.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPMem.ForeColor = System.Drawing.Color.DimGray;
             this.txtPMem.Location = new System.Drawing.Point(96, 125);
+            this.txtPMem.MaxLength = 12;
             this.txtPMem.Name = "txtPMem";
             this.txtPMem.Size = new System.Drawing.Size(299, 27);
             this.txtPMem.TabIndex = 2;
             this.txtPMem.Enter += new System.EventHandler(this.txtPMem_Enter);
+            this.txtPMem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPMem_KeyPress);
             this.txtPMem.Leave += new System.EventHandler(this.txtPMem_Leave);
             // 
             // txtNMem
@@ -593,6 +618,7 @@
             this.txtNMem.Name = "txtNMem";
             this.txtNMem.Size = new System.Drawing.Size(299, 27);
             this.txtNMem.TabIndex = 2;
+            this.txtNMem.TextChanged += new System.EventHandler(this.txtNMem_TextChanged);
             this.txtNMem.Enter += new System.EventHandler(this.txtNMem_Enter);
             this.txtNMem.Leave += new System.EventHandler(this.txtNMem_Leave);
             // 
@@ -695,10 +721,12 @@
             this.txtPrecioProduc.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecioProduc.ForeColor = System.Drawing.Color.DimGray;
             this.txtPrecioProduc.Location = new System.Drawing.Point(81, 129);
+            this.txtPrecioProduc.MaxLength = 12;
             this.txtPrecioProduc.Name = "txtPrecioProduc";
             this.txtPrecioProduc.Size = new System.Drawing.Size(299, 27);
             this.txtPrecioProduc.TabIndex = 1;
             this.txtPrecioProduc.Enter += new System.EventHandler(this.txtPrecioProduc_Enter);
+            this.txtPrecioProduc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioProduc_KeyPress);
             this.txtPrecioProduc.Leave += new System.EventHandler(this.txtPrecioProduc_Leave);
             // 
             // btnCancelaProduc
@@ -726,6 +754,7 @@
             this.txtNombreProduc.Name = "txtNombreProduc";
             this.txtNombreProduc.Size = new System.Drawing.Size(299, 27);
             this.txtNombreProduc.TabIndex = 0;
+            this.txtNombreProduc.TextChanged += new System.EventHandler(this.txtNombreProduc_TextChanged);
             this.txtNombreProduc.Enter += new System.EventHandler(this.txtNombreProduc_Enter);
             this.txtNombreProduc.Leave += new System.EventHandler(this.txtNombreProduc_Leave);
             // 
@@ -746,25 +775,6 @@
             this.btnAProduc.UseVisualStyleBackColor = true;
             this.btnAProduc.Click += new System.EventHandler(this.btnAProduc_Click);
             // 
-            // txtProcentProm
-            // 
-            this.txtProcentProm.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProcentProm.ForeColor = System.Drawing.Color.DimGray;
-            this.txtProcentProm.Location = new System.Drawing.Point(164, 107);
-            this.txtProcentProm.Name = "txtProcentProm";
-            this.txtProcentProm.Size = new System.Drawing.Size(100, 27);
-            this.txtProcentProm.TabIndex = 5;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.DimGray;
-            this.label15.Location = new System.Drawing.Point(270, 107);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(30, 25);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "%";
-            // 
             // confVentana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -778,6 +788,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.Name = "confVentana";
