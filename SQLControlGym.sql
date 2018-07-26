@@ -9,8 +9,9 @@ create table usuarios(
 	pass varbinary(max),
 	tipoUs varchar(30)
 )
-INSERT into usuarios (nombreUs,usuario,pass,tipoUs)values('Carlos Hernandez','root', HASHBYTES('SHA2_512', 'root'),'Administrador');
+INSERT into usuarios (nombreUs,usuario,pass,tipoUs)values('Carlos Hernandez','root', HASHBYTES('SHA2_512', 'admin'),'Administrador');
 UPDATE usuarios SET nombreUs='Ramones',usuario='j1',pass=HASHBYTES('SHA2_512', '123'),tipoUs='Usuario' WHERE id=1
+UPDATE usuarios SET usuario='josiel' WHERE id=1
 DELETE usuarios where id =4
 select * from usuarios
 select id as Numero,nombreUs as Nombre,usuario as Usuario,tipoUs as Tipo from usuarios
@@ -27,9 +28,10 @@ create table prom(
 	nomPromocion varchar(150) not null,
 	descuento decimal(5,2)
 )
+update prom set nomPromocion = 'Mujer',descuento = 0.20 where idProm =2 
 insert into prom values('Estudiantil',0.16)
 select * from prom
-drop table prom
+/*drop table prom*/
 Select idProm as Id,nomPromocion as Promocion,descuento as Descuento from prom
 /*truncate table prom*/
 
