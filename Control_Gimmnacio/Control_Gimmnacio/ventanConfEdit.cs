@@ -57,7 +57,7 @@ namespace Control_Gimmnacio
             SendMessage(this.Handle, 0x112, 0xf012, 0);
 
         }
-        public int cPorcent = 0;
+        public int cPorcent = 0,sctEle=0;
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (lb4.Visible.Equals(false))
@@ -90,13 +90,28 @@ namespace Control_Gimmnacio
             }
             else if (lb4.Visible.Equals(true))
             {
-                txt2.Enabled = true;
-                txt3.Enabled = true;
-                num4.Enabled = true;
-                txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                txt3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                num4.Value = Convert.ToInt64(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                switch (sctEle)
+                {
+                    case 1:
+                        txt2.Enabled = true;
+                        txt3.Enabled = true;
+                        num4.Enabled = true;
+                        txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                        txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                        txt3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                        num4.Value = Convert.ToInt64(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                        break;
+                    case 2:
+                        txt2.Enabled = true;
+                        txt3.Enabled = true;
+                        num4.Enabled = true;
+                        txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                        txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                        txt3.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                        num4.Value = Convert.ToInt64(dataGridView1.CurrentRow.Cells[3].Value.ToString());
+                        break;
+                }
+              
                 
             }
         }
@@ -177,12 +192,12 @@ namespace Control_Gimmnacio
                     }
                     if (lbTitulo.Text == "Membresias Registradas")
                     {
-                        qry = "update memb set nomMem='" + txt2.Text + "',precioMem=" + txt3.Text + " where idMem=" + txt1.Text + " ";
+                        qry = "update memb set nomMem='" + txt2.Text + "',precioMem=" + txt3.Text + ",dias="+num4.Value+" where idMem=" + txt1.Text + " ";
                         if (dts.update(qry) == true)
                         {
                             MessageBox.Show("Elemento Guardado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             limpiar();
-                            q2 = "select idMem as Id, nomMem as Membresia,precioMem as Precio from memb";
+                            q2 = "select idMem as Id, nomMem as Membresia,precioMem as Precio,dias as Dias from memb";
                             consultar(q2);
                             bloqueaEliminar(2);
                         }

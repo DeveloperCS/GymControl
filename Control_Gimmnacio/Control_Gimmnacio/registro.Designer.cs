@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(registro));
-            this.button1 = new System.Windows.Forms.Button();
-            this.btn_cerrar_mem = new System.Windows.Forms.Label();
+            this.btnAgregaSocio = new System.Windows.Forms.Button();
             this.txtNom = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,6 +48,10 @@
             this.cbNumeroFecha = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupMembresia = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.cbDescProm = new System.Windows.Forms.ComboBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -57,41 +60,30 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.btnCancelaSocio = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.agregaSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.historialDeSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupPersonales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.groupMembresia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnAgregaSocio
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(456, 526);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 51);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btn_cerrar_mem
-            // 
-            this.btn_cerrar_mem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_cerrar_mem.AutoSize = true;
-            this.btn_cerrar_mem.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_cerrar_mem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cerrar_mem.Location = new System.Drawing.Point(1024, 9);
-            this.btn_cerrar_mem.Name = "btn_cerrar_mem";
-            this.btn_cerrar_mem.Size = new System.Drawing.Size(17, 16);
-            this.btn_cerrar_mem.TabIndex = 3;
-            this.btn_cerrar_mem.Text = "X";
-            this.btn_cerrar_mem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_cerrar_mem.Click += new System.EventHandler(this.btn_cerrar_mem_Click);
+            this.btnAgregaSocio.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAgregaSocio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregaSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregaSocio.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregaSocio.Location = new System.Drawing.Point(378, 526);
+            this.btnAgregaSocio.Name = "btnAgregaSocio";
+            this.btnAgregaSocio.Size = new System.Drawing.Size(129, 51);
+            this.btnAgregaSocio.TabIndex = 2;
+            this.btnAgregaSocio.Text = "Guardar";
+            this.btnAgregaSocio.UseVisualStyleBackColor = true;
             // 
             // txtNom
             // 
@@ -346,6 +338,46 @@
             this.groupMembresia.TabStop = false;
             this.groupMembresia.Text = "Datos de Membresia";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(34, 105);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(55, 19);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Inicio:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(297, 105);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 19);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Fin:";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker2.Location = new System.Drawing.Point(91, 103);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker2.TabIndex = 6;
+            this.dateTimePicker2.Value = new System.DateTime(2018, 7, 25, 0, 0, 0, 0);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(336, 103);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker1.TabIndex = 6;
+            this.dateTimePicker1.Value = new System.DateTime(2018, 7, 25, 0, 0, 0, 0);
+            // 
             // cbDescProm
             // 
             this.cbDescProm.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -431,57 +463,59 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Tipo:";
             // 
-            // dateTimePicker1
+            // btnCancelaSocio
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(336, 103);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
-            this.dateTimePicker1.TabIndex = 6;
-            this.dateTimePicker1.Value = new System.DateTime(2018, 7, 25, 0, 0, 0, 0);
+            this.btnCancelaSocio.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCancelaSocio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelaSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelaSocio.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelaSocio.Location = new System.Drawing.Point(513, 526);
+            this.btnCancelaSocio.Name = "btnCancelaSocio";
+            this.btnCancelaSocio.Size = new System.Drawing.Size(129, 51);
+            this.btnCancelaSocio.TabIndex = 5;
+            this.btnCancelaSocio.Text = "Cancelar";
+            this.btnCancelaSocio.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker2
+            // menuStrip1
             // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(91, 103);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
-            this.dateTimePicker2.TabIndex = 6;
-            this.dateTimePicker2.Value = new System.DateTime(2018, 7, 25, 0, 0, 0, 0);
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.menuStrip1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.agregaSociosToolStripMenuItem,
+            this.historialDeSociosToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1050, 25);
+            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // label8
+            // agregaSociosToolStripMenuItem
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(297, 105);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 19);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Fin:";
+            this.agregaSociosToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.agregaSociosToolStripMenuItem.Name = "agregaSociosToolStripMenuItem";
+            this.agregaSociosToolStripMenuItem.Size = new System.Drawing.Size(112, 21);
+            this.agregaSociosToolStripMenuItem.Text = "Agrega Socios";
             // 
-            // label13
+            // historialDeSociosToolStripMenuItem
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(34, 105);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(55, 19);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "Inicio:";
+            this.historialDeSociosToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.historialDeSociosToolStripMenuItem.Name = "historialDeSociosToolStripMenuItem";
+            this.historialDeSociosToolStripMenuItem.Size = new System.Drawing.Size(135, 21);
+            this.historialDeSociosToolStripMenuItem.Text = "Historial de Socios";
             // 
             // registro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1050, 600);
+            this.Controls.Add(this.btnCancelaSocio);
             this.Controls.Add(this.groupMembresia);
             this.Controls.Add(this.groupPersonales);
-            this.Controls.Add(this.btn_cerrar_mem);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAgregaSocio);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "registro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "registro";
@@ -493,14 +527,15 @@
             this.groupMembresia.ResumeLayout(false);
             this.groupMembresia.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label btn_cerrar_mem;
+        private System.Windows.Forms.Button btnAgregaSocio;
         private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
@@ -531,5 +566,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button btnCancelaSocio;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem agregaSociosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem historialDeSociosToolStripMenuItem;
     }
 }

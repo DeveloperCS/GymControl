@@ -93,6 +93,7 @@ namespace Control_Gimmnacio
             edit.num4.Visible = true;
             edit.caso = 2;
             edit.cPorcent = 0;
+            edit.sctEle = 1;
             limpiarT();
             edit.bloquearTxt();
             edit.ShowDialog();
@@ -101,17 +102,19 @@ namespace Control_Gimmnacio
 
         private void verListaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            q = "select idMem as Id, nomMem as Membresia,precioMem as Precio from memb";
+            q = "select idMem as Id, nomMem as Membresia,precioMem as Precio,dias as Dias from memb";
             edit.dataGridView1.DataSource = dts.consulta(q).Tables[0];
             edit.lbTitulo.Text = "Membresias Registradas";
             edit.lb1.Text = "ID";
             edit.lb2.Text = "Membresia";
             edit.lb3.Text = "Precio";
             edit.lbPN.Text = "MNX";
-            edit.lb4.Visible = false;
-            edit.num4.Visible = false;
+            edit.lb4.Text = "Dias";
+            edit.lb4.Visible = true;
+            edit.num4.Visible = true;
             edit.caso = 2;
             edit.cPorcent = 0;
+            edit.sctEle = 2;
             limpiarT();
             edit.bloquearTxt();
             edit.ShowDialog();
@@ -161,6 +164,7 @@ namespace Control_Gimmnacio
         {
             txtPMem.Text = "";
             txtNMem.Text = "";
+            numDiasMem.Value = 0;
             /*txtNMem.ForeColor = Color.LightGray;
             txtPMem.ForeColor = Color.LightGray;*/
         }
@@ -168,7 +172,7 @@ namespace Control_Gimmnacio
         {
 
             
-            if (txtNMem.Text == "" || txtPMem.Text == "")
+            if (txtNMem.Text == "" || txtPMem.Text == ""||numDiasMem.Value ==0)
             {
                 MessageBox.Show("Falto llenar algun campo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -176,7 +180,7 @@ namespace Control_Gimmnacio
             {
                 if (MessageBox.Show("¿Desea Agregar?", "Agregar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    string qry1 = "Insert into memb values('" + txtNMem.Text + "'," + Convert.ToInt32(txtPMem.Text) + ")";
+                    string qry1 = "Insert into memb values('" + txtNMem.Text + "'," + Convert.ToDouble(txtPMem.Text) + ","+numDiasMem.Value+")";
                     if (dts.insertar(qry1) == true)
                     {
                         MessageBox.Show("Membresia Agregada", "Exito!!", MessageBoxButtons.OK, MessageBoxIcon.Information);

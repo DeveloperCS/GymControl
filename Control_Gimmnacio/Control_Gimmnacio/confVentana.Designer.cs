@@ -85,6 +85,8 @@
             this.btnCancelaProduc = new System.Windows.Forms.Button();
             this.txtNombreProduc = new System.Windows.Forms.TextBox();
             this.btnAProduc = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.numDiasMem = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -94,6 +96,7 @@
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cantProduc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDiasMem)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -416,7 +419,7 @@
             // verListaToolStripMenuItem
             // 
             this.verListaToolStripMenuItem.Name = "verListaToolStripMenuItem";
-            this.verListaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.verListaToolStripMenuItem.Size = new System.Drawing.Size(135, 24);
             this.verListaToolStripMenuItem.Text = "Ver lista";
             this.verListaToolStripMenuItem.Click += new System.EventHandler(this.verListaToolStripMenuItem_Click);
             // 
@@ -560,6 +563,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.numDiasMem);
+            this.groupBox5.Controls.Add(this.label16);
             this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.txtPMem);
@@ -775,6 +780,25 @@
             this.btnAProduc.UseVisualStyleBackColor = true;
             this.btnAProduc.Click += new System.EventHandler(this.btnAProduc_Click);
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.DimGray;
+            this.label16.Location = new System.Drawing.Point(92, 165);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(45, 19);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Dias:";
+            // 
+            // numDiasMem
+            // 
+            this.numDiasMem.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDiasMem.Location = new System.Drawing.Point(144, 163);
+            this.numDiasMem.Name = "numDiasMem";
+            this.numDiasMem.Size = new System.Drawing.Size(43, 27);
+            this.numDiasMem.TabIndex = 9;
+            // 
             // confVentana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -810,6 +834,7 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cantProduc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDiasMem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -873,5 +898,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtProcentProm;
+        private System.Windows.Forms.NumericUpDown numDiasMem;
+        private System.Windows.Forms.Label label16;
     }
 }

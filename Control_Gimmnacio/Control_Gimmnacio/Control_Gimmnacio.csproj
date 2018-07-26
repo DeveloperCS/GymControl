@@ -111,6 +111,12 @@
     <Compile Include="ventanConfEdit.Designer.cs">
       <DependentUpon>ventanConfEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="vHistorialUs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vHistorialUs.Designer.cs">
+      <DependentUpon>vHistorialUs.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="agregaCantMes.resx">
       <DependentUpon>agregaCantMes.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ventanConfEdit.resx">
       <DependentUpon>ventanConfEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vHistorialUs.resx">
+      <DependentUpon>vHistorialUs.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="controlGymDataSet.xsc">
       <DependentUpon>controlGymDataSet.xsd</DependentUpon>
@@ -189,6 +198,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\solo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search32.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
