@@ -88,10 +88,13 @@ namespace Control_Gimmnacio
             edit.lb2.Text = "Producto";
             edit.lb3.Text = "Precio";
             edit.lb4.Text = "Cantidad";
+            edit.lbPN.Text = "MNX";
             edit.lb4.Visible = true;
             edit.num4.Visible = true;
             edit.caso = 2;
+            edit.cPorcent = 0;
             limpiarT();
+            edit.bloquearTxt();
             edit.ShowDialog();
           
         }
@@ -104,26 +107,52 @@ namespace Control_Gimmnacio
             edit.lb1.Text = "ID";
             edit.lb2.Text = "Membresia";
             edit.lb3.Text = "Precio";
+            edit.lbPN.Text = "MNX";
             edit.lb4.Visible = false;
             edit.num4.Visible = false;
             edit.caso = 2;
+            edit.cPorcent = 0;
             limpiarT();
+            edit.bloquearTxt();
             edit.ShowDialog();
            
         }
 
         private void verListaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            /*Para transformar el procentaje y agregar el sigo % para que sea mas claro para el usuario*/
+           // DataSet dataS = new DataSet();
             q = "Select idProm as Id,nomPromocion as Promocion,descuento as Descuento from prom";
-            edit.dataGridView1.DataSource= dts.consulta(q).Tables[0];
+           /* dataS = dts.consulta(q);
+            DataTable dt2 = dataS.Tables[0];
+            int por=0;
+            double t=0;
+            DataTable relleno = new DataTable();
+
+            relleno.Columns.Add("Id", typeof(string));
+            relleno.Columns.Add("Promocion", typeof(string));
+            relleno.Columns.Add("Descuento", typeof(string));
+            foreach (DataRow row in dt2.Rows)
+            {
+                t = Convert.ToDouble(row["Descuento"]);
+                t = t * 100;
+                por =Convert.ToInt32( t);
+                relleno.Rows.Add(row["Id"].ToString(), row["Promocion"].ToString(),por.ToString()+ " %");
+
+            }
+            edit.dataGridView1.DataSource = relleno;*/
+            edit.consultaPr(q);
             edit.lbTitulo.Text = "Promociones Registradas";
             edit.lb1.Text = "ID";
             edit.lb2.Text = "Promocion";
             edit.lb3.Text = "Descuento";
+            edit.lbPN.Text = "%";
             edit.lb4.Visible = false;
             edit.num4.Visible = false;
             edit.caso = 1;
+            edit.cPorcent = 1;
             limpiarT();
+            edit.bloquearTxt();
             edit.ShowDialog();
             
         }
@@ -160,16 +189,16 @@ namespace Control_Gimmnacio
 
         private void btnCMem_Click(object sender, EventArgs e)
         {
-            if (txtNMem.Text == "" || txtPMem.Text == "")
-            {
-                limpiarM();
-            }
-            else
+            if (txtNMem.Text != "" && txtPMem.Text !="")
             {
                 if (MessageBox.Show("¿Desea Cancelar?", "Cancelar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     limpiarM();
                 }
+            }
+            else
+            {
+                limpiarM();
             }
         }
       
@@ -257,16 +286,16 @@ namespace Control_Gimmnacio
 
         private void btnCancelaProduc_Click(object sender, EventArgs e)
         {
-            if (txtNombreProduc.Text == "" || txtPrecioProduc.Text == "" || cantProduc.Value ==0)
-            {
-                limpiarP();
-            }
-            else
+            if (txtNombreProduc.Text != "" && txtPrecioProduc.Text != "" && cantProduc.Value !=0)
             {
                 if (MessageBox.Show("¿Desea Cancelar?", "Cancelar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     limpiarP();
                 }
+            }
+            else
+            {
+                limpiarP();
             }
         }
        
@@ -342,16 +371,16 @@ namespace Control_Gimmnacio
         }
         private void btnCProm_Click(object sender, EventArgs e)
         {
-            if (txtNP1.Text == "" || txtProcentProm.Text == "")
-            {
-
-            }
-            else
+            if (txtNP1.Text != "" && txtProcentProm.Text != "")
             {
                 if (MessageBox.Show("¿Desea cancelar?", "Cancelar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     limpiaProm();
                 }
+            }
+            else
+            {
+                limpiaProm();
             }
         }
 

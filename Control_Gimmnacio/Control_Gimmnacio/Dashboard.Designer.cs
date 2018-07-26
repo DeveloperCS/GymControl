@@ -50,11 +50,7 @@
             this.btnVenderProdc = new System.Windows.Forms.Button();
             this.btnNuevoVis = new System.Windows.Forms.Button();
             this.btnFingerM = new System.Windows.Forms.Button();
-            this.lbHora = new System.Windows.Forms.Label();
-            this.lbFecha = new System.Windows.Forms.Label();
             this.HoraFecha = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.p_esVisi.SuspendLayout();
             this.panel5.SuspendLayout();
             this.p_Mem.SuspendLayout();
@@ -361,54 +357,10 @@
             this.btnFingerM.Text = "  Finger Membrecia";
             this.btnFingerM.UseVisualStyleBackColor = false;
             // 
-            // lbHora
-            // 
-            this.lbHora.AutoSize = true;
-            this.lbHora.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbHora.ForeColor = System.Drawing.Color.Teal;
-            this.lbHora.Location = new System.Drawing.Point(40, 311);
-            this.lbHora.Name = "lbHora";
-            this.lbHora.Size = new System.Drawing.Size(212, 56);
-            this.lbHora.TabIndex = 5;
-            this.lbHora.Text = "04:55:00";
-            // 
-            // lbFecha
-            // 
-            this.lbFecha.AutoSize = true;
-            this.lbFecha.Font = new System.Drawing.Font("Century Gothic", 35F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFecha.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lbFecha.Location = new System.Drawing.Point(40, 435);
-            this.lbFecha.Name = "lbFecha";
-            this.lbFecha.Size = new System.Drawing.Size(206, 56);
-            this.lbFecha.TabIndex = 5;
-            this.lbFecha.Text = "04:55:00";
-            // 
             // HoraFecha
             // 
             this.HoraFecha.Enabled = true;
             this.HoraFecha.Tick += new System.EventHandler(this.HoraFecha_Tick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Teal;
-            this.label1.Location = new System.Drawing.Point(183, 245);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 56);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Hora";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 35F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label2.Location = new System.Drawing.Point(183, 379);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(166, 56);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Fecha";
             // 
             // Dashboard
             // 
@@ -416,16 +368,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1050, 600);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.lbFecha);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lbHora);
             this.Controls.Add(this.btnVenderProdc);
             this.Controls.Add(this.btnNuevoVis);
             this.Controls.Add(this.btnFingerM);
             this.Controls.Add(this.p_Mem);
             this.Controls.Add(this.p_esVisi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
@@ -438,7 +387,6 @@
             this.p_Mem_ti.ResumeLayout(false);
             this.p_Mem_ti.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -463,10 +411,6 @@
         private System.Windows.Forms.Button btnFingerM;
         private System.Windows.Forms.Button btnNuevoVis;
         private System.Windows.Forms.Button btnVenderProdc;
-        private System.Windows.Forms.Label lbHora;
-        private System.Windows.Forms.Label lbFecha;
         private System.Windows.Forms.Timer HoraFecha;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
     }
 }

@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,6 +43,7 @@
             this.txtPassUs = new System.Windows.Forms.TextBox();
             this.txtConfirmPass = new System.Windows.Forms.TextBox();
             this.groupBoxUS = new System.Windows.Forms.GroupBox();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAgregaUs = new System.Windows.Forms.Button();
@@ -48,7 +52,6 @@
             this.btnEliminaUs = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBoxUS.SuspendLayout();
             this.SuspendLayout();
@@ -66,10 +69,40 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(523, 118);
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeight = 35;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.GridColor = System.Drawing.Color.Gray;
+            this.dataGridView1.Location = new System.Drawing.Point(471, 118);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(473, 390);
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Silver;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.Size = new System.Drawing.Size(567, 390);
             this.dataGridView1.TabIndex = 1;
             // 
             // label3
@@ -138,6 +171,8 @@
             this.txtNombreUs.Name = "txtNombreUs";
             this.txtNombreUs.Size = new System.Drawing.Size(239, 27);
             this.txtNombreUs.TabIndex = 2;
+            this.txtNombreUs.TextChanged += new System.EventHandler(this.txtNombreUs_TextChanged);
+            this.txtNombreUs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreUs_KeyPress);
             // 
             // txtUs
             // 
@@ -146,6 +181,7 @@
             this.txtUs.Name = "txtUs";
             this.txtUs.Size = new System.Drawing.Size(239, 27);
             this.txtUs.TabIndex = 3;
+            this.txtUs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUs_KeyPress);
             // 
             // txtPassUs
             // 
@@ -155,6 +191,7 @@
             this.txtPassUs.PasswordChar = '*';
             this.txtPassUs.Size = new System.Drawing.Size(151, 27);
             this.txtPassUs.TabIndex = 4;
+            this.txtPassUs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassUs_KeyPress);
             // 
             // txtConfirmPass
             // 
@@ -163,6 +200,7 @@
             this.txtConfirmPass.Name = "txtConfirmPass";
             this.txtConfirmPass.Size = new System.Drawing.Size(151, 27);
             this.txtConfirmPass.TabIndex = 5;
+            this.txtConfirmPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtConfirmPass_KeyPress);
             // 
             // groupBoxUS
             // 
@@ -190,19 +228,39 @@
             this.groupBoxUS.TabStop = false;
             this.groupBoxUS.Text = "Nuevo Usuario";
             // 
+            // txtID
+            // 
+            this.txtID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID.Location = new System.Drawing.Point(362, 22);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(53, 23);
+            this.txtID.TabIndex = 10;
+            // 
             // btnGuardar
             // 
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnGuardar.FlatAppearance.BorderSize = 2;
+            this.btnGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.ForeColor = System.Drawing.Color.LightGray;
             this.btnGuardar.Location = new System.Drawing.Point(146, 400);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(137, 41);
             this.btnGuardar.TabIndex = 9;
             this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.OrangeRed;
+            this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.ForeColor = System.Drawing.Color.OrangeRed;
             this.btnCancelar.Location = new System.Drawing.Point(231, 342);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(137, 41);
@@ -214,6 +272,11 @@
             // btnAgregaUs
             // 
             this.btnAgregaUs.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregaUs.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnAgregaUs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAgregaUs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.btnAgregaUs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregaUs.ForeColor = System.Drawing.Color.Green;
             this.btnAgregaUs.Location = new System.Drawing.Point(66, 342);
             this.btnAgregaUs.Name = "btnAgregaUs";
             this.btnAgregaUs.Size = new System.Drawing.Size(146, 41);
@@ -233,26 +296,38 @@
             // 
             // btnEditarUs
             // 
+            this.btnEditarUs.BackColor = System.Drawing.Color.SteelBlue;
             this.btnEditarUs.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditarUs.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnEditarUs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DodgerBlue;
+            this.btnEditarUs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PowderBlue;
+            this.btnEditarUs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditarUs.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarUs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.btnEditarUs.Location = new System.Drawing.Point(638, 520);
             this.btnEditarUs.Name = "btnEditarUs";
             this.btnEditarUs.Size = new System.Drawing.Size(107, 43);
             this.btnEditarUs.TabIndex = 7;
             this.btnEditarUs.Text = "Editar";
-            this.btnEditarUs.UseVisualStyleBackColor = true;
+            this.btnEditarUs.UseVisualStyleBackColor = false;
             this.btnEditarUs.Click += new System.EventHandler(this.btnEditarUs_Click);
             // 
             // btnEliminaUs
             // 
+            this.btnEliminaUs.BackColor = System.Drawing.Color.Crimson;
             this.btnEliminaUs.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminaUs.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnEliminaUs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleVioletRed;
+            this.btnEliminaUs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnEliminaUs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminaUs.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminaUs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.btnEliminaUs.Location = new System.Drawing.Point(768, 519);
             this.btnEliminaUs.Name = "btnEliminaUs";
             this.btnEliminaUs.Size = new System.Drawing.Size(107, 43);
             this.btnEliminaUs.TabIndex = 8;
             this.btnEliminaUs.Text = "Eliminar";
-            this.btnEliminaUs.UseVisualStyleBackColor = true;
+            this.btnEliminaUs.UseVisualStyleBackColor = false;
             this.btnEliminaUs.Click += new System.EventHandler(this.btnEliminaUs_Click);
             // 
             // textBox5
@@ -272,14 +347,6 @@
             this.label1.Size = new System.Drawing.Size(86, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Buscar:";
-            // 
-            // txtID
-            // 
-            this.txtID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID.Location = new System.Drawing.Point(362, 22);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(53, 23);
-            this.txtID.TabIndex = 10;
             // 
             // us
             // 

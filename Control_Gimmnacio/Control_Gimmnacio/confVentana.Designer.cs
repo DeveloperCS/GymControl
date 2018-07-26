@@ -416,7 +416,7 @@
             // verListaToolStripMenuItem
             // 
             this.verListaToolStripMenuItem.Name = "verListaToolStripMenuItem";
-            this.verListaToolStripMenuItem.Size = new System.Drawing.Size(135, 24);
+            this.verListaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.verListaToolStripMenuItem.Text = "Ver lista";
             this.verListaToolStripMenuItem.Click += new System.EventHandler(this.verListaToolStripMenuItem_Click);
             // 
@@ -489,7 +489,7 @@
             this.txtProcentProm.MaxLength = 3;
             this.txtProcentProm.Name = "txtProcentProm";
             this.txtProcentProm.Size = new System.Drawing.Size(100, 27);
-            this.txtProcentProm.TabIndex = 5;
+            this.txtProcentProm.TabIndex = 2;
             this.txtProcentProm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProcentProm_KeyPress);
             // 
             // label8
@@ -526,7 +526,7 @@
             this.btnCProm.Location = new System.Drawing.Point(233, 200);
             this.btnCProm.Name = "btnCProm";
             this.btnCProm.Size = new System.Drawing.Size(118, 32);
-            this.btnCProm.TabIndex = 1;
+            this.btnCProm.TabIndex = 4;
             this.btnCProm.Text = "Cancelar";
             this.btnCProm.UseVisualStyleBackColor = true;
             this.btnCProm.Click += new System.EventHandler(this.btnCProm_Click);
@@ -538,7 +538,7 @@
             this.txtNP1.Location = new System.Drawing.Point(67, 65);
             this.txtNP1.Name = "txtNP1";
             this.txtNP1.Size = new System.Drawing.Size(299, 27);
-            this.txtNP1.TabIndex = 2;
+            this.txtNP1.TabIndex = 1;
             this.txtNP1.TextChanged += new System.EventHandler(this.txtNP1_TextChanged);
             // 
             // btnAProm
@@ -553,7 +553,7 @@
             this.btnAProm.Location = new System.Drawing.Point(97, 200);
             this.btnAProm.Name = "btnAProm";
             this.btnAProm.Size = new System.Drawing.Size(118, 32);
-            this.btnAProm.TabIndex = 0;
+            this.btnAProm.TabIndex = 3;
             this.btnAProm.Text = "Agregar";
             this.btnAProm.UseVisualStyleBackColor = true;
             this.btnAProm.Click += new System.EventHandler(this.btnAProm_Click);
@@ -605,7 +605,7 @@
             this.txtPMem.MaxLength = 12;
             this.txtPMem.Name = "txtPMem";
             this.txtPMem.Size = new System.Drawing.Size(299, 27);
-            this.txtPMem.TabIndex = 2;
+            this.txtPMem.TabIndex = 6;
             this.txtPMem.Enter += new System.EventHandler(this.txtPMem_Enter);
             this.txtPMem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPMem_KeyPress);
             this.txtPMem.Leave += new System.EventHandler(this.txtPMem_Leave);
@@ -617,7 +617,7 @@
             this.txtNMem.Location = new System.Drawing.Point(96, 74);
             this.txtNMem.Name = "txtNMem";
             this.txtNMem.Size = new System.Drawing.Size(299, 27);
-            this.txtNMem.TabIndex = 2;
+            this.txtNMem.TabIndex = 5;
             this.txtNMem.TextChanged += new System.EventHandler(this.txtNMem_TextChanged);
             this.txtNMem.Enter += new System.EventHandler(this.txtNMem_Enter);
             this.txtNMem.Leave += new System.EventHandler(this.txtNMem_Leave);
@@ -634,7 +634,7 @@
             this.btnCMem.Location = new System.Drawing.Point(262, 200);
             this.btnCMem.Name = "btnCMem";
             this.btnCMem.Size = new System.Drawing.Size(118, 32);
-            this.btnCMem.TabIndex = 1;
+            this.btnCMem.TabIndex = 8;
             this.btnCMem.Text = "Cancelar";
             this.btnCMem.UseVisualStyleBackColor = true;
             this.btnCMem.Click += new System.EventHandler(this.btnCMem_Click);
@@ -651,7 +651,7 @@
             this.btnAMem.Location = new System.Drawing.Point(126, 200);
             this.btnAMem.Name = "btnAMem";
             this.btnAMem.Size = new System.Drawing.Size(118, 32);
-            this.btnAMem.TabIndex = 0;
+            this.btnAMem.TabIndex = 7;
             this.btnAMem.Text = "Agregar";
             this.btnAMem.UseVisualStyleBackColor = true;
             this.btnAMem.Click += new System.EventHandler(this.btnAMem_Click);
@@ -714,7 +714,7 @@
             this.cantProduc.Location = new System.Drawing.Point(174, 169);
             this.cantProduc.Name = "cantProduc";
             this.cantProduc.Size = new System.Drawing.Size(43, 27);
-            this.cantProduc.TabIndex = 2;
+            this.cantProduc.TabIndex = 11;
             // 
             // txtPrecioProduc
             // 
@@ -724,7 +724,7 @@
             this.txtPrecioProduc.MaxLength = 12;
             this.txtPrecioProduc.Name = "txtPrecioProduc";
             this.txtPrecioProduc.Size = new System.Drawing.Size(299, 27);
-            this.txtPrecioProduc.TabIndex = 1;
+            this.txtPrecioProduc.TabIndex = 10;
             this.txtPrecioProduc.Enter += new System.EventHandler(this.txtPrecioProduc_Enter);
             this.txtPrecioProduc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioProduc_KeyPress);
             this.txtPrecioProduc.Leave += new System.EventHandler(this.txtPrecioProduc_Leave);
@@ -741,7 +741,7 @@
             this.btnCancelaProduc.Location = new System.Drawing.Point(233, 228);
             this.btnCancelaProduc.Name = "btnCancelaProduc";
             this.btnCancelaProduc.Size = new System.Drawing.Size(118, 32);
-            this.btnCancelaProduc.TabIndex = 4;
+            this.btnCancelaProduc.TabIndex = 13;
             this.btnCancelaProduc.Text = "Cancelar";
             this.btnCancelaProduc.UseVisualStyleBackColor = true;
             this.btnCancelaProduc.Click += new System.EventHandler(this.btnCancelaProduc_Click);
@@ -753,7 +753,7 @@
             this.txtNombreProduc.Location = new System.Drawing.Point(81, 74);
             this.txtNombreProduc.Name = "txtNombreProduc";
             this.txtNombreProduc.Size = new System.Drawing.Size(299, 27);
-            this.txtNombreProduc.TabIndex = 0;
+            this.txtNombreProduc.TabIndex = 9;
             this.txtNombreProduc.TextChanged += new System.EventHandler(this.txtNombreProduc_TextChanged);
             this.txtNombreProduc.Enter += new System.EventHandler(this.txtNombreProduc_Enter);
             this.txtNombreProduc.Leave += new System.EventHandler(this.txtNombreProduc_Leave);
@@ -770,7 +770,7 @@
             this.btnAProduc.Location = new System.Drawing.Point(97, 228);
             this.btnAProduc.Name = "btnAProduc";
             this.btnAProduc.Size = new System.Drawing.Size(118, 32);
-            this.btnAProduc.TabIndex = 3;
+            this.btnAProduc.TabIndex = 12;
             this.btnAProduc.Text = "Agregar";
             this.btnAProduc.UseVisualStyleBackColor = true;
             this.btnAProduc.Click += new System.EventHandler(this.btnAProduc_Click);

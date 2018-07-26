@@ -145,8 +145,7 @@ namespace Control_Gimmnacio
 
         private void HoraFecha_Tick(object sender, EventArgs e)
         {
-            lbHora.Text = DateTime.Now.ToLongTimeString();
-            lbFecha.Text = DateTime.Now.ToShortDateString();
+            
         }
     }
 }

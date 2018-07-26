@@ -115,5 +115,14 @@ namespace Control_Gimmnacio
 
             }
         }
+        public void sinEspacio(KeyPressEventArgs e)
+        {
+            
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled =true;
+                MessageBox.Show("No se permite espacios.","Alerta",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+            }
+        }
     }
 }

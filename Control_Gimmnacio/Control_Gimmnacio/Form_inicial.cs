@@ -131,5 +131,11 @@ namespace Control_Gimmnacio
             AbrirFormInPanel(new confVentana());
             txt_titulo.Text = "Configuraciones";
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label2.Text = DateTime.Now.ToLongTimeString();
+            label3.Text = DateTime.Now.ToShortDateString();
+        }
     }
 }

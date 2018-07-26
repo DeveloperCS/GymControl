@@ -148,8 +148,6 @@ namespace Control_Gimmnacio
             }
         }
         /*generar boton editar*/
-
-        
         private void btnEditarUs_Click(object sender, EventArgs e)
         {
             txtID.Visible = true;
@@ -267,10 +265,37 @@ namespace Control_Gimmnacio
 
                 }
             }
-
-
-
             
         }
+      
+        #region validaciones
+        restricciones val = new restricciones();
+        private void txtNombreUs_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.sololetras(e);
+        }
+        private void txtUs_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.sinEspacio(e);
+        }
+
+        private void txtPassUs_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.sinEspacio(e);
+        }
+
+        private void txtConfirmPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.sinEspacio(e);
+        }
+        private void txtNombreUs_TextChanged(object sender, EventArgs e)
+        {
+            //Letra despues de cada espacion en Mayuscula
+            txtNombreUs.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtNombreUs.Text);
+            txtNombreUs.SelectionStart = txtNombreUs.Text.Length;
+        }
+        #endregion
+
+
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_inicial));
             this.Menu_vertical = new System.Windows.Forms.Panel();
             this.lbNomUS = new System.Windows.Forms.Label();
@@ -50,6 +51,9 @@
             this.btn_cerrar = new System.Windows.Forms.PictureBox();
             this.btn_menu = new System.Windows.Forms.PictureBox();
             this.panel_cont = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Menu_vertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -270,6 +274,8 @@
             // bara_titulo
             // 
             this.bara_titulo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.bara_titulo.Controls.Add(this.label3);
+            this.bara_titulo.Controls.Add(this.label2);
             this.bara_titulo.Controls.Add(this.txt_titulo);
             this.bara_titulo.Controls.Add(this.btn_min);
             this.bara_titulo.Controls.Add(this.bnt_rest);
@@ -371,6 +377,33 @@
             this.panel_cont.Size = new System.Drawing.Size(1050, 600);
             this.panel_cont.TabIndex = 2;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Teal;
+            this.label2.Location = new System.Drawing.Point(827, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 22);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "label2";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label3.Location = new System.Drawing.Point(845, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 20);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "label3";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form_inicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -424,5 +457,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.Label lbNomUS;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer timer1;
     }
 }
