@@ -23,16 +23,34 @@ namespace Control_Gimmnacio
             cbDescProm.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
-
+        private void registro_Load(object sender, EventArgs e)
+        {
+            llenaCb();
+            llenaCbMem();
+        }
+        conexionDatos dts = new conexionDatos();
+        public void llenaCb()
+        {
+            string q = "select * from prom order by descuento";
+           
+            cbDescProm.DataSource = dts.consulta(q).Tables[0]; 
+            cbDescProm.DisplayMember = "Promocion";
+            cbDescProm.ValueMember = "nomPromocion";
+            
+        }
+        public void llenaCbMem()
+        {
+            string q1 = "select * from memb order by precioMem";
+            cbTipoMembrecia.DataSource = dts.consulta(q1).Tables[0];
+            cbTipoMembrecia.DisplayMember = "Membresia";
+            cbTipoMembrecia.ValueMember = "nomMem";
+        }
         private void btn_cerrar_mem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void registro_Load(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void cbTipoMembrecia_SelectedIndexChanged(object sender, EventArgs e)
         {
