@@ -59,5 +59,10 @@ namespace Control_Gimmnacio
                 new agregaCantMes().ShowDialog();
             }
         }
+
+        private void agregaSociosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new vHistorialUs().ShowDialog();
+        }
     }
 }

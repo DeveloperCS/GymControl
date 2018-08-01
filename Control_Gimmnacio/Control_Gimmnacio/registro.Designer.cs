@@ -493,15 +493,15 @@
             // 
             this.agregaSociosToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.agregaSociosToolStripMenuItem.Name = "agregaSociosToolStripMenuItem";
-            this.agregaSociosToolStripMenuItem.Size = new System.Drawing.Size(112, 21);
-            this.agregaSociosToolStripMenuItem.Text = "Agrega Socios";
+            this.agregaSociosToolStripMenuItem.Size = new System.Drawing.Size(134, 21);
+            this.agregaSociosToolStripMenuItem.Text = "Historial de socios";
+            this.agregaSociosToolStripMenuItem.Click += new System.EventHandler(this.agregaSociosToolStripMenuItem_Click);
             // 
             // historialDeSociosToolStripMenuItem
             // 
             this.historialDeSociosToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.historialDeSociosToolStripMenuItem.Name = "historialDeSociosToolStripMenuItem";
-            this.historialDeSociosToolStripMenuItem.Size = new System.Drawing.Size(135, 21);
-            this.historialDeSociosToolStripMenuItem.Text = "Historial de Socios";
+            this.historialDeSociosToolStripMenuItem.Size = new System.Drawing.Size(12, 21);
             // 
             // registro
             // 

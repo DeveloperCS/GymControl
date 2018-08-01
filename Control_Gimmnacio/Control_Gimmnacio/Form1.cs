@@ -224,5 +224,47 @@ namespace Control_Gimmnacio
                 txtPass.UseSystemPasswordChar = false;
             }
         }
+
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+          /*  if (txtPass.UseSystemPasswordChar == true)
+            {
+                txtPass.PasswordChar = '\0';
+            }
+            else
+            {
+                txtPass.Text = "Contraseña";
+                txtPass.ForeColor = Color.DimGray;
+                txtPass.UseSystemPasswordChar = false;
+            }
+           // txtPass.Focus();*/
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                if (txtPass.Text == "Contraseña")
+                {
+
+                }
+                else
+                {
+                    txtPass.UseSystemPasswordChar = false;
+                }
+               
+            }
+            else if (checkBox1.Checked == false)
+            {
+                if (txtPass.Text == "Contraseña")
+                {
+
+                }
+                else
+                {
+                    txtPass.UseSystemPasswordChar = true;
+                }
+            }
+        }
     }
 }
