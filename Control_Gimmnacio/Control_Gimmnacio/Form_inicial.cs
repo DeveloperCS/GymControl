@@ -135,7 +135,7 @@ namespace Control_Gimmnacio
         private void timer1_Tick(object sender, EventArgs e)
         {
             label2.Text = DateTime.Now.ToLongTimeString();
-            label3.Text = DateTime.Now.ToShortDateString();
+            label3.Text = DateTime.Now.ToLongDateString();
         }
     }
 }

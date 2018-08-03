@@ -41,6 +41,33 @@ namespace Control_Gimmnacio
             return ds1;
 
         }
+       /* public SqlDataReader consultaCB(string qr1)
+        {
+            //generamos la conexion
+            SqlConnection conn = new SqlConnection(cadena);
+            bool res;
+            SqlDataReader daR;
+            try
+            {
+                conn.Open();
+                //ejecuta la instruccion
+                SqlCommand command = new SqlCommand(qr1, conn);
+               // command.ExecuteReader();
+                daR= command.ExecuteReader();
+                daR.Read();
+                res = true;
+            }
+            catch (Exception s)
+            {
+                // MessageBox.Show(s.Message);
+                res = false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return daR;
+        }*/
         #endregion
         #region insertar
         ///<summary>

@@ -39,7 +39,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtFB = new System.Windows.Forms.TextBox();
             this.groupPersonales = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.cbSexo = new System.Windows.Forms.ComboBox();
@@ -48,17 +48,17 @@
             this.cbNumeroFecha = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupMembresia = new System.Windows.Forms.GroupBox();
+            this.checkDesc = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.pickIni = new System.Windows.Forms.DateTimePicker();
+            this.pickFin = new System.Windows.Forms.DateTimePicker();
             this.cbDescProm = new System.Windows.Forms.ComboBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lbTotal = new System.Windows.Forms.Label();
             this.cbTipoMembrecia = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbDesc = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancelaSocio = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -84,6 +84,7 @@
             this.btnAgregaSocio.TabIndex = 2;
             this.btnAgregaSocio.Text = "Guardar";
             this.btnAgregaSocio.UseVisualStyleBackColor = true;
+            this.btnAgregaSocio.Click += new System.EventHandler(this.btnAgregaSocio_Click);
             // 
             // txtNom
             // 
@@ -138,6 +139,7 @@
             // 
             this.txtTel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTel.Location = new System.Drawing.Point(735, 72);
+            this.txtTel.MaxLength = 10;
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(259, 27);
             this.txtTel.TabIndex = 7;
@@ -173,13 +175,13 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "Facebook";
             // 
-            // textBox2
+            // txtFB
             // 
-            this.textBox2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(737, 157);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(258, 27);
-            this.textBox2.TabIndex = 8;
+            this.txtFB.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFB.Location = new System.Drawing.Point(737, 157);
+            this.txtFB.Name = "txtFB";
+            this.txtFB.Size = new System.Drawing.Size(258, 27);
+            this.txtFB.TabIndex = 8;
             // 
             // groupPersonales
             // 
@@ -191,7 +193,7 @@
             this.groupPersonales.Controls.Add(this.cbMesFecha);
             this.groupPersonales.Controls.Add(this.cbNumeroFecha);
             this.groupPersonales.Controls.Add(this.pictureBox1);
-            this.groupPersonales.Controls.Add(this.textBox2);
+            this.groupPersonales.Controls.Add(this.txtFB);
             this.groupPersonales.Controls.Add(this.label2);
             this.groupPersonales.Controls.Add(this.txtNom);
             this.groupPersonales.Controls.Add(this.txtTel);
@@ -224,9 +226,6 @@
             // 
             this.cbSexo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSexo.FormattingEnabled = true;
-            this.cbSexo.Items.AddRange(new object[] {
-            "M",
-            "F"});
             this.cbSexo.Location = new System.Drawing.Point(572, 102);
             this.cbSexo.Name = "cbSexo";
             this.cbSexo.Size = new System.Drawing.Size(64, 29);
@@ -236,6 +235,7 @@
             // 
             this.txtAñoFecha.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAñoFecha.Location = new System.Drawing.Point(364, 107);
+            this.txtAñoFecha.MaxLength = 4;
             this.txtAñoFecha.Name = "txtAñoFecha";
             this.txtAñoFecha.Size = new System.Drawing.Size(100, 27);
             this.txtAñoFecha.TabIndex = 4;
@@ -244,19 +244,6 @@
             // 
             this.cbMesFecha.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMesFecha.FormattingEnabled = true;
-            this.cbMesFecha.Items.AddRange(new object[] {
-            "Ene",
-            "Feb",
-            "Mar",
-            "Abr",
-            "May",
-            "Jun",
-            "Jul",
-            "Ago",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dic"});
             this.cbMesFecha.Location = new System.Drawing.Point(282, 106);
             this.cbMesFecha.Name = "cbMesFecha";
             this.cbMesFecha.Size = new System.Drawing.Size(76, 29);
@@ -266,38 +253,6 @@
             // 
             this.cbNumeroFecha.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbNumeroFecha.FormattingEnabled = true;
-            this.cbNumeroFecha.Items.AddRange(new object[] {
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31"});
             this.cbNumeroFecha.Location = new System.Drawing.Point(212, 105);
             this.cbNumeroFecha.Name = "cbNumeroFecha";
             this.cbNumeroFecha.Size = new System.Drawing.Size(63, 29);
@@ -317,33 +272,49 @@
             // groupMembresia
             // 
             this.groupMembresia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupMembresia.Controls.Add(this.checkDesc);
             this.groupMembresia.Controls.Add(this.label13);
             this.groupMembresia.Controls.Add(this.label8);
-            this.groupMembresia.Controls.Add(this.dateTimePicker2);
-            this.groupMembresia.Controls.Add(this.dateTimePicker1);
+            this.groupMembresia.Controls.Add(this.pickIni);
+            this.groupMembresia.Controls.Add(this.pickFin);
             this.groupMembresia.Controls.Add(this.cbDescProm);
             this.groupMembresia.Controls.Add(this.pictureBox2);
-            this.groupMembresia.Controls.Add(this.label11);
+            this.groupMembresia.Controls.Add(this.lbTotal);
             this.groupMembresia.Controls.Add(this.cbTipoMembrecia);
             this.groupMembresia.Controls.Add(this.label10);
-            this.groupMembresia.Controls.Add(this.label9);
-            this.groupMembresia.Controls.Add(this.label3);
+            this.groupMembresia.Controls.Add(this.lbDesc);
             this.groupMembresia.Controls.Add(this.label1);
             this.groupMembresia.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupMembresia.ForeColor = System.Drawing.Color.Orange;
             this.groupMembresia.Location = new System.Drawing.Point(13, 243);
             this.groupMembresia.Name = "groupMembresia";
-            this.groupMembresia.Size = new System.Drawing.Size(1012, 277);
+            this.groupMembresia.Size = new System.Drawing.Size(1012, 259);
             this.groupMembresia.TabIndex = 4;
             this.groupMembresia.TabStop = false;
             this.groupMembresia.Text = "Datos de Membresia";
+            // 
+            // checkDesc
+            // 
+            this.checkDesc.AutoSize = true;
+            this.checkDesc.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.checkDesc.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkDesc.ForeColor = System.Drawing.Color.Black;
+            this.checkDesc.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.checkDesc.Location = new System.Drawing.Point(23, 121);
+            this.checkDesc.Name = "checkDesc";
+            this.checkDesc.Size = new System.Drawing.Size(243, 36);
+            this.checkDesc.TabIndex = 9;
+            this.checkDesc.Text = "Agregar Descuento/Promocion";
+            this.checkDesc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.checkDesc.UseVisualStyleBackColor = true;
+            this.checkDesc.CheckedChanged += new System.EventHandler(this.checkDesc_CheckedChanged);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(34, 105);
+            this.label13.Location = new System.Drawing.Point(294, 80);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(55, 19);
             this.label13.TabIndex = 7;
@@ -354,42 +325,43 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(297, 105);
+            this.label8.Location = new System.Drawing.Point(294, 121);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 19);
             this.label8.TabIndex = 7;
             this.label8.Text = "Fin:";
             // 
-            // dateTimePicker2
+            // pickIni
             // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(91, 103);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
-            this.dateTimePicker2.TabIndex = 6;
-            this.dateTimePicker2.Value = new System.DateTime(2018, 7, 25, 0, 0, 0, 0);
+            this.pickIni.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pickIni.Location = new System.Drawing.Point(351, 78);
+            this.pickIni.Name = "pickIni";
+            this.pickIni.Size = new System.Drawing.Size(259, 23);
+            this.pickIni.TabIndex = 6;
+            this.pickIni.Value = new System.DateTime(2018, 7, 25, 0, 0, 0, 0);
             // 
-            // dateTimePicker1
+            // pickFin
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(336, 103);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
-            this.dateTimePicker1.TabIndex = 6;
-            this.dateTimePicker1.Value = new System.DateTime(2018, 7, 25, 0, 0, 0, 0);
+            this.pickFin.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pickFin.Location = new System.Drawing.Point(351, 123);
+            this.pickFin.Name = "pickFin";
+            this.pickFin.Size = new System.Drawing.Size(259, 23);
+            this.pickFin.TabIndex = 6;
+            this.pickFin.Value = new System.DateTime(2018, 7, 25, 0, 0, 0, 0);
             // 
             // cbDescProm
             // 
-            this.cbDescProm.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDescProm.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbDescProm.FormattingEnabled = true;
             this.cbDescProm.Items.AddRange(new object[] {
             "Descuento 25%",
             "Descuento 50%",
             "Promocion por cumpleaños"});
-            this.cbDescProm.Location = new System.Drawing.Point(281, 155);
+            this.cbDescProm.Location = new System.Drawing.Point(279, 188);
             this.cbDescProm.Name = "cbDescProm";
-            this.cbDescProm.Size = new System.Drawing.Size(229, 29);
+            this.cbDescProm.Size = new System.Drawing.Size(229, 25);
             this.cbDescProm.TabIndex = 5;
+            this.cbDescProm.SelectedIndexChanged += new System.EventHandler(this.cbDescProm_SelectedIndexChanged);
             // 
             // pictureBox2
             // 
@@ -401,26 +373,26 @@
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
             // 
-            // label11
+            // lbTotal
             // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.DimGray;
-            this.label11.Location = new System.Drawing.Point(796, 119);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(54, 25);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "0.00";
+            this.lbTotal.AutoSize = true;
+            this.lbTotal.ForeColor = System.Drawing.Color.DimGray;
+            this.lbTotal.Location = new System.Drawing.Point(796, 119);
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(54, 25);
+            this.lbTotal.TabIndex = 3;
+            this.lbTotal.Text = "0.00";
             // 
             // cbTipoMembrecia
             // 
-            this.cbTipoMembrecia.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTipoMembrecia.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTipoMembrecia.FormattingEnabled = true;
             this.cbTipoMembrecia.Items.AddRange(new object[] {
             "Semanal",
             "Mensual"});
-            this.cbTipoMembrecia.Location = new System.Drawing.Point(282, 54);
+            this.cbTipoMembrecia.Location = new System.Drawing.Point(65, 76);
             this.cbTipoMembrecia.Name = "cbTipoMembrecia";
-            this.cbTipoMembrecia.Size = new System.Drawing.Size(228, 29);
+            this.cbTipoMembrecia.Size = new System.Drawing.Size(150, 25);
             this.cbTipoMembrecia.TabIndex = 1;
             this.cbTipoMembrecia.SelectedIndexChanged += new System.EventHandler(this.cbTipoMembrecia_SelectedIndexChanged);
             // 
@@ -433,33 +405,25 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Total a Pagar:";
             // 
-            // label9
+            // lbDesc
             // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(206, 202);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(188, 25);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Clave de Acceso";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(13, 152);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(245, 25);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Descuento/Promocion:";
+            this.lbDesc.AutoSize = true;
+            this.lbDesc.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDesc.ForeColor = System.Drawing.Color.Black;
+            this.lbDesc.Location = new System.Drawing.Point(89, 189);
+            this.lbDesc.Name = "lbDesc";
+            this.lbDesc.Size = new System.Drawing.Size(185, 19);
+            this.lbDesc.TabIndex = 0;
+            this.lbDesc.Text = "Descuento/Promocion:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(199, 54);
+            this.label1.Location = new System.Drawing.Point(14, 76);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 25);
+            this.label1.Size = new System.Drawing.Size(45, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tipo:";
             // 
@@ -545,30 +509,30 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtFB;
         private System.Windows.Forms.GroupBox groupPersonales;
         private System.Windows.Forms.TextBox txtAñoFecha;
         private System.Windows.Forms.ComboBox cbMesFecha;
         private System.Windows.Forms.ComboBox cbNumeroFecha;
         private System.Windows.Forms.GroupBox groupMembresia;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lbTotal;
         private System.Windows.Forms.ComboBox cbTipoMembrecia;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbSexo;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ComboBox cbDescProm;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbDesc;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker pickIni;
+        private System.Windows.Forms.DateTimePicker pickFin;
         private System.Windows.Forms.Button btnCancelaSocio;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem agregaSociosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem historialDeSociosToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkDesc;
     }
 }

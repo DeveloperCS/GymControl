@@ -69,7 +69,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(0, 323);
+            this.panel1.Size = new System.Drawing.Size(0, 337);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
@@ -93,7 +93,7 @@
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape4,
             this.lineShape3});
-            this.shapeContainer1.Size = new System.Drawing.Size(768, 323);
+            this.shapeContainer1.Size = new System.Drawing.Size(768, 337);
             this.shapeContainer1.TabIndex = 1;
             this.shapeContainer1.TabStop = false;
             // 
@@ -200,7 +200,7 @@
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(246, 323);
+            this.panel2.Size = new System.Drawing.Size(246, 334);
             this.panel2.TabIndex = 6;
             // 
             // pictureBox1
@@ -222,7 +222,7 @@
             this.btnAcceder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAcceder.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAcceder.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAcceder.Location = new System.Drawing.Point(339, 220);
+            this.btnAcceder.Location = new System.Drawing.Point(339, 239);
             this.btnAcceder.Name = "btnAcceder";
             this.btnAcceder.Size = new System.Drawing.Size(291, 36);
             this.btnAcceder.TabIndex = 3;
@@ -279,7 +279,7 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.LinkColor = System.Drawing.Color.DimGray;
-            this.linkLabel1.Location = new System.Drawing.Point(397, 280);
+            this.linkLabel1.Location = new System.Drawing.Point(397, 293);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(174, 17);
             this.linkLabel1.TabIndex = 0;
@@ -343,13 +343,15 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.checkBox1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.ForeColor = System.Drawing.Color.DimGray;
-            this.checkBox1.Location = new System.Drawing.Point(617, 151);
+            this.checkBox1.Location = new System.Drawing.Point(554, 187);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(78, 21);
+            this.checkBox1.Size = new System.Drawing.Size(144, 21);
             this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "Mostrar ";
+            this.checkBox1.Text = "Mostrar Contraseña";
+            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -358,7 +360,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.ClientSize = new System.Drawing.Size(768, 323);
+            this.ClientSize = new System.Drawing.Size(768, 337);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label2);
