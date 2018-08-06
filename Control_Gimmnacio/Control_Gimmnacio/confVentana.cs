@@ -83,6 +83,8 @@ namespace Control_Gimmnacio
         {
             q = "select idProduc as Id,nomProduc as Producto,cantidad as Cantidad,precio as Precio from produc";
             edit.dataGridView1.DataSource = dts.consulta(q).Tables[0];
+            edit.dataGridView1.Columns["Precio"].DefaultCellStyle.Format = "N2";
+            edit.dataGridView1.Columns["Precio"].DefaultCellStyle.NullValue = "0.00";
             edit.lbTitulo.Text = "Productos Registrados";
             edit.lb1.Text = "ID";
             edit.lb2.Text = "Producto";
@@ -104,6 +106,8 @@ namespace Control_Gimmnacio
         {
             q = "select idMem as Id, nomMem as Membresia,precioMem as Precio,dias as Dias from memb";
             edit.dataGridView1.DataSource = dts.consulta(q).Tables[0];
+            edit.dataGridView1.Columns["Precio"].DefaultCellStyle.Format = "N2";
+            edit.dataGridView1.Columns["Precio"].DefaultCellStyle.NullValue = "0.00";
             edit.lbTitulo.Text = "Membresias Registradas";
             edit.lb1.Text = "ID";
             edit.lb2.Text = "Membresia";

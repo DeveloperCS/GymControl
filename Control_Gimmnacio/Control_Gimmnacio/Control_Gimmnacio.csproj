@@ -105,6 +105,12 @@
     <Compile Include="us.Designer.cs">
       <DependentUpon>us.cs</DependentUpon>
     </Compile>
+    <Compile Include="vAgregaMemS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vAgregaMemS.Designer.cs">
+      <DependentUpon>vAgregaMemS.cs</DependentUpon>
+    </Compile>
     <Compile Include="ventanConfEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="us.resx">
       <DependentUpon>us.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vAgregaMemS.resx">
+      <DependentUpon>vAgregaMemS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ventanConfEdit.resx">
       <DependentUpon>ventanConfEdit.cs</DependentUpon>
@@ -204,6 +213,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\search32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_plus_1646001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_error_1646012.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dolar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

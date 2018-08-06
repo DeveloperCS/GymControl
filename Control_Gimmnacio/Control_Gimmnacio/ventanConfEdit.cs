@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -19,6 +20,7 @@ namespace Control_Gimmnacio
             
             InitializeComponent();
             bloquearTxt();
+            
            
         }
         //bloquear Text
@@ -99,6 +101,7 @@ namespace Control_Gimmnacio
                         txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
                         txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                         txt3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                        
                         num4.Value = Convert.ToInt64(dataGridView1.CurrentRow.Cells[2].Value.ToString());
                         break;
                     case 2:
@@ -125,6 +128,7 @@ namespace Control_Gimmnacio
         public void consultar(string q)
         {
             dataGridView1.DataSource = dts.consulta(q).Tables[0];
+            
         }
         public void consultaPr(string q1)
         {
@@ -287,6 +291,13 @@ namespace Control_Gimmnacio
                 
             }
         }
+
+        private void txt3_Leave(object sender, EventArgs e)
+        {
+            double d = Convert.ToDouble(txt3.Text, CultureInfo.InvariantCulture);
+            txt3.Text = d.ToString("0000.00", CultureInfo.InvariantCulture);
+        }
+
         private void txt2_TextChanged(object sender, EventArgs e)
         {
             //Letra despues de cada espacion en Mayuscula

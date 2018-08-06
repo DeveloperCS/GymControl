@@ -227,6 +227,7 @@
             this.txt3.Size = new System.Drawing.Size(100, 26);
             this.txt3.TabIndex = 4;
             this.txt3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt3_KeyPress);
+            this.txt3.Leave += new System.EventHandler(this.txt3_Leave);
             // 
             // txt2
             // 

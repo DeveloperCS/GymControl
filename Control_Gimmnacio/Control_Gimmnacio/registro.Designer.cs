@@ -36,53 +36,60 @@
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtTel = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtFB = new System.Windows.Forms.TextBox();
             this.groupPersonales = new System.Windows.Forms.GroupBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.cbSexo = new System.Windows.Forms.ComboBox();
             this.txtAñoFecha = new System.Windows.Forms.TextBox();
             this.cbMesFecha = new System.Windows.Forms.ComboBox();
             this.cbNumeroFecha = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupMembresia = new System.Windows.Forms.GroupBox();
+            this.txtClaveM = new System.Windows.Forms.TextBox();
+            this.btnCancelarMem = new System.Windows.Forms.Button();
+            this.btnPagaMem = new System.Windows.Forms.Button();
             this.checkDesc = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pickIni = new System.Windows.Forms.DateTimePicker();
             this.pickFin = new System.Windows.Forms.DateTimePicker();
             this.cbDescProm = new System.Windows.Forms.ComboBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.lbTotal = new System.Windows.Forms.Label();
+            this.lbTotal1 = new System.Windows.Forms.Label();
             this.cbTipoMembrecia = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lbDesc = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancelaSocio = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.agregaSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historialDeSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupPersonales.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.groupMembresia.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAgregaSocio
             // 
             this.btnAgregaSocio.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnAgregaSocio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregaSocio.FlatAppearance.BorderSize = 2;
+            this.btnAgregaSocio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGreen;
+            this.btnAgregaSocio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnAgregaSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregaSocio.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregaSocio.Location = new System.Drawing.Point(378, 526);
+            this.btnAgregaSocio.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregaSocio.Location = new System.Drawing.Point(382, 243);
             this.btnAgregaSocio.Name = "btnAgregaSocio";
             this.btnAgregaSocio.Size = new System.Drawing.Size(129, 51);
             this.btnAgregaSocio.TabIndex = 2;
-            this.btnAgregaSocio.Text = "Guardar";
+            this.btnAgregaSocio.Text = "Agregar Socio";
             this.btnAgregaSocio.UseVisualStyleBackColor = true;
             this.btnAgregaSocio.Click += new System.EventHandler(this.btnAgregaSocio_Click);
             // 
@@ -93,6 +100,8 @@
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(284, 27);
             this.txtNom.TabIndex = 1;
+            this.txtNom.TextChanged += new System.EventHandler(this.txtNom_TextChanged);
+            this.txtNom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNom_KeyPress);
             // 
             // label2
             // 
@@ -123,6 +132,7 @@
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(363, 27);
             this.txtDireccion.TabIndex = 6;
+            this.txtDireccion.TextChanged += new System.EventHandler(this.txtDireccion_TextChanged);
             // 
             // label5
             // 
@@ -143,15 +153,7 @@
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(259, 27);
             this.txtTel.TabIndex = 7;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(19, 47);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
+            this.txtTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_KeyPress);
             // 
             // label6
             // 
@@ -212,16 +214,6 @@
             this.groupPersonales.TabStop = false;
             this.groupPersonales.Text = "Datos de Socio";
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(767, 105);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
-            // 
             // cbSexo
             // 
             this.cbSexo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -239,6 +231,7 @@
             this.txtAñoFecha.Name = "txtAñoFecha";
             this.txtAñoFecha.Size = new System.Drawing.Size(100, 27);
             this.txtAñoFecha.TabIndex = 4;
+            this.txtAñoFecha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAñoFecha_KeyPress);
             // 
             // cbMesFecha
             // 
@@ -272,6 +265,9 @@
             // groupMembresia
             // 
             this.groupMembresia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupMembresia.Controls.Add(this.txtClaveM);
+            this.groupMembresia.Controls.Add(this.btnCancelarMem);
+            this.groupMembresia.Controls.Add(this.btnPagaMem);
             this.groupMembresia.Controls.Add(this.checkDesc);
             this.groupMembresia.Controls.Add(this.label13);
             this.groupMembresia.Controls.Add(this.label8);
@@ -279,19 +275,60 @@
             this.groupMembresia.Controls.Add(this.pickFin);
             this.groupMembresia.Controls.Add(this.cbDescProm);
             this.groupMembresia.Controls.Add(this.pictureBox2);
-            this.groupMembresia.Controls.Add(this.lbTotal);
+            this.groupMembresia.Controls.Add(this.lbTotal1);
             this.groupMembresia.Controls.Add(this.cbTipoMembrecia);
             this.groupMembresia.Controls.Add(this.label10);
             this.groupMembresia.Controls.Add(this.lbDesc);
+            this.groupMembresia.Controls.Add(this.label3);
             this.groupMembresia.Controls.Add(this.label1);
             this.groupMembresia.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupMembresia.ForeColor = System.Drawing.Color.Orange;
-            this.groupMembresia.Location = new System.Drawing.Point(13, 243);
+            this.groupMembresia.Location = new System.Drawing.Point(12, 304);
             this.groupMembresia.Name = "groupMembresia";
-            this.groupMembresia.Size = new System.Drawing.Size(1012, 259);
+            this.groupMembresia.Size = new System.Drawing.Size(1012, 284);
             this.groupMembresia.TabIndex = 4;
             this.groupMembresia.TabStop = false;
             this.groupMembresia.Text = "Datos de Membresia";
+            // 
+            // txtClaveM
+            // 
+            this.txtClaveM.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClaveM.Location = new System.Drawing.Point(80, 43);
+            this.txtClaveM.Name = "txtClaveM";
+            this.txtClaveM.Size = new System.Drawing.Size(135, 26);
+            this.txtClaveM.TabIndex = 12;
+            // 
+            // btnCancelarMem
+            // 
+            this.btnCancelarMem.FlatAppearance.BorderSize = 2;
+            this.btnCancelarMem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Bisque;
+            this.btnCancelarMem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Salmon;
+            this.btnCancelarMem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarMem.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarMem.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCancelarMem.Location = new System.Drawing.Point(701, 205);
+            this.btnCancelarMem.Name = "btnCancelarMem";
+            this.btnCancelarMem.Size = new System.Drawing.Size(100, 42);
+            this.btnCancelarMem.TabIndex = 11;
+            this.btnCancelarMem.Text = "Cancelar";
+            this.btnCancelarMem.UseVisualStyleBackColor = true;
+            this.btnCancelarMem.Click += new System.EventHandler(this.btnCancelarMem_Click);
+            // 
+            // btnPagaMem
+            // 
+            this.btnPagaMem.FlatAppearance.BorderSize = 2;
+            this.btnPagaMem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGreen;
+            this.btnPagaMem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnPagaMem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagaMem.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPagaMem.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnPagaMem.Location = new System.Drawing.Point(817, 205);
+            this.btnPagaMem.Name = "btnPagaMem";
+            this.btnPagaMem.Size = new System.Drawing.Size(100, 42);
+            this.btnPagaMem.TabIndex = 10;
+            this.btnPagaMem.Text = "Pagar";
+            this.btnPagaMem.UseVisualStyleBackColor = true;
+            this.btnPagaMem.Click += new System.EventHandler(this.btnPagaMem_Click);
             // 
             // checkDesc
             // 
@@ -300,7 +337,7 @@
             this.checkDesc.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkDesc.ForeColor = System.Drawing.Color.Black;
             this.checkDesc.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.checkDesc.Location = new System.Drawing.Point(23, 121);
+            this.checkDesc.Location = new System.Drawing.Point(23, 135);
             this.checkDesc.Name = "checkDesc";
             this.checkDesc.Size = new System.Drawing.Size(243, 36);
             this.checkDesc.TabIndex = 9;
@@ -314,7 +351,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(294, 80);
+            this.label13.Location = new System.Drawing.Point(294, 94);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(55, 19);
             this.label13.TabIndex = 7;
@@ -325,7 +362,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(294, 121);
+            this.label8.Location = new System.Drawing.Point(294, 135);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 19);
             this.label8.TabIndex = 7;
@@ -334,7 +371,7 @@
             // pickIni
             // 
             this.pickIni.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pickIni.Location = new System.Drawing.Point(351, 78);
+            this.pickIni.Location = new System.Drawing.Point(351, 92);
             this.pickIni.Name = "pickIni";
             this.pickIni.Size = new System.Drawing.Size(259, 23);
             this.pickIni.TabIndex = 6;
@@ -343,7 +380,7 @@
             // pickFin
             // 
             this.pickFin.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pickFin.Location = new System.Drawing.Point(351, 123);
+            this.pickFin.Location = new System.Drawing.Point(351, 137);
             this.pickFin.Name = "pickFin";
             this.pickFin.Size = new System.Drawing.Size(259, 23);
             this.pickFin.TabIndex = 6;
@@ -357,31 +394,21 @@
             "Descuento 25%",
             "Descuento 50%",
             "Promocion por cumpleaños"});
-            this.cbDescProm.Location = new System.Drawing.Point(279, 188);
+            this.cbDescProm.Location = new System.Drawing.Point(279, 202);
             this.cbDescProm.Name = "cbDescProm";
             this.cbDescProm.Size = new System.Drawing.Size(229, 25);
             this.cbDescProm.TabIndex = 5;
             this.cbDescProm.SelectedIndexChanged += new System.EventHandler(this.cbDescProm_SelectedIndexChanged);
             // 
-            // pictureBox2
+            // lbTotal1
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(650, 93);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(89, 62);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
-            // 
-            // lbTotal
-            // 
-            this.lbTotal.AutoSize = true;
-            this.lbTotal.ForeColor = System.Drawing.Color.DimGray;
-            this.lbTotal.Location = new System.Drawing.Point(796, 119);
-            this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(54, 25);
-            this.lbTotal.TabIndex = 3;
-            this.lbTotal.Text = "0.00";
+            this.lbTotal1.AutoSize = true;
+            this.lbTotal1.ForeColor = System.Drawing.Color.DimGray;
+            this.lbTotal1.Location = new System.Drawing.Point(796, 119);
+            this.lbTotal1.Name = "lbTotal1";
+            this.lbTotal1.Size = new System.Drawing.Size(54, 25);
+            this.lbTotal1.TabIndex = 3;
+            this.lbTotal1.Text = "0.00";
             // 
             // cbTipoMembrecia
             // 
@@ -390,7 +417,7 @@
             this.cbTipoMembrecia.Items.AddRange(new object[] {
             "Semanal",
             "Mensual"});
-            this.cbTipoMembrecia.Location = new System.Drawing.Point(65, 76);
+            this.cbTipoMembrecia.Location = new System.Drawing.Point(65, 90);
             this.cbTipoMembrecia.Name = "cbTipoMembrecia";
             this.cbTipoMembrecia.Size = new System.Drawing.Size(150, 25);
             this.cbTipoMembrecia.TabIndex = 1;
@@ -410,18 +437,29 @@
             this.lbDesc.AutoSize = true;
             this.lbDesc.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDesc.ForeColor = System.Drawing.Color.Black;
-            this.lbDesc.Location = new System.Drawing.Point(89, 189);
+            this.lbDesc.Location = new System.Drawing.Point(89, 203);
             this.lbDesc.Name = "lbDesc";
             this.lbDesc.Size = new System.Drawing.Size(185, 19);
             this.lbDesc.TabIndex = 0;
             this.lbDesc.Text = "Descuento/Promocion:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(15, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 19);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Clave:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(14, 76);
+            this.label1.Location = new System.Drawing.Point(14, 90);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 19);
             this.label1.TabIndex = 0;
@@ -431,14 +469,18 @@
             // 
             this.btnCancelaSocio.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCancelaSocio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelaSocio.FlatAppearance.BorderSize = 2;
+            this.btnCancelaSocio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Bisque;
+            this.btnCancelaSocio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Salmon;
             this.btnCancelaSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelaSocio.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelaSocio.Location = new System.Drawing.Point(513, 526);
+            this.btnCancelaSocio.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelaSocio.Location = new System.Drawing.Point(532, 243);
             this.btnCancelaSocio.Name = "btnCancelaSocio";
             this.btnCancelaSocio.Size = new System.Drawing.Size(129, 51);
             this.btnCancelaSocio.TabIndex = 5;
             this.btnCancelaSocio.Text = "Cancelar";
             this.btnCancelaSocio.UseVisualStyleBackColor = true;
+            this.btnCancelaSocio.Click += new System.EventHandler(this.btnCancelaSocio_Click);
             // 
             // menuStrip1
             // 
@@ -467,6 +509,35 @@
             this.historialDeSociosToolStripMenuItem.Name = "historialDeSociosToolStripMenuItem";
             this.historialDeSociosToolStripMenuItem.Size = new System.Drawing.Size(12, 21);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(650, 93);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(89, 62);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(767, 105);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 4;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(19, 47);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // registro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -484,15 +555,15 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "registro";
             this.Load += new System.EventHandler(this.registro_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupPersonales.ResumeLayout(false);
             this.groupPersonales.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.groupMembresia.ResumeLayout(false);
             this.groupMembresia.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -500,7 +571,6 @@
 
         #endregion
         private System.Windows.Forms.Button btnAgregaSocio;
-        private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDireccion;
@@ -511,11 +581,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtFB;
         private System.Windows.Forms.GroupBox groupPersonales;
-        private System.Windows.Forms.TextBox txtAñoFecha;
         private System.Windows.Forms.ComboBox cbMesFecha;
         private System.Windows.Forms.ComboBox cbNumeroFecha;
         private System.Windows.Forms.GroupBox groupMembresia;
-        private System.Windows.Forms.Label lbTotal;
+        private System.Windows.Forms.Label lbTotal1;
         private System.Windows.Forms.ComboBox cbTipoMembrecia;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label1;
@@ -534,5 +603,11 @@
         private System.Windows.Forms.ToolStripMenuItem agregaSociosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem historialDeSociosToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkDesc;
+        private System.Windows.Forms.Button btnCancelarMem;
+        private System.Windows.Forms.Button btnPagaMem;
+        public System.Windows.Forms.TextBox txtNom;
+        public System.Windows.Forms.TextBox txtAñoFecha;
+        private System.Windows.Forms.TextBox txtClaveM;
+        private System.Windows.Forms.Label label3;
     }
 }

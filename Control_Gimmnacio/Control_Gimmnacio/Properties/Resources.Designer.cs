@@ -83,6 +83,16 @@ namespace Control_Gimmnacio.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dolar {
+            get {
+                object obj = ResourceManager.GetObject("dolar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap group {
             get {
                 object obj = ResourceManager.GetObject("group", resourceCulture);
@@ -96,6 +106,26 @@ namespace Control_Gimmnacio.Properties {
         internal static System.Drawing.Bitmap GymControl {
             get {
                 object obj = ResourceManager.GetObject("GymControl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_error_1646012 {
+            get {
+                object obj = ResourceManager.GetObject("if_error_1646012", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_plus_1646001 {
+            get {
+                object obj = ResourceManager.GetObject("if_plus_1646001", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

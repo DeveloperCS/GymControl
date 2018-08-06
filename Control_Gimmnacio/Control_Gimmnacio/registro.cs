@@ -26,10 +26,16 @@ namespace Control_Gimmnacio
             pickIni.Enabled = false;
             fecheac = DateTime.Now.ToShortDateString();
             pickIni.Text = fecheac;
+           // lbTotal1.Caption = Format(lbTotal1.Caption, "#######.00");
+            
+
+
         }
        
         private void registro_Load(object sender, EventArgs e)
         {
+            txtClaveM.Enabled = false;
+            groupMembresia.Enabled = false;
             llenaNumFech();
             llenaMesFehc();
             llenaSex();
@@ -39,6 +45,8 @@ namespace Control_Gimmnacio
             cbDescProm.Visible = false;
         }
         conexionDatos dts = new conexionDatos();
+        restricciones val = new restricciones();
+        #region llenarCB
         public void llenaCb()
         {
             string q = "select * from prom order by descuento";
@@ -56,7 +64,7 @@ namespace Control_Gimmnacio
             cbTipoMembrecia.ValueMember = "nomMem";
         }
 
-        #region llenarCB
+       
         //llena cb 
         public void llenaNumFech()
         {
@@ -77,18 +85,20 @@ namespace Control_Gimmnacio
         }
         public void llenaMesFehc()
         {
-            cbMesFecha.Items.Add("Ene");
-            cbMesFecha.Items.Add("Feb");
-            cbMesFecha.Items.Add("Mar");
-            cbMesFecha.Items.Add("Abri");
-            cbMesFecha.Items.Add("May");
-            cbMesFecha.Items.Add("Jun");
-            cbMesFecha.Items.Add("Jul");
-            cbMesFecha.Items.Add("Ago");
-            cbMesFecha.Items.Add("Sep");
-            cbMesFecha.Items.Add("Oct");
-            cbMesFecha.Items.Add("Nov");
-            cbMesFecha.Items.Add("Dic");
+            
+            for (int i = 1; i <= 12; i++)
+            {
+                if (i < 10)
+                {
+                    cbMesFecha.Items.Add("0"+i);
+                }
+                else
+                {
+                    cbMesFecha.Items.Add(i);
+                }
+
+            }
+
         }
         public void llenaSex()
         {
@@ -105,26 +115,7 @@ namespace Control_Gimmnacio
         private void cbTipoMembrecia_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            /*if (checkDesc.Checked == true)
-            {
-               
-                DataSet dataC = new DataSet();
-                qyr1 = "select descuento as ds from prom where nomPromocion = '" + cbDescProm.Text + "' ";
-                dataC = dts.consulta(qyr1);
-                DataTable dt2 = dataC.Tables[0];
-                double vT = 0, vO = 0, vTT = 0;
-                vT = Convert.ToDouble(t);
-                foreach (DataRow row in dt2.Rows)
-                {
-                    //
-                    vO = Convert.ToDouble(row["ds"].ToString());
-                    vTT = vT * vO;
-                    lbTotal.Text = vT - vTT + ".00";
-                }
-
-            }
-            else
-            {*/
+          
                 DataSet dataC = new DataSet();
                 qyr1 = "select precioMem as p,dias as d from memb where nomMem = '" + cbTipoMembrecia.Text + "' ";
                 dataC = dts.consulta(qyr1);
@@ -133,7 +124,7 @@ namespace Control_Gimmnacio
                 foreach (DataRow row in dt2.Rows)
                 {
                     //
-                    lbTotal.Text = row["p"].ToString();
+                    lbTotal1.Text = row["p"].ToString();
                     t = Convert.ToDouble(row["p"]);
                     dias = Convert.ToInt32(row["d"].ToString());
                 }
@@ -155,11 +146,13 @@ namespace Control_Gimmnacio
             {
                 lbDesc.Visible = true;
                 cbDescProm.Visible = true;
+                con = 1;
             }
             else
             {
                 lbDesc.Visible = false;
                 cbDescProm.Visible = false;
+                con = 0;
             }
         }
 
@@ -179,14 +172,90 @@ namespace Control_Gimmnacio
                     //
                     vO =Convert.ToDouble( row["ds"].ToString());
                     vTT= vT*vO;
-                    lbTotal.Text = vT - vTT+".00";
+                    lbTotal1.Text = vT - vTT+"";
                 }
-                
+                con = 1;
             }
             else
             {
-
+                con = 0;
             }
+        }
+        #region AgregaMEm
+        int con = 0;
+        string qs = "",qm1 = "",clave ="",nombres="";
+
+        private void btnPagaMem_Click(object sender, EventArgs e)
+        {
+           
+            if (MessageBox.Show("¿Agregar Membresia?","Agregar",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+            {
+
+                if (checkDesc.Checked == true)
+                {
+                    qm1 = "insert into memSocio values('" + txtClaveM.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("MM/dd/yyyy") + "','" + pickFin.Value.ToString("MM/dd/yyyy") + "','" + cbDescProm.Text + "','" + lbTotal1.Text + "','Vigente')";
+                    if (dts.insertar(qm1) == true)
+                    {
+                        MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        limpiaSocio();
+                        limpiaMem();
+                    }
+                }
+                else
+                {
+                    qm1 = "insert into memSocio values('" + txtClaveM.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("MM/dd/yyyy") + "','" + pickFin.Value.ToString("MM/dd/yyyy") + "','S/N','" + lbTotal1.Text + "','Vigente')";
+                    if (dts.insertar(qm1) == true)
+                    {
+                        MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        limpiaSocio();
+                        limpiaMem();
+                    }
+                }
+                   
+                    
+            }
+            
+        }
+        #region validacion
+        private void txtNom_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.sololetras(e);
+        }
+        private void txtAñoFecha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.solonumerosEnteros(e);
+        }
+        private void txtTel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.solonumerosEnteros(e);
+        }
+        private void txtNom_TextChanged(object sender, EventArgs e)
+        {
+            //Letra despues de cada espacion en Mayuscula
+            txtNom.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtNom.Text);
+            txtNom.SelectionStart = txtNom.Text.Length;
+        }
+        private void txtDireccion_TextChanged(object sender, EventArgs e)
+        {
+
+            //Letra despues de cada espacion en Mayuscula
+            txtDireccion.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtDireccion.Text);
+            txtDireccion.SelectionStart = txtDireccion.Text.Length;
+
+        }
+
+
+        #endregion
+
+        private void btnCancelaSocio_Click(object sender, EventArgs e)
+        {
+            limpiaSocio();
+        }
+
+        private void btnCancelarMem_Click(object sender, EventArgs e)
+        {
+            limpiaSocio();
+            limpiaMem();
         }
 
         private void btnAgregaSocio_Click(object sender, EventArgs e)
@@ -198,7 +267,77 @@ namespace Control_Gimmnacio
             else
             {
                 //pagar o no la membresia
+                //string nombre = "Michael Jose Jackson del Carmen";
+                string nombre="";
+                nombre = txtNom.Text;
+                var datos = (from c in nombre.Split(' ') where Char.IsUpper(Convert.ToChar(c.Substring(0, 1))) select c.Substring(0, 1));
+                // Ahora probamos que funcione...
+                clave = "";
+                foreach (string s in datos)
+                {
+                    clave += s;
+                }
+                nombres = clave + txtAñoFecha.Text;
+                if (MessageBox.Show("¿Agregar Socio?","Agregar",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+                {
+                    string fechaT = cbNumeroFecha.SelectedItem.ToString()+ "/"+ cbMesFecha.SelectedItem.ToString()+"/"+ txtAñoFecha.Text;
+
+                    qs = "insert into socio values('S-"+nombres+"','"+txtNom.Text+"','"+fechaT+"','"+cbSexo.SelectedItem.ToString() + "','"+txtDireccion.Text+"','"+txtTel.Text+"','"+txtFB.Text+"')";
+                    
+                    if (dts.insertar(qs)==true)
+                    {
+
+                        MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (MessageBox.Show("¿Agregar Membresia?", "Agregar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            txtClaveM.Text = "S-" + nombres;
+                            btnAgregaSocio.Enabled = false;
+                            groupMembresia.Enabled = true;
+                           
+                        }
+                        else
+                        {
+                            limpiaSocio();
+                        }
+                          
+                    }
+                   
+
+                }
+                else
+                {
+                  
+                }
             }
         }
+        #endregion
+        #region LimpiarTxt
+        public void limpiaSocio()
+        {
+            nombres = "";
+            txtNom.Text = "";
+            txtAñoFecha.Text = "";
+            txtDireccion.Text = "";
+            txtFB.Text = "";
+            txtTel.Text = "";
+            cbSexo.Items.Clear();
+            cbMesFecha.Items.Clear();
+            cbNumeroFecha.Items.Clear();
+            llenaMesFehc();
+            llenaNumFech();
+            llenaSex();
+        }
+        public void limpiaMem()
+        {
+            nombres = "";
+            txtClaveM.Text = "";
+            lbTotal1.Text = "0.00";
+            cbDescProm.Refresh();
+            cbTipoMembrecia.Refresh();
+            checkDesc.Checked = false;
+            groupMembresia.Enabled = false;
+            btnAgregaSocio.Enabled = true;
+        }
+        #endregion
     }
 }
