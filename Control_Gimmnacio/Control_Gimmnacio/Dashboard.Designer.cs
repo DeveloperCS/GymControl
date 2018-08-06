@@ -49,7 +49,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnVenderProdc = new System.Windows.Forms.Button();
             this.btnNuevoVis = new System.Windows.Forms.Button();
-            this.btnFingerM = new System.Windows.Forms.Button();
             this.HoraFecha = new System.Windows.Forms.Timer(this.components);
             this.p_esVisi.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -303,7 +302,7 @@
             this.btnVenderProdc.ForeColor = System.Drawing.Color.White;
             this.btnVenderProdc.Image = ((System.Drawing.Image)(resources.GetObject("btnVenderProdc.Image")));
             this.btnVenderProdc.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnVenderProdc.Location = new System.Drawing.Point(763, 231);
+            this.btnVenderProdc.Location = new System.Drawing.Point(282, 188);
             this.btnVenderProdc.Name = "btnVenderProdc";
             this.btnVenderProdc.Padding = new System.Windows.Forms.Padding(0, 2, 0, 15);
             this.btnVenderProdc.Size = new System.Drawing.Size(230, 130);
@@ -325,37 +324,15 @@
             this.btnNuevoVis.ForeColor = System.Drawing.Color.White;
             this.btnNuevoVis.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevoVis.Image")));
             this.btnNuevoVis.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNuevoVis.Location = new System.Drawing.Point(566, 231);
+            this.btnNuevoVis.Location = new System.Drawing.Point(29, 188);
             this.btnNuevoVis.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnNuevoVis.Name = "btnNuevoVis";
             this.btnNuevoVis.Padding = new System.Windows.Forms.Padding(0, 2, 0, 15);
-            this.btnNuevoVis.Size = new System.Drawing.Size(190, 130);
+            this.btnNuevoVis.Size = new System.Drawing.Size(225, 130);
             this.btnNuevoVis.TabIndex = 3;
             this.btnNuevoVis.Text = "Nuevo Visitante";
             this.btnNuevoVis.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNuevoVis.UseVisualStyleBackColor = false;
-            // 
-            // btnFingerM
-            // 
-            this.btnFingerM.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnFingerM.BackColor = System.Drawing.Color.Purple;
-            this.btnFingerM.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFingerM.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnFingerM.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnFingerM.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Magenta;
-            this.btnFingerM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFingerM.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFingerM.ForeColor = System.Drawing.Color.White;
-            this.btnFingerM.Image = ((System.Drawing.Image)(resources.GetObject("btnFingerM.Image")));
-            this.btnFingerM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFingerM.Location = new System.Drawing.Point(566, 379);
-            this.btnFingerM.Name = "btnFingerM";
-            this.btnFingerM.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
-            this.btnFingerM.Size = new System.Drawing.Size(430, 100);
-            this.btnFingerM.TabIndex = 2;
-            this.btnFingerM.Tag = "Hola";
-            this.btnFingerM.Text = "  Finger Membrecia";
-            this.btnFingerM.UseVisualStyleBackColor = false;
             // 
             // HoraFecha
             // 
@@ -370,7 +347,6 @@
             this.ClientSize = new System.Drawing.Size(1050, 600);
             this.Controls.Add(this.btnVenderProdc);
             this.Controls.Add(this.btnNuevoVis);
-            this.Controls.Add(this.btnFingerM);
             this.Controls.Add(this.p_Mem);
             this.Controls.Add(this.p_esVisi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -408,7 +384,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel p_Mem_ti;
-        private System.Windows.Forms.Button btnFingerM;
         private System.Windows.Forms.Button btnNuevoVis;
         private System.Windows.Forms.Button btnVenderProdc;
         private System.Windows.Forms.Timer HoraFecha;
