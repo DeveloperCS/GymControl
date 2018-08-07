@@ -28,11 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(vHistorialUs));
             this.label1 = new System.Windows.Forms.Label();
             this.dGWHistorial = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtD = new System.Windows.Forms.TextBox();
+            this.txtM = new System.Windows.Forms.TextBox();
+            this.txtS = new System.Windows.Forms.TextBox();
+            this.btnEliminaMemS = new System.Windows.Forms.PictureBox();
+            this.btnAgregaMemS = new System.Windows.Forms.PictureBox();
             this.btnLimpiarS = new System.Windows.Forms.Button();
             this.btnGuardarS = new System.Windows.Forms.Button();
             this.txtFB = new System.Windows.Forms.TextBox();
@@ -41,6 +49,7 @@
             this.txtdir = new System.Windows.Forms.TextBox();
             this.txtNomS = new System.Windows.Forms.TextBox();
             this.txtClaveS = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -52,21 +61,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnSelecionarS = new System.Windows.Forms.Button();
             this.btnEliminarS = new System.Windows.Forms.Button();
-            this.txtS = new System.Windows.Forms.TextBox();
-            this.txtD = new System.Windows.Forms.TextBox();
-            this.txtM = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.btnEliminaMemS = new System.Windows.Forms.PictureBox();
-            this.btnAgregaMemS = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dGWHistorial)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGWSocios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEliminaMemS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAgregaMemS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGWSocios)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -88,6 +90,7 @@
             this.dGWHistorial.Name = "dGWHistorial";
             this.dGWHistorial.Size = new System.Drawing.Size(722, 210);
             this.dGWHistorial.TabIndex = 1;
+            this.dGWHistorial.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dGWHistorial_CellFormatting);
             // 
             // textBox1
             // 
@@ -131,8 +134,87 @@
             this.panel1.TabIndex = 4;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label11.Location = new System.Drawing.Point(84, 131);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(16, 19);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "/";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label10.Location = new System.Drawing.Point(154, 133);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(16, 19);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "/";
+            // 
+            // txtD
+            // 
+            this.txtD.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtD.Location = new System.Drawing.Point(29, 131);
+            this.txtD.MaxLength = 2;
+            this.txtD.Name = "txtD";
+            this.txtD.Size = new System.Drawing.Size(52, 27);
+            this.txtD.TabIndex = 10;
+            this.txtD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtD_KeyPress);
+            // 
+            // txtM
+            // 
+            this.txtM.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtM.Location = new System.Drawing.Point(101, 131);
+            this.txtM.MaxLength = 2;
+            this.txtM.Name = "txtM";
+            this.txtM.Size = new System.Drawing.Size(52, 27);
+            this.txtM.TabIndex = 10;
+            this.txtM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtM_KeyPress);
+            // 
+            // txtS
+            // 
+            this.txtS.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtS.Location = new System.Drawing.Point(347, 126);
+            this.txtS.MaxLength = 1;
+            this.txtS.Name = "txtS";
+            this.txtS.Size = new System.Drawing.Size(52, 27);
+            this.txtS.TabIndex = 10;
+            this.txtS.TextChanged += new System.EventHandler(this.txtS_TextChanged);
+            this.txtS.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtS_KeyDown);
+            this.txtS.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtS_KeyPress);
+            // 
+            // btnEliminaMemS
+            // 
+            this.btnEliminaMemS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminaMemS.Image = global::Control_Gimmnacio.Properties.Resources.if_error_1646012;
+            this.btnEliminaMemS.Location = new System.Drawing.Point(727, 305);
+            this.btnEliminaMemS.Name = "btnEliminaMemS";
+            this.btnEliminaMemS.Size = new System.Drawing.Size(25, 25);
+            this.btnEliminaMemS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnEliminaMemS.TabIndex = 9;
+            this.btnEliminaMemS.TabStop = false;
+            this.btnEliminaMemS.Click += new System.EventHandler(this.btnEliminaMemS_Click);
+            // 
+            // btnAgregaMemS
+            // 
+            this.btnAgregaMemS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregaMemS.Image = global::Control_Gimmnacio.Properties.Resources.if_plus_1646001;
+            this.btnAgregaMemS.Location = new System.Drawing.Point(696, 305);
+            this.btnAgregaMemS.Name = "btnAgregaMemS";
+            this.btnAgregaMemS.Size = new System.Drawing.Size(25, 25);
+            this.btnAgregaMemS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAgregaMemS.TabIndex = 8;
+            this.btnAgregaMemS.TabStop = false;
+            this.btnAgregaMemS.Click += new System.EventHandler(this.btnAgregaMemS_Click);
+            // 
             // btnLimpiarS
             // 
+            this.btnLimpiarS.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimpiarS.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiarS.Location = new System.Drawing.Point(136, 243);
             this.btnLimpiarS.Name = "btnLimpiarS";
@@ -144,6 +226,7 @@
             // 
             // btnGuardarS
             // 
+            this.btnGuardarS.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardarS.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarS.Location = new System.Drawing.Point(30, 242);
             this.btnGuardarS.Name = "btnGuardarS";
@@ -165,17 +248,21 @@
             // 
             this.txtTel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTel.Location = new System.Drawing.Point(516, 106);
+            this.txtTel.MaxLength = 10;
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(250, 27);
             this.txtTel.TabIndex = 3;
+            this.txtTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_KeyPress);
             // 
             // txtAñoF
             // 
             this.txtAñoF.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAñoF.Location = new System.Drawing.Point(171, 132);
+            this.txtAñoF.MaxLength = 4;
             this.txtAñoF.Name = "txtAñoF";
             this.txtAñoF.Size = new System.Drawing.Size(100, 27);
             this.txtAñoF.TabIndex = 3;
+            this.txtAñoF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAñoF_KeyPress);
             // 
             // txtdir
             // 
@@ -192,6 +279,7 @@
             this.txtNomS.Name = "txtNomS";
             this.txtNomS.Size = new System.Drawing.Size(284, 27);
             this.txtNomS.TabIndex = 3;
+            this.txtNomS.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomS_KeyPress);
             // 
             // txtClaveS
             // 
@@ -199,6 +287,18 @@
             this.txtClaveS.Name = "txtClaveS";
             this.txtClaveS.Size = new System.Drawing.Size(103, 20);
             this.txtClaveS.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::Control_Gimmnacio.Properties.Resources.cerrar;
+            this.pictureBox1.Location = new System.Drawing.Point(747, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(21, 17);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label8
             // 
@@ -298,6 +398,7 @@
             // 
             // btnSelecionarS
             // 
+            this.btnSelecionarS.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSelecionarS.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelecionarS.Location = new System.Drawing.Point(73, 465);
             this.btnSelecionarS.Name = "btnSelecionarS";
@@ -309,6 +410,7 @@
             // 
             // btnEliminarS
             // 
+            this.btnEliminarS.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminarS.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarS.Location = new System.Drawing.Point(242, 465);
             this.btnEliminarS.Name = "btnEliminarS";
@@ -317,88 +419,6 @@
             this.btnEliminarS.Text = "Eliminar";
             this.btnEliminarS.UseVisualStyleBackColor = true;
             this.btnEliminarS.Click += new System.EventHandler(this.btnEliminarS_Click);
-            // 
-            // txtS
-            // 
-            this.txtS.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtS.Location = new System.Drawing.Point(347, 126);
-            this.txtS.Name = "txtS";
-            this.txtS.Size = new System.Drawing.Size(52, 27);
-            this.txtS.TabIndex = 10;
-            // 
-            // txtD
-            // 
-            this.txtD.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtD.Location = new System.Drawing.Point(29, 131);
-            this.txtD.Name = "txtD";
-            this.txtD.Size = new System.Drawing.Size(52, 27);
-            this.txtD.TabIndex = 10;
-            // 
-            // txtM
-            // 
-            this.txtM.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtM.Location = new System.Drawing.Point(101, 131);
-            this.txtM.Name = "txtM";
-            this.txtM.Size = new System.Drawing.Size(52, 27);
-            this.txtM.TabIndex = 10;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label10.Location = new System.Drawing.Point(154, 133);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(16, 19);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "/";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label11.Location = new System.Drawing.Point(84, 131);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(16, 19);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "/";
-            // 
-            // btnEliminaMemS
-            // 
-            this.btnEliminaMemS.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminaMemS.Image = global::Control_Gimmnacio.Properties.Resources.if_error_1646012;
-            this.btnEliminaMemS.Location = new System.Drawing.Point(727, 305);
-            this.btnEliminaMemS.Name = "btnEliminaMemS";
-            this.btnEliminaMemS.Size = new System.Drawing.Size(25, 25);
-            this.btnEliminaMemS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnEliminaMemS.TabIndex = 9;
-            this.btnEliminaMemS.TabStop = false;
-            this.btnEliminaMemS.Click += new System.EventHandler(this.btnEliminaMemS_Click);
-            // 
-            // btnAgregaMemS
-            // 
-            this.btnAgregaMemS.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAgregaMemS.Image = global::Control_Gimmnacio.Properties.Resources.if_plus_1646001;
-            this.btnAgregaMemS.Location = new System.Drawing.Point(696, 305);
-            this.btnAgregaMemS.Name = "btnAgregaMemS";
-            this.btnAgregaMemS.Size = new System.Drawing.Size(25, 25);
-            this.btnAgregaMemS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnAgregaMemS.TabIndex = 8;
-            this.btnAgregaMemS.TabStop = false;
-            this.btnAgregaMemS.Click += new System.EventHandler(this.btnAgregaMemS_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::Control_Gimmnacio.Properties.Resources.cerrar;
-            this.pictureBox1.Location = new System.Drawing.Point(747, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(21, 17);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // button1
             // 
@@ -413,6 +433,10 @@
             this.button1.Size = new System.Drawing.Size(49, 41);
             this.button1.TabIndex = 3;
             this.button1.UseVisualStyleBackColor = true;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // vHistorialUs
             // 
@@ -437,10 +461,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dGWHistorial)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGWSocios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEliminaMemS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAgregaMemS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGWSocios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -480,5 +504,6 @@
         private System.Windows.Forms.TextBox txtD;
         private System.Windows.Forms.TextBox txtM;
         private System.Windows.Forms.TextBox txtS;
+        private System.Windows.Forms.Timer timer1;
     }
 }

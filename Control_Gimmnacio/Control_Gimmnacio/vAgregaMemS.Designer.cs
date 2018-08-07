@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(vAgregaMemS));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,10 +47,9 @@
             this.PickIni = new System.Windows.Forms.DateTimePicker();
             this.PickFin = new System.Windows.Forms.DateTimePicker();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -62,6 +62,18 @@
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.Image = global::Control_Gimmnacio.Properties.Resources.cerrar;
+            this.btnCerrar.Location = new System.Drawing.Point(777, 2);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(20, 20);
+            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnCerrar.TabIndex = 0;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // label1
             // 
@@ -136,7 +148,7 @@
             this.lbTotal.AutoSize = true;
             this.lbTotal.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTotal.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lbTotal.Location = new System.Drawing.Point(605, 236);
+            this.lbTotal.Location = new System.Drawing.Point(597, 236);
             this.lbTotal.Name = "lbTotal";
             this.lbTotal.Size = new System.Drawing.Size(24, 25);
             this.lbTotal.TabIndex = 2;
@@ -155,6 +167,7 @@
             // 
             // btnAgregar
             // 
+            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
             this.btnAgregar.FlatAppearance.BorderSize = 2;
             this.btnAgregar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGreen;
@@ -172,6 +185,7 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
             this.btnCancelar.FlatAppearance.BorderSize = 2;
             this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PeachPuff;
@@ -240,18 +254,6 @@
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrar.Image = global::Control_Gimmnacio.Properties.Resources.cerrar;
-            this.btnCerrar.Location = new System.Drawing.Point(777, 2);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(20, 20);
-            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnCerrar.TabIndex = 0;
-            this.btnCerrar.TabStop = false;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
             // vAgregaMemS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -278,12 +280,13 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "vAgregaMemS";
+            this.Opacity = 0.98D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "vAgregaMemS";
             this.Load += new System.EventHandler(this.vAgregaMemS_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

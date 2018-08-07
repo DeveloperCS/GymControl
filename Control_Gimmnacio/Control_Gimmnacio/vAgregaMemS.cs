@@ -25,6 +25,7 @@ namespace Control_Gimmnacio
             PickFin.Enabled = false;
             lbDesc.Visible = false;
             cbProm.Visible = false;
+            chekProm.Checked = false;
             fecheac1 = DateTime.Now.ToShortDateString();
             PickIni.Text = fecheac1;
 
@@ -141,10 +142,21 @@ namespace Control_Gimmnacio
 
             if (MessageBox.Show("¿Agregar Membresia?", "Agregar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                /*Para generar id de Mem*/
+                DataSet dataC1 = new DataSet();
+                string qqAc = "select count(idMemS) as C1 from memSocio";
+                dataC1 = dts.consulta(qqAc);
+                DataTable dt2 = dataC1.Tables[0];
+                string exten = "";
+                foreach (DataRow row in dt2.Rows)
+                {
+                    exten = row["C1"].ToString();
+                }
+                int id = Convert.ToInt32(exten) + 1;
 
                 if (chekProm.Checked == true)
                 {
-                    qm1 = "insert into memSocio values('" + txtclave.Text + "','" + cbTipoMem.Text + "','" + PickIni.Value.ToString("MM/dd/yyyy") + "','" + PickFin.Value.ToString("MM/dd/yyyy") + "','" + cbProm.Text + "','" + lbTotal.Text + "','Vigente')";
+                    qm1 = "insert into memSocio values('" + txtclave.Text + "','" + cbTipoMem.Text + "','" + PickIni.Value.ToString("yyyy/MM/dd") + "','" + PickFin.Value.ToString("yyyy/MM/dd") + "','" + cbProm.Text + "','" + lbTotal.Text + "','Vigente','"+id+"')";
                     if (dts.insertar(qm1) == true)
                     {
                         MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -154,7 +166,7 @@ namespace Control_Gimmnacio
                 }
                 else
                 {
-                    qm1 = "insert into memSocio values('" + txtclave.Text + "','" + cbTipoMem.Text + "','" + PickIni.Value.ToString("MM/dd/yyyy") + "','" + PickFin.Value.ToString("MM/dd/yyyy") + "','S/N','" + lbTotal.Text + "','Vigente')";
+                    qm1 = "insert into memSocio values('" + txtclave.Text + "','" + cbTipoMem.Text + "','" + PickIni.Value.ToString("yyyy/MM/dd") + "','" + PickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + lbTotal.Text + "','Vigente','"+id+"')";
                     if (dts.insertar(qm1) == true)
                     {
                         MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);

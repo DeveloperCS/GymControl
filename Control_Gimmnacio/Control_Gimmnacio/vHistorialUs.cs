@@ -13,6 +13,7 @@ namespace Control_Gimmnacio
 {
     public partial class vHistorialUs : Form
     {
+        string fHoy = "";
         public vHistorialUs()
         {
             InitializeComponent();
@@ -20,11 +21,11 @@ namespace Control_Gimmnacio
             btnEliminaMemS.Enabled = false;
             btnAgregaMemS.Enabled = false;
             consultaSocio();
-
+            fHoy = DateTime.Now.ToShortDateString();
         }
         private void vHistorialUs_Load(object sender, EventArgs e)
         {
-          
+
             txtClaveS.Enabled = false;
         }
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -59,10 +60,12 @@ namespace Control_Gimmnacio
             q1 = "Select idSocio as Clave, nombre as Nombre,tel as Telefono_de_Contacto, fb as Facebook  from socio";
             dGWSocios.DataSource = dts.consulta(q1).Tables[0];
         }
+        
         public void consultaHistorial(string clave)
         {
-            q1 = "select idMemS as Clave, tMem as Tipo, fechaIngreso as Fecha_Inicial, fechatermino as Fecha_Final,prom as Promocion, total as Monto_Pagado, estado as Estatus from memSocio where idMems = '"+clave+"'";
+            q1 = "select idMemS as Clave, tMem as Tipo, fechaIngreso as Fecha_Inicial, fechatermino as Fecha_Final,prom as Promocion, total as Monto_Pagado, estado as Estatus from memSocio where idMems = '" + clave + "'";
             dGWHistorial.DataSource = dts.consulta(q1).Tables[0];
+            timer1.Start();
         }
         #endregion
        
@@ -160,26 +163,84 @@ namespace Control_Gimmnacio
             }
         }
         vAgregaMemS vm = new vAgregaMemS();
+        string Valor1 = "";
         private void btnAgregaMemS_Click(object sender, EventArgs e)
         {
             if (dGWHistorial.RowCount>0)
             {
-                if (dGWHistorial.CurrentRow.Cells[6].Value.ToString() == "Vigente")
+                //con esta funcion busco dentro de todo el dtagridview
+                foreach (DataGridViewRow Row in dGWHistorial.Rows)
                 {
-                    MessageBox.Show("Aun no puede agregar otro plan a este socio", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    String strFila = Row.Index.ToString();
+                     Valor1 = Convert.ToString(Row.Cells["Estatus"].Value);
+
+                    if (Valor1 == "Vigente")
+                    {
+                        
+                        MessageBox.Show("Aun no puede agregar otro plan a este socio\n \n Tiene un pla vigente", "Erroe", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                    else if(Valor1 == "Expirado")
+                    {
+                        vm.txtclave.Text = txtClaveS.Text;
+                        vm.ShowDialog();
+                    }
                 }
-                else if (dGWHistorial.CurrentRow.Cells[6].Value.ToString() == "Expirado")
-                {
-                    vm.txtclave.Text = txtClaveS.Text;
-                    vm.ShowDialog();
-                }
+                
             }
-            else
+            else if(dGWHistorial.RowCount == 0)
             {
                 vm.txtclave.Text = txtClaveS.Text;
                 vm.ShowDialog();
             }
            
+        }
+        string qActualiza = "";
+        string qAc = "", f1;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //si esta vacio el datagridview que no salga error en la consulta
+            if (dGWHistorial.RowCount > 0)
+            {
+                /*compruebo Expiraciones*/
+                DataSet dataC1 = new DataSet();
+                string qqAc = "select fechatermino as C1, idMemS as Id from memSocio where idMemS = '" + txtClaveS.Text + "'";
+                dataC1 = dts.consulta(qqAc);
+                DataTable dt2 = dataC1.Tables[0];
+                string compara = "", idAc="";
+                foreach (DataRow row in dt2.Rows)
+                {
+                    compara = row["C1"].ToString();
+                    idAc= row["Id"].ToString();
+
+                }
+                DateTime fechaF = Convert.ToDateTime(compara).Date;
+                DateTime FechAc = DateTime.Now.Date;
+                if (fechaF <= FechAc) // Si la fecha indicada es menor o igual a la fecha actual
+                {
+                    //Operación Expirada
+                    timer1.Stop();
+                    
+                    qActualiza = "update memSocio set estado='Expirado' where idMemS = '"+idAc+"'";
+                    if (dts.update(qActualiza)==true)
+                    {
+                        MessageBox.Show("Este Socio tiene un plan Expirado!!", "Expirado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        consultaHistorial(txtClaveS.Text);
+                        timer1.Stop();
+                    }
+                }
+                else
+                {
+                    //Operación Aun Vigente
+                    timer1.Stop();
+                    //MessageBox.Show("Aun Vigente");
+                }
+            }
+            else
+            {
+                timer1.Stop();
+                MessageBox.Show("Socio sin plan de membresia.\n Necesita agregar plan","Sin plan",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+            }
+             
         }
         string q12 = "";
         private void btnEliminaMemS_Click(object sender, EventArgs e)
@@ -188,7 +249,7 @@ namespace Control_Gimmnacio
             {
                 if (dGWHistorial.CurrentRow.Cells[6].Value.ToString() == "Vigente")
                 {
-                    if(MessageBox.Show("La membresia esta vigente \n ¿Quiere eliminarla?", "Erro", MessageBoxButtons.YesNo, MessageBoxIcon.Stop)==DialogResult.Yes)
+                    if(MessageBox.Show("La membresia esta vigente \n ¿Quiere eliminarla?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Stop)==DialogResult.Yes)
                     {
                         q12 = "delete from memSocio where idMemS='"+dGWHistorial.CurrentRow.Cells[0].Value.ToString() + "' ";
                         if (dts.eliminar(q12)==true)
@@ -210,8 +271,74 @@ namespace Control_Gimmnacio
             }
             else
             {
-                MessageBox.Show("No Cuenta con plan de Membresias", "Erro", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+                MessageBox.Show("No Cuenta con plan de Membresias", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             }
         }
+
+        #region condicionlaDTGW
+        private void dGWHistorial_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (this.dGWHistorial.Columns[e.ColumnIndex].Name== "Estatus")
+            {
+                if (e.Value.ToString()=="Vigente")
+                {
+                    e.CellStyle.ForeColor = Color.Green;
+                    e.CellStyle.BackColor = Color.LightGreen;
+
+                }else if (e.Value.ToString() == "Expirado")
+                {
+                    e.CellStyle.ForeColor = Color.Red;
+                    e.CellStyle.BackColor = Color.Salmon;
+                }
+            }
+        }
+
+      
+        #endregion
+
+        #region validacionesTXT
+        restricciones val = new restricciones();
+
+        private void txtD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.solonumerosEnteros(e);
+        }
+
+        private void txtM_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.solonumerosEnteros(e);
+        }
+
+        private void txtAñoF_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.solonumerosEnteros(e);
+        }
+
+        private void txtTel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.solonumerosEnteros(e);
+        }
+
+        private void txtS_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.sololetras(e);
+            
+        }
+
+        private void txtS_KeyDown(object sender, KeyEventArgs e)
+        {
+          
+        }
+
+        private void txtS_TextChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void txtNomS_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.sololetras(e);
+        }
+        #endregion
     }
 }

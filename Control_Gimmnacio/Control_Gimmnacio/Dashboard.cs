@@ -147,5 +147,56 @@ namespace Control_Gimmnacio
         {
             
         }
+        conexionDatos dts = new conexionDatos();
+        string qVis = "";
+        private void timChecar_Tick(object sender, EventArgs e)
+        {
+           
+            /*compruebo total visitantes*/
+            DataSet dataC = new DataSet();
+            qVis = "SELECT COUNT(id) as T FROM visitante";
+            dataC = dts.consulta(qVis);
+            DataTable dt2 = dataC.Tables[0];
+            int cont = 0;
+            string usExist = "";
+            foreach (DataRow row in dt2.Rows)
+            {
+                lbTotalVis.Text = row["T"].ToString();
+            }
+            //compruebo los que hoy 
+            qVis = " SELECT COUNT(id) as H FROM visitante where fecha = CONVERT(date, SYSDATETIME())";
+            DataSet dataC2 = new DataSet();
+           
+            dataC2 = dts.consulta(qVis);
+            DataTable dt22 = dataC2.Tables[0];
+            
+            foreach (DataRow row in dt22.Rows)
+            {
+                lbTHoy.Text = row["H"].ToString();
+            }
+            //comprueb en mes 
+            qVis = "select count(id) as M from visitante where  MONTH(fecha) = Month(CONVERT (date, SYSDATETIME()))";
+            DataSet dataC3 = new DataSet();
+
+            dataC3 = dts.consulta(qVis);
+            DataTable dt3 = dataC3.Tables[0];
+
+            foreach (DataRow row in dt3.Rows)
+            {
+                lbMes.Text = row["M"].ToString();
+            }
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            timChecar.Enabled = true;
+            timChecar.Interval = 25;
+
+        }
+        agregaCantMes vis = new agregaCantMes();
+        private void btnNuevoVis_Click(object sender, EventArgs e)
+        {
+            vis.ShowDialog();
+        }
     }
 }

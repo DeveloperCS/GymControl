@@ -32,11 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.p_esVisi = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lbTHoy = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbTotalVis = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.p_Mem = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
@@ -50,6 +48,9 @@
             this.btnVenderProdc = new System.Windows.Forms.Button();
             this.btnNuevoVis = new System.Windows.Forms.Button();
             this.HoraFecha = new System.Windows.Forms.Timer(this.components);
+            this.timChecar = new System.Windows.Forms.Timer(this.components);
+            this.lbMes = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.p_esVisi.SuspendLayout();
             this.panel5.SuspendLayout();
             this.p_Mem.SuspendLayout();
@@ -60,7 +61,7 @@
             // 
             this.p_esVisi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.p_esVisi.Controls.Add(this.panel5);
-            this.p_esVisi.Controls.Add(this.label5);
+            this.p_esVisi.Controls.Add(this.lbTotalVis);
             this.p_esVisi.Controls.Add(this.label3);
             this.p_esVisi.Location = new System.Drawing.Point(29, 26);
             this.p_esVisi.Name = "p_esVisi";
@@ -71,52 +72,26 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.SteelBlue;
             this.panel5.Controls.Add(this.label7);
-            this.panel5.Controls.Add(this.label9);
-            this.panel5.Controls.Add(this.label8);
+            this.panel5.Controls.Add(this.lbMes);
+            this.panel5.Controls.Add(this.lbTHoy);
             this.panel5.Controls.Add(this.label6);
             this.panel5.Location = new System.Drawing.Point(164, 0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(319, 144);
             this.panel5.TabIndex = 1;
             // 
-            // label7
+            // lbTHoy
             // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label7.Location = new System.Drawing.Point(205, 26);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 28);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Mes";
-            this.label7.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label9.Location = new System.Drawing.Point(205, 77);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(58, 24);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "1035";
-            this.label9.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label8.Location = new System.Drawing.Point(60, 77);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 24);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "585";
-            this.label8.Click += new System.EventHandler(this.label3_Click);
+            this.lbTHoy.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbTHoy.AutoSize = true;
+            this.lbTHoy.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTHoy.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbTHoy.Location = new System.Drawing.Point(60, 77);
+            this.lbTHoy.Name = "lbTHoy";
+            this.lbTHoy.Size = new System.Drawing.Size(46, 24);
+            this.lbTHoy.TabIndex = 0;
+            this.lbTHoy.Text = "585";
+            this.lbTHoy.Click += new System.EventHandler(this.label3_Click);
             // 
             // label6
             // 
@@ -131,18 +106,18 @@
             this.label6.Text = "Hoy";
             this.label6.Click += new System.EventHandler(this.label3_Click);
             // 
-            // label5
+            // lbTotalVis
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.MediumTurquoise;
-            this.label5.Location = new System.Drawing.Point(42, 77);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 24);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "1,274";
-            this.label5.Click += new System.EventHandler(this.label3_Click);
+            this.lbTotalVis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbTotalVis.AutoSize = true;
+            this.lbTotalVis.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalVis.ForeColor = System.Drawing.Color.MediumTurquoise;
+            this.lbTotalVis.Location = new System.Drawing.Point(42, 77);
+            this.lbTotalVis.Name = "lbTotalVis";
+            this.lbTotalVis.Size = new System.Drawing.Size(63, 24);
+            this.lbTotalVis.TabIndex = 0;
+            this.lbTotalVis.Text = "1,274";
+            this.lbTotalVis.Click += new System.EventHandler(this.label3_Click);
             // 
             // label3
             // 
@@ -333,11 +308,43 @@
             this.btnNuevoVis.Text = "Nuevo Visitante";
             this.btnNuevoVis.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNuevoVis.UseVisualStyleBackColor = false;
+            this.btnNuevoVis.Click += new System.EventHandler(this.btnNuevoVis_Click);
             // 
             // HoraFecha
             // 
             this.HoraFecha.Enabled = true;
             this.HoraFecha.Tick += new System.EventHandler(this.HoraFecha_Tick);
+            // 
+            // timChecar
+            // 
+            this.timChecar.Enabled = true;
+            this.timChecar.Tick += new System.EventHandler(this.timChecar_Tick);
+            // 
+            // lbMes
+            // 
+            this.lbMes.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbMes.AutoSize = true;
+            this.lbMes.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbMes.Location = new System.Drawing.Point(205, 77);
+            this.lbMes.Name = "lbMes";
+            this.lbMes.Size = new System.Drawing.Size(58, 24);
+            this.lbMes.TabIndex = 0;
+            this.lbMes.Text = "1035";
+            this.lbMes.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label7.Location = new System.Drawing.Point(205, 26);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 28);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Mes";
+            this.label7.Click += new System.EventHandler(this.label3_Click);
             // 
             // Dashboard
             // 
@@ -354,6 +361,7 @@
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
+            this.Load += new System.EventHandler(this.Dashboard_Load);
             this.p_esVisi.ResumeLayout(false);
             this.p_esVisi.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -372,11 +380,9 @@
         private System.Windows.Forms.Panel p_Mem;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbTHoy;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbTotalVis;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;
@@ -387,5 +393,8 @@
         private System.Windows.Forms.Button btnNuevoVis;
         private System.Windows.Forms.Button btnVenderProdc;
         private System.Windows.Forms.Timer HoraFecha;
+        private System.Windows.Forms.Timer timChecar;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbMes;
     }
 }
