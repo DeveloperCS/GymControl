@@ -64,7 +64,7 @@ namespace Control_Gimmnacio
         {
             if (dataGridView1.RowCount == 0)
             {
-                MessageBox.Show("No Hay Datos Para Realizar Un Reporte");
+                MessageBox.Show("No Hay Datos Para Realizar Un Reporte","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             else
             {

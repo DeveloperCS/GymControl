@@ -62,61 +62,69 @@ namespace Control_Gimmnacio
         public int cPorcent = 0,sctEle=0;
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (lb4.Visible.Equals(false))
+            if (dataGridView1.RowCount == 0)
             {
-                if (cPorcent==0)
-                {
-                   // MessageBox.Show("entro con0");
-                    bloqueaEliminar(1);
-                    txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                    txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                    txt3.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                    txt2.Enabled = true;
-                    txt3.Enabled = true;
-                }
-                else if(cPorcent ==1)
-                {
-                    //MessageBox.Show("entro con1");
-                    bloqueaEliminar(1);
-                    txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                    txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                    String input = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                   // separa el % del numero ya convertido
-                    String pattern = @"%";
-                    String[] elements = Regex.Split(input, pattern);
-                    txt3.Text = elements[0];
-                    txt2.Enabled = true;
-                    txt3.Enabled = true;
-                }
-                
+                MessageBox.Show("No existen datos!! \n Agregelos desde Configuracion","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
-            else if (lb4.Visible.Equals(true))
+            else
             {
-                switch (sctEle)
+                if (lb4.Visible.Equals(false))
                 {
-                    case 1:
-                        txt2.Enabled = true;
-                        txt3.Enabled = true;
-                        num4.Enabled = true;
-                        txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                        txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                        txt3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                        
-                        num4.Value = Convert.ToInt64(dataGridView1.CurrentRow.Cells[2].Value.ToString());
-                        break;
-                    case 2:
-                        txt2.Enabled = true;
-                        txt3.Enabled = true;
-                        num4.Enabled = true;
+                    if (cPorcent == 0)
+                    {
+                        // MessageBox.Show("entro con0");
+                        bloqueaEliminar(1);
                         txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
                         txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                         txt3.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                        num4.Value = Convert.ToInt64(dataGridView1.CurrentRow.Cells[3].Value.ToString());
-                        break;
+                        txt2.Enabled = true;
+                        txt3.Enabled = true;
+                    }
+                    else if (cPorcent == 1)
+                    {
+                        //MessageBox.Show("entro con1");
+                        bloqueaEliminar(1);
+                        txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                        txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                        String input = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                        // separa el % del numero ya convertido
+                        String pattern = @"%";
+                        String[] elements = Regex.Split(input, pattern);
+                        txt3.Text = elements[0];
+                        txt2.Enabled = true;
+                        txt3.Enabled = true;
+                    }
+
                 }
-              
-                
+                else if (lb4.Visible.Equals(true))
+                {
+                    switch (sctEle)
+                    {
+                        case 1:
+                            txt2.Enabled = true;
+                            txt3.Enabled = true;
+                            num4.Enabled = true;
+                            txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                            txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                            txt3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+
+                            num4.Value = Convert.ToInt64(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                            break;
+                        case 2:
+                            txt2.Enabled = true;
+                            txt3.Enabled = true;
+                            num4.Enabled = true;
+                            txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                            txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                            txt3.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                            num4.Value = Convert.ToInt64(dataGridView1.CurrentRow.Cells[3].Value.ToString());
+                            break;
+                    }
+
+
+                }
             }
+           
         }
         public void limpiar()
         {
@@ -228,45 +236,53 @@ namespace Control_Gimmnacio
         }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            string qry = "";
-            string q2 = "";
-            if (MessageBox.Show("¿Seguro que decea eliminar?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (dataGridView1.RowCount == 0)
             {
-                if (lbTitulo.Text == "Productos Registrados")
+                MessageBox.Show("No existen datos!! \n Agregelos desde Configuracion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                string qry = "";
+                string q2 = "";
+                if (MessageBox.Show("¿Seguro que decea eliminar?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    qry = "Delete from produc Where idProduc=" + dataGridView1.CurrentRow.Cells[0].Value.ToString() + "";
-                    if (dts.eliminar(qry) == true)
+                    if (lbTitulo.Text == "Productos Registrados")
                     {
-                        MessageBox.Show("Elemento Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        limpiar();
-                        q2 = "select idProduc as Id,nomProduc as Producto,cantidad as Cantidad,precio as Precio from produc";
-                        consultar(q2);
-                    }
+                        qry = "Delete from produc Where idProduc=" + dataGridView1.CurrentRow.Cells[0].Value.ToString() + "";
+                        if (dts.eliminar(qry) == true)
+                        {
+                            MessageBox.Show("Elemento Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            limpiar();
+                            q2 = "select idProduc as Id,nomProduc as Producto,cantidad as Cantidad,precio as Precio from produc";
+                            consultar(q2);
+                        }
 
-                }
-                if (lbTitulo.Text == "Membresias Registradas")
-                {
-                    qry = "Delete memb where idMem=" + dataGridView1.CurrentRow.Cells[0].Value.ToString() + " ";
-                    if (dts.eliminar(qry) == true)
-                    {
-                        MessageBox.Show("Elemento Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        limpiar();
-                        q2 = "select idMem as Id, nomMem as Membresia,precioMem as Precio from memb";
-                        consultar(q2);
                     }
-                }
-                if (lbTitulo.Text == "Promociones Registradas")
-                {
-                    qry = "delete prom where idProm =" + dataGridView1.CurrentRow.Cells[0].Value.ToString() + " ";
-                    if (dts.eliminar(qry) == true)
+                    if (lbTitulo.Text == "Membresias Registradas")
                     {
-                        MessageBox.Show("Elemento Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        limpiar();
-                        q2 = "Select idProm as Id,nomPromocion as Promocion,descuento as Descuento from prom";
-                        consultaPr(q2);
+                        qry = "Delete memb where idMem=" + dataGridView1.CurrentRow.Cells[0].Value.ToString() + " ";
+                        if (dts.eliminar(qry) == true)
+                        {
+                            MessageBox.Show("Elemento Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            limpiar();
+                            q2 = "select idMem as Id, nomMem as Membresia,precioMem as Precio from memb";
+                            consultar(q2);
+                        }
+                    }
+                    if (lbTitulo.Text == "Promociones Registradas")
+                    {
+                        qry = "delete prom where idProm =" + dataGridView1.CurrentRow.Cells[0].Value.ToString() + " ";
+                        if (dts.eliminar(qry) == true)
+                        {
+                            MessageBox.Show("Elemento Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            limpiar();
+                            q2 = "Select idProm as Id,nomPromocion as Promocion,descuento as Descuento from prom";
+                            consultaPr(q2);
+                        }
                     }
                 }
             }
+            
         }
         #endregion
         #region validaciones

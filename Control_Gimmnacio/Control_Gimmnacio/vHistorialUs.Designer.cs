@@ -34,11 +34,14 @@
             this.dGWHistorial = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnActualizar = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtD = new System.Windows.Forms.TextBox();
             this.txtM = new System.Windows.Forms.TextBox();
             this.txtS = new System.Windows.Forms.TextBox();
+            this.btnEliminaMemS = new System.Windows.Forms.PictureBox();
+            this.btnAgregaMemS = new System.Windows.Forms.PictureBox();
             this.btnLimpiarS = new System.Windows.Forms.Button();
             this.btnGuardarS = new System.Windows.Forms.Button();
             this.txtFB = new System.Windows.Forms.TextBox();
@@ -47,6 +50,7 @@
             this.txtdir = new System.Windows.Forms.TextBox();
             this.txtNomS = new System.Windows.Forms.TextBox();
             this.txtClaveS = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -59,18 +63,14 @@
             this.btnSelecionarS = new System.Windows.Forms.Button();
             this.btnEliminarS = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnActualizar = new System.Windows.Forms.PictureBox();
-            this.btnEliminaMemS = new System.Windows.Forms.PictureBox();
-            this.btnAgregaMemS = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dGWHistorial)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGWSocios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnActualizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEliminaMemS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAgregaMemS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGWSocios)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -101,6 +101,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(127, 26);
             this.textBox1.TabIndex = 2;
+            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // panel1
             // 
@@ -136,6 +137,18 @@
             this.panel1.Size = new System.Drawing.Size(779, 570);
             this.panel1.TabIndex = 4;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnActualizar.Image = global::Control_Gimmnacio.Properties.Resources.icons8_sincronizar_64;
+            this.btnActualizar.Location = new System.Drawing.Point(661, 305);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(25, 25);
+            this.btnActualizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnActualizar.TabIndex = 12;
+            this.btnActualizar.TabStop = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // label11
             // 
@@ -190,6 +203,30 @@
             this.txtS.TextChanged += new System.EventHandler(this.txtS_TextChanged);
             this.txtS.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtS_KeyDown);
             this.txtS.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtS_KeyPress);
+            // 
+            // btnEliminaMemS
+            // 
+            this.btnEliminaMemS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminaMemS.Image = global::Control_Gimmnacio.Properties.Resources.if_error_1646012;
+            this.btnEliminaMemS.Location = new System.Drawing.Point(727, 305);
+            this.btnEliminaMemS.Name = "btnEliminaMemS";
+            this.btnEliminaMemS.Size = new System.Drawing.Size(25, 25);
+            this.btnEliminaMemS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnEliminaMemS.TabIndex = 9;
+            this.btnEliminaMemS.TabStop = false;
+            this.btnEliminaMemS.Click += new System.EventHandler(this.btnEliminaMemS_Click);
+            // 
+            // btnAgregaMemS
+            // 
+            this.btnAgregaMemS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregaMemS.Image = global::Control_Gimmnacio.Properties.Resources.if_plus_1646001;
+            this.btnAgregaMemS.Location = new System.Drawing.Point(696, 305);
+            this.btnAgregaMemS.Name = "btnAgregaMemS";
+            this.btnAgregaMemS.Size = new System.Drawing.Size(25, 25);
+            this.btnAgregaMemS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAgregaMemS.TabIndex = 8;
+            this.btnAgregaMemS.TabStop = false;
+            this.btnAgregaMemS.Click += new System.EventHandler(this.btnAgregaMemS_Click);
             // 
             // btnLimpiarS
             // 
@@ -266,6 +303,18 @@
             this.txtClaveS.Name = "txtClaveS";
             this.txtClaveS.Size = new System.Drawing.Size(103, 20);
             this.txtClaveS.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::Control_Gimmnacio.Properties.Resources.cerrar;
+            this.pictureBox1.Location = new System.Drawing.Point(747, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(21, 17);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label8
             // 
@@ -391,67 +440,15 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // btnActualizar
+            // label12
             // 
-            this.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnActualizar.Image = global::Control_Gimmnacio.Properties.Resources.icons8_sincronizar_64;
-            this.btnActualizar.Location = new System.Drawing.Point(661, 305);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(25, 25);
-            this.btnActualizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnActualizar.TabIndex = 12;
-            this.btnActualizar.TabStop = false;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
-            // 
-            // btnEliminaMemS
-            // 
-            this.btnEliminaMemS.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminaMemS.Image = global::Control_Gimmnacio.Properties.Resources.if_error_1646012;
-            this.btnEliminaMemS.Location = new System.Drawing.Point(727, 305);
-            this.btnEliminaMemS.Name = "btnEliminaMemS";
-            this.btnEliminaMemS.Size = new System.Drawing.Size(25, 25);
-            this.btnEliminaMemS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnEliminaMemS.TabIndex = 9;
-            this.btnEliminaMemS.TabStop = false;
-            this.btnEliminaMemS.Click += new System.EventHandler(this.btnEliminaMemS_Click);
-            // 
-            // btnAgregaMemS
-            // 
-            this.btnAgregaMemS.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAgregaMemS.Image = global::Control_Gimmnacio.Properties.Resources.if_plus_1646001;
-            this.btnAgregaMemS.Location = new System.Drawing.Point(696, 305);
-            this.btnAgregaMemS.Name = "btnAgregaMemS";
-            this.btnAgregaMemS.Size = new System.Drawing.Size(25, 25);
-            this.btnAgregaMemS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnAgregaMemS.TabIndex = 8;
-            this.btnAgregaMemS.TabStop = false;
-            this.btnAgregaMemS.Click += new System.EventHandler(this.btnAgregaMemS_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::Control_Gimmnacio.Properties.Resources.cerrar;
-            this.pictureBox1.Location = new System.Drawing.Point(747, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(21, 17);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // button1
-            // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SlateBlue;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::Control_Gimmnacio.Properties.Resources.search32;
-            this.button1.Location = new System.Drawing.Point(271, 65);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(49, 41);
-            this.button1.TabIndex = 3;
-            this.button1.UseVisualStyleBackColor = true;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(353, 45);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(71, 23);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "Buscar";
             // 
             // vHistorialUs
             // 
@@ -460,10 +457,10 @@
             this.ClientSize = new System.Drawing.Size(1250, 561);
             this.Controls.Add(this.btnEliminarS);
             this.Controls.Add(this.btnSelecionarS);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dGWSocios);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -476,11 +473,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dGWHistorial)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGWSocios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnActualizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEliminaMemS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAgregaMemS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGWSocios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -491,7 +488,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dGWHistorial;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dGWSocios;
@@ -522,5 +518,6 @@
         private System.Windows.Forms.TextBox txtS;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox btnActualizar;
+        private System.Windows.Forms.Label label12;
     }
 }

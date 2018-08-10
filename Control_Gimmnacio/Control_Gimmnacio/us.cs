@@ -23,10 +23,13 @@ namespace Control_Gimmnacio
             btnGuardar.Visible = false;
             txtID.Visible = false;
         }
+        DataView miFiltro;
         private void consulta()
         {
-            string q = "select id as Numero,nombreUs as Nombre,usuario as Usuario,tipoUs as Tipo from usuarios";
-            dataGridView1.DataSource = dts.consulta(q).Tables[0];
+            
+            string q = "select id as Numero,nombreUs as Nombre,usuario as Usuario,tipoUs as Tipo from usuarios where usuario !='root '";
+            this.miFiltro = dts.consulta(q).Tables[0].DefaultView;
+            dataGridView1.DataSource = miFiltro;
         }
 
         private void us_Load(object sender, EventArgs e)
@@ -137,28 +140,44 @@ namespace Control_Gimmnacio
 
         private void btnEliminaUs_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea eliminar este usuario?", "Eliminar Usuario", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (dataGridView1.RowCount == 0)
             {
-                string q5 = "DELETE usuarios where id ='"+dataGridView1.CurrentRow.Cells[0].Value.ToString()+"'";
-                if (dts.eliminar(q5)==true)
+                MessageBox.Show("No hay usuarios ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (MessageBox.Show("¿Desea eliminar este usuario?", "Eliminar Usuario", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    MessageBox.Show("Datos Eliminados", "Exito", MessageBoxButtons.OK);
-                    consulta();
+                    string q5 = "DELETE usuarios where id ='" + dataGridView1.CurrentRow.Cells[0].Value.ToString() + "'";
+                    if (dts.eliminar(q5) == true)
+                    {
+                        MessageBox.Show("Datos Eliminados", "Exito", MessageBoxButtons.OK);
+                        consulta();
+                    }
+
                 }
             }
         }
         /*generar boton editar*/
         private void btnEditarUs_Click(object sender, EventArgs e)
         {
-            txtID.Visible = true;
-            txtID.Enabled = false;
-            txtID.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            txtNombreUs.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            txtUs.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            cbTipoUs.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            btnAgregaUs.Enabled = false;
-            btnGuardar.Visible = true;
-            btnEliminaUs.Enabled = false;
+            if (dataGridView1.RowCount==0)
+            {
+                MessageBox.Show("No hay usuarios ","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            else
+            {
+                txtID.Visible = true;
+                txtID.Enabled = false;
+                txtID.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                txtNombreUs.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                txtUs.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                cbTipoUs.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                btnAgregaUs.Enabled = false;
+                btnGuardar.Visible = true;
+                btnEliminaUs.Enabled = false;
+            }
+           
           
         }
 
@@ -294,8 +313,25 @@ namespace Control_Gimmnacio
             txtNombreUs.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtNombreUs.Text);
             txtNombreUs.SelectionStart = txtNombreUs.Text.Length;
         }
+
         #endregion
 
-
+        private void textBox5_KeyUp(object sender, KeyEventArgs e)
+        {
+            string salida = "";
+            string[] pBusqueda = this.textBox5.Text.Split(' ');
+            foreach (string p in pBusqueda)
+            {
+                if(salida.Length ==0)
+                {
+                    salida = "(Nombre LIKE '% " + p+ "%' OR Nombre LIKE '" + p + "%' OR Usuario LIKE '%" + p+ "%' OR Usuario LIKE '" + p + "%' OR Tipo LIKE '%" + p+ "%' OR Tipo LIKE '" + p + "%' )";
+                }
+                else
+                {
+                    salida += "AND (Nombre LIKE '% " + p+ "%' OR Nombre LIKE '" + p + "%' OR Usuario LIKE '%" + p+ "%' OR Usuario LIKE '" + p + "%' OR Tipo LIKE '%" + p+ "%' OR Tipo LIKE '" + p + "%')";
+                }
+            }
+            this.miFiltro.RowFilter = salida;
+        }
     }
 }

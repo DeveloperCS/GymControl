@@ -189,5 +189,15 @@ namespace Control_Gimmnacio.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WIN_20180226_10_53_34_Pro {
+            get {
+                object obj = ResourceManager.GetObject("WIN_20180226_10_53_34_Pro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

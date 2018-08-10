@@ -56,10 +56,12 @@ namespace Control_Gimmnacio
 
         #region consultas
         string q1 = "";
+        DataView miFiltro;
         public void consultaSocio()
         {
             q1 = "Select idSocio as Clave, nombre as Nombre,tel as Telefono_de_Contacto, fb as Facebook  from socio";
-            dGWSocios.DataSource = dts.consulta(q1).Tables[0];
+            this.miFiltro = dts.consulta(q1).Tables[0].DefaultView;
+            dGWSocios.DataSource = miFiltro;
         }
         public void consultaSocio2(string c)
         {
@@ -384,6 +386,25 @@ namespace Control_Gimmnacio
         private void txtS_TextChanged(object sender, EventArgs e)
         {
           
+        }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            string salida = "";
+            string[] pBusqueda = this.textBox1.Text.Split(' ');
+            foreach (string p in pBusqueda)
+            {
+                if (salida.Length == 0)
+                {
+                    salida = "(Nombre LIKE '% " + p + "%' OR Nombre LIKE '" + p + "%' OR Clave LIKE '%" + p + "%' OR Clave LIKE '" + p + "%' )";
+                }
+                else
+                {
+                    salida += "AND (Nombre LIKE '% " + p + "%' OR Nombre LIKE '" + p + "%' OR Clave LIKE '%" + p + "%' OR Clave LIKE '" + p + "%')";
+                }
+            }
+            this.miFiltro.RowFilter = salida;
+
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)

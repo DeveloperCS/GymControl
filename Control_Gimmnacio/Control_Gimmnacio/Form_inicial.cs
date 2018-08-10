@@ -140,5 +140,10 @@ namespace Control_Gimmnacio
             label2.Text = DateTime.Now.ToLongTimeString();
             label3.Text = DateTime.Now.ToLongDateString();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            new vInfo().Show();
+        }
     }
 }

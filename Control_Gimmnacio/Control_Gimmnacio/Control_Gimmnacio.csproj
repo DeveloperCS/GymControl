@@ -137,6 +137,12 @@
     <Compile Include="vHistorialUs.Designer.cs">
       <DependentUpon>vHistorialUs.cs</DependentUpon>
     </Compile>
+    <Compile Include="vInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vInfo.Designer.cs">
+      <DependentUpon>vInfo.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="agregaCantMes.resx">
       <DependentUpon>agregaCantMes.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="vHistorialUs.resx">
       <DependentUpon>vHistorialUs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vInfo.resx">
+      <DependentUpon>vInfo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="controlGymDataSet.xsc">
       <DependentUpon>controlGymDataSet.xsd</DependentUpon>
@@ -241,6 +250,7 @@
     <None Include="Resources\icons8-sincronizar-64.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\WIN_20180226_10_53_34_Pro.jpg" />
     <None Include="Resources\icons8-exportar-pdf-50.png" />
     <Content Include="Resources\Ver.ico" />
   </ItemGroup>
