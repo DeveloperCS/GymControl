@@ -192,7 +192,7 @@ namespace Control_Gimmnacio
             {
                 /*Para generar id de Mem*/
                 DataSet dataC1 = new DataSet();
-                string qqAc = "select count(idMemS) as C1 from memSocio";
+                string qqAc = "select Max(idControl) as C1 from memSocio";
                 dataC1 = dts.consulta(qqAc);
                 DataTable dt2 = dataC1.Tables[0];
                 string exten = "";
@@ -200,8 +200,15 @@ namespace Control_Gimmnacio
                 {
                     exten = row["C1"].ToString();
                 }
-                int id = Convert.ToInt32(exten)+1;
-                MessageBox.Show(""+id);
+                int id = 0;
+                if (exten == null || exten == "")
+                {
+                    id++;
+                }
+                else
+                {
+                    id = Convert.ToInt32(exten) + 1;
+                }
                 if (checkDesc.Checked == true)
                 {
                     qm1 = "insert into memSocio values('" + txtClaveM.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','" + cbDescProm.Text + "','" + lbTotal1.Text + "','Vigente','" + id + "')";

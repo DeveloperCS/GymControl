@@ -173,7 +173,7 @@
             // 
             // btn_cerrar_sesion
             // 
-            this.btn_cerrar_sesion.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btn_cerrar_sesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_cerrar_sesion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_cerrar_sesion.FlatAppearance.BorderSize = 0;
             this.btn_cerrar_sesion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
@@ -449,12 +449,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_reg_mem;
         private System.Windows.Forms.Button btn_Reportes;
-        private System.Windows.Forms.Button btn_cerrar_sesion;
-        private System.Windows.Forms.Button btn_configUs;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label txt_titulo;
-        private System.Windows.Forms.Button btnConfigurar;
         public System.Windows.Forms.Label lbCon;
         private System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.Label lbNomUS;
@@ -462,5 +459,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.Button btn_configUs;
+        public System.Windows.Forms.Button btnConfigurar;
+        public System.Windows.Forms.Button btn_cerrar_sesion;
     }
 }

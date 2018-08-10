@@ -136,6 +136,8 @@ namespace Control_Gimmnacio
                 con = 0;
             }
         }
+
+        public string idUPD = "",qrUPD="";
         string qm1= "";
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -144,7 +146,7 @@ namespace Control_Gimmnacio
             {
                 /*Para generar id de Mem*/
                 DataSet dataC1 = new DataSet();
-                string qqAc = "select count(idMemS) as C1 from memSocio";
+                string qqAc = "select Max(idControl) as C1 from memSocio";
                 dataC1 = dts.consulta(qqAc);
                 DataTable dt2 = dataC1.Tables[0];
                 string exten = "";
@@ -152,7 +154,15 @@ namespace Control_Gimmnacio
                 {
                     exten = row["C1"].ToString();
                 }
-                int id = Convert.ToInt32(exten) + 1;
+                int id = 0;
+                if (exten == null||exten =="")
+                {
+                     id++;
+                }
+                else{
+                     id = Convert.ToInt32(exten) + 1;
+                }
+                
 
                 if (chekProm.Checked == true)
                 {
@@ -160,7 +170,13 @@ namespace Control_Gimmnacio
                     if (dts.insertar(qm1) == true)
                     {
                         MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
+                        qrUPD = "update memSocio set estado='Archivado' where idControl = '" + idUPD + "'and idMemS ='"+txtclave.Text+"' ";
+                        if (dts.update(qrUPD) == true)
+                        {
+                            this.Close();
+                        }
+                       // new vHistorialUs().consultaHistorial2(txtclave.Text);
+                        
                       
                     }
                 }
@@ -170,7 +186,12 @@ namespace Control_Gimmnacio
                     if (dts.insertar(qm1) == true)
                     {
                         MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
+                        //new vHistorialUs().consultaHistorial2(txtclave.Text);
+                        qrUPD = "update memSocio set estado='Archivado' where idControl = '" + idUPD + "'";
+                        if (dts.update(qrUPD) == true)
+                        {
+                            this.Close();
+                        }
 
                     }
                 }
@@ -183,6 +204,7 @@ namespace Control_Gimmnacio
         {
             if (MessageBox.Show("¿Desea Cancelar?","Cancelar",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
             {
+                idUPD = "";
                 this.Close();
             }
         }

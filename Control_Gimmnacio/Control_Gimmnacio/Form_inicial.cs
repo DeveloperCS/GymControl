@@ -98,13 +98,16 @@ namespace Control_Gimmnacio
             AbrirFormInPanel(new registro());
             txt_titulo.Text = "Socios";
         }
-        
+         login_principal log = new login_principal();
+
         private void button7_Click(object sender, EventArgs e)
         {
             
-            if (MessageBox.Show("¿Realmente desea salir?","Salir",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+            if (MessageBox.Show("¿Realmente desea Cerrar Sesion?","Salir",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
             {
-                Application.Exit();
+                this.Close();
+                log.Show();
+                //Application.Exit();
             }
         }
 

@@ -23,7 +23,8 @@ namespace Control_Gimmnacio
         {
             if (numMes.Value!=0)
             {
-                q = "insert into visitante values('"+numMes.Value+"',SYSDATETIME())";
+                q = "insert into visitante values('"+numMes.Value+ "',CONVERT(date, SYSDATETIME()))";
+                
                 if (dts.insertar(q)==true)
                 {
                     MessageBox.Show("Visitante Agregado","Exito",MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -33,12 +34,18 @@ namespace Control_Gimmnacio
             }
             else
             {
-                MessageBox.Show("Agrega por lo menos un mes","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Agrega por lo menos un Visitante","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void agregaCantMes_Load(object sender, EventArgs e)
+        {
+            numMes.Value = 1;
 
         }
     }

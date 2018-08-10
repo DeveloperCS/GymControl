@@ -139,7 +139,13 @@ namespace Control_Gimmnacio
                     }
                     else if (tipoEn == "Usuario")
                     {
-
+                        IN.Show();
+                        IN.lbCon.Text = "Usuario: " + txtUsuario.Text;
+                        IN.lbNomUS.Text = usEn;
+                        IN.btn_configUs.Visible = false;
+                        IN.btnConfigurar.Visible = false;
+                        IN.btn_cerrar_sesion.Location=new Point( -3, 392);
+                        this.Hide();
                     }
 
 

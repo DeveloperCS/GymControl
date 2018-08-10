@@ -20,6 +20,7 @@ namespace Control_Gimmnacio
             btnGuardarS.Enabled = false;
             btnEliminaMemS.Enabled = false;
             btnAgregaMemS.Enabled = false;
+            btnActualizar.Enabled = false;
             consultaSocio();
             fHoy = DateTime.Now.ToShortDateString();
         }
@@ -60,15 +61,52 @@ namespace Control_Gimmnacio
             q1 = "Select idSocio as Clave, nombre as Nombre,tel as Telefono_de_Contacto, fb as Facebook  from socio";
             dGWSocios.DataSource = dts.consulta(q1).Tables[0];
         }
-        
+        public void consultaSocio2(string c)
+        {
+            btnGuardarS.Enabled = true;
+            btnEliminaMemS.Enabled = true;
+            btnAgregaMemS.Enabled = true;
+            btnActualizar.Enabled = true;
+            /*consulta de todo*/
+            DataSet dataC = new DataSet();
+            string qCompruena = "Select idSocio as c, nombre as n, fNacimiento as fn, sexo as s,dir as dr, tel as tl, fb as fb  from socio where idSocio ='" + c + "'";
+            dataC = dts.consulta(qCompruena);
+            DataTable dt2 = dataC.Tables[0];
+            string f = "";
+            foreach (DataRow row in dt2.Rows)
+            {
+                txtClaveS.Text = row["c"].ToString();
+                txtNomS.Text = row["n"].ToString();
+                txtdir.Text = row["dr"].ToString();
+                txtTel.Text = row["tl"].ToString();
+                txtFB.Text = row["fb"].ToString();
+                txtS.Text = row["s"].ToString();
+                f = row["fn"].ToString();
+                DateTime myDateTime = DateTime.Parse(f);
+                string dia = Convert.ToString(myDateTime.Day);
+                string mes = Convert.ToString(myDateTime.Month);
+                string ano = Convert.ToString(myDateTime.Year);
+                txtD.Text = dia;
+                txtM.Text = mes;
+                txtAñoF.Text = ano;
+            }
+
+        }
+
         public void consultaHistorial(string clave)
         {
-            q1 = "select idMemS as Clave, tMem as Tipo, fechaIngreso as Fecha_Inicial, fechatermino as Fecha_Final,prom as Promocion, total as Monto_Pagado, estado as Estatus from memSocio where idMems = '" + clave + "'";
+            q1 = "select idControl as ID,idMemS as Clave, tMem as Tipo, fechaIngreso as Fecha_Inicial, fechatermino as Fecha_Final,prom as Promocion, total as Monto_Pagado, estado as Estatus from memSocio where idMems = '" + clave + "' order  by Estatus desc";
             dGWHistorial.DataSource = dts.consulta(q1).Tables[0];
             timer1.Start();
         }
+        public void consultaHistorial2(string clave)
+        {
+            q1 = "select idControl as ID,idMemS as Clave, tMem as Tipo, fechaIngreso as Fecha_Inicial, fechatermino as Fecha_Final,prom as Promocion, total as Monto_Pagado, estado as Estatus from memSocio where idMems = '" + clave + "' order  by Estatus desc";
+            dGWHistorial.DataSource = dts.consulta(q1).Tables[0];
+           // timer1.Start();
+        }
         #endregion
-       
+
         private void btnSelecionarS_Click(object sender, EventArgs e)
         {
             string cl= dGWSocios.CurrentRow.Cells[0].Value.ToString();
@@ -76,6 +114,7 @@ namespace Control_Gimmnacio
             btnGuardarS.Enabled = true;
             btnEliminaMemS.Enabled = true;
             btnAgregaMemS.Enabled = true;
+            btnActualizar.Enabled = true;
             /*consulta de todo*/
             DataSet dataC = new DataSet();
             string qCompruena = "Select idSocio as c, nombre as n, fNacimiento as fn, sexo as s,dir as dr, tel as tl, fb as fb  from socio where idSocio ='"+cl+"'";
@@ -163,7 +202,7 @@ namespace Control_Gimmnacio
             }
         }
         vAgregaMemS vm = new vAgregaMemS();
-        string Valor1 = "";
+        string Valor1 = "",valid="";
         private void btnAgregaMemS_Click(object sender, EventArgs e)
         {
             if (dGWHistorial.RowCount>0)
@@ -173,16 +212,20 @@ namespace Control_Gimmnacio
                 {
                     String strFila = Row.Index.ToString();
                      Valor1 = Convert.ToString(Row.Cells["Estatus"].Value);
+                    valid = Convert.ToString(Row.Cells["ID"].Value);
 
                     if (Valor1 == "Vigente")
                     {
                         
-                        MessageBox.Show("Aun no puede agregar otro plan a este socio\n \n Tiene un pla vigente", "Erroe", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("Aun no puede agregar otro plan a este socio\n \n Tiene un pla vigente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        break;
                     }
                     else if(Valor1 == "Expirado")
                     {
                         vm.txtclave.Text = txtClaveS.Text;
+                        vm.idUPD = valid;
                         vm.ShowDialog();
+                        break;
                     }
                 }
                 
@@ -219,7 +262,6 @@ namespace Control_Gimmnacio
                 {
                     //Operación Expirada
                     timer1.Stop();
-                    
                     qActualiza = "update memSocio set estado='Expirado' where idMemS = '"+idAc+"'";
                     if (dts.update(qActualiza)==true)
                     {
@@ -230,13 +272,16 @@ namespace Control_Gimmnacio
                 }
                 else
                 {
+
                     //Operación Aun Vigente
                     timer1.Stop();
                     //MessageBox.Show("Aun Vigente");
+
                 }
             }
             else
             {
+                
                 timer1.Stop();
                 MessageBox.Show("Socio sin plan de membresia.\n Necesita agregar plan","Sin plan",MessageBoxButtons.OK,MessageBoxIcon.Stop);
             }
@@ -247,11 +292,11 @@ namespace Control_Gimmnacio
         {
             if (dGWHistorial.RowCount > 0)
             {
-                if (dGWHistorial.CurrentRow.Cells[6].Value.ToString() == "Vigente")
+                if (dGWHistorial.CurrentRow.Cells[7].Value.ToString() == "Vigente")
                 {
-                    if(MessageBox.Show("La membresia esta vigente \n ¿Quiere eliminarla?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Stop)==DialogResult.Yes)
+                    if(MessageBox.Show("La membresia esta vigente \n ¿Quiere eliminarla? \n Se Limpiara todo el Historial", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Stop)==DialogResult.Yes)
                     {
-                        q12 = "delete from memSocio where idMemS='"+dGWHistorial.CurrentRow.Cells[0].Value.ToString() + "' ";
+                        q12 = "delete from memSocio where idMemS='" + dGWHistorial.CurrentRow.Cells[1].Value.ToString() + "' ";
                         if (dts.eliminar(q12)==true)
                         {
                             MessageBox.Show("Historial Actualizado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -259,9 +304,9 @@ namespace Control_Gimmnacio
                         }
                     }
                 }
-                else if (dGWHistorial.CurrentRow.Cells[6].Value.ToString() == "Expirado")
+                else if (dGWHistorial.CurrentRow.Cells[7].Value.ToString() == "Expirado"|| dGWHistorial.CurrentRow.Cells[7].Value.ToString() == "Archivado")
                 {
-                    q12 = "delete from memSocio where idMemS='" + dGWHistorial.CurrentRow.Cells[0].Value.ToString() + "' ";
+                    q12 = "delete from memSocio where idControl='" + dGWHistorial.CurrentRow.Cells[0].Value.ToString() + "' ";
                     if (dts.eliminar(q12) == true)
                     {
                         MessageBox.Show("Historial Actualizado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -289,6 +334,12 @@ namespace Control_Gimmnacio
                 {
                     e.CellStyle.ForeColor = Color.Red;
                     e.CellStyle.BackColor = Color.Salmon;
+                }
+                if (e.Value.ToString() == "Archivado")
+                {
+                    e.CellStyle.ForeColor = Color.Blue;
+                    e.CellStyle.BackColor = Color.LightBlue;
+
                 }
             }
         }
@@ -333,6 +384,11 @@ namespace Control_Gimmnacio
         private void txtS_TextChanged(object sender, EventArgs e)
         {
           
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            consultaHistorial(txtClaveS.Text);
         }
 
         private void txtNomS_KeyPress(object sender, KeyPressEventArgs e)

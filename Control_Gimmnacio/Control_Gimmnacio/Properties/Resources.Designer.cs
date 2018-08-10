@@ -113,6 +113,16 @@ namespace Control_Gimmnacio.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_sincronizar_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-sincronizar-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap if_error_1646012 {
             get {
                 object obj = ResourceManager.GetObject("if_error_1646012", resourceCulture);

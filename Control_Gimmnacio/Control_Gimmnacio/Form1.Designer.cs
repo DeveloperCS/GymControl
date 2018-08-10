@@ -225,7 +225,7 @@
             this.btnAcceder.Location = new System.Drawing.Point(339, 239);
             this.btnAcceder.Name = "btnAcceder";
             this.btnAcceder.Size = new System.Drawing.Size(291, 36);
-            this.btnAcceder.TabIndex = 3;
+            this.btnAcceder.TabIndex = 4;
             this.btnAcceder.Text = "Acceder";
             this.btnAcceder.UseVisualStyleBackColor = true;
             this.btnAcceder.Click += new System.EventHandler(this.btnAcceder_Click);
@@ -349,7 +349,7 @@
             this.checkBox1.Location = new System.Drawing.Point(554, 187);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(144, 21);
-            this.checkBox1.TabIndex = 13;
+            this.checkBox1.TabIndex = 3;
             this.checkBox1.Text = "Mostrar Contraseña";
             this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -385,7 +385,7 @@
             this.Name = "login_principal";
             this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Login";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.login_principal_MouseDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

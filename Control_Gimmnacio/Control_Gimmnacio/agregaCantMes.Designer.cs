@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(agregaCantMes));
             this.label1 = new System.Windows.Forms.Label();
             this.numMes = new System.Windows.Forms.NumericUpDown();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -76,11 +77,13 @@
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.numMes);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "agregaCantMes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Visitantes";
+            this.Load += new System.EventHandler(this.agregaCantMes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numMes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

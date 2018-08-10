@@ -223,5 +223,11 @@
   <ItemGroup>
     <None Include="Resources\dolar.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-sincronizar-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Ver.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

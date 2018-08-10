@@ -148,13 +148,13 @@ namespace Control_Gimmnacio
             
         }
         conexionDatos dts = new conexionDatos();
-        string qVis = "";
+        string qVis = "",qMem="";
         private void timChecar_Tick(object sender, EventArgs e)
         {
-           
+            #region visitantes
             /*compruebo total visitantes*/
             DataSet dataC = new DataSet();
-            qVis = "SELECT COUNT(id) as T FROM visitante";
+            qVis = "SELECT Sum(cantidad) as T FROM visitante";
             dataC = dts.consulta(qVis);
             DataTable dt2 = dataC.Tables[0];
             int cont = 0;
@@ -164,36 +164,187 @@ namespace Control_Gimmnacio
                 lbTotalVis.Text = row["T"].ToString();
             }
             //compruebo los que hoy 
-            qVis = " SELECT COUNT(id) as H FROM visitante where fecha = CONVERT(date, SYSDATETIME())";
+            qVis = " SELECT Sum(cantidad) as H FROM visitante where fecha = CONVERT(date, SYSDATETIME())";
             DataSet dataC2 = new DataSet();
-           
             dataC2 = dts.consulta(qVis);
             DataTable dt22 = dataC2.Tables[0];
-            
+
             foreach (DataRow row in dt22.Rows)
             {
                 lbTHoy.Text = row["H"].ToString();
             }
             //comprueb en mes 
-            qVis = "select count(id) as M from visitante where  MONTH(fecha) = Month(CONVERT (date, SYSDATETIME()))";
+            qVis = "select Sum(cantidad) as M from visitante where  MONTH(fecha) = Month(CONVERT (date, SYSDATETIME()))";
             DataSet dataC3 = new DataSet();
-
             dataC3 = dts.consulta(qVis);
             DataTable dt3 = dataC3.Tables[0];
-
             foreach (DataRow row in dt3.Rows)
             {
                 lbMes.Text = row["M"].ToString();
             }
-        }
+            #endregion
 
+            #region Memebresias
+            /*compruebo total Mem*/
+            DataSet dataM = new DataSet();
+            qMem = "select count(*) as M, idMemS as d from memSocio group by idMemS";
+            dataM = dts.consulta(qMem);
+            DataTable dtM = dataM.Tables[0];
+            int conR = 0, conNR = 0;
+            foreach (DataRow row in dtM.Rows)
+            {
+                //lbTotalMem.Text = row["M"].ToString();
+                if (Convert.ToInt32(row["M"].ToString())==1)
+                {
+                    conNR++;
+                }
+                else if (Convert.ToInt32(row["M"].ToString())>=2)
+                {
+                    conR++;
+                }
+            }
+            int t = conNR + conR;
+            lbTotalMem.Text = t.ToString();
+             //compruebo las membresias vigentes
+             List <String> listaVigentes = new List<string>();
+            qMem = "select count(*) as V, idMemS as id from memSocio where estado='Vigente'group by idMemS";
+            DataSet dataVig = new DataSet();
+            dataVig = dts.consulta(qMem);
+            DataTable dtVig = dataVig.Tables[0];
+            int con = 0;
+            foreach (DataRow row in dtVig.Rows)
+            {
+                //con =Convert.ToInt32( row["V"].ToString());
+                con++;
+                lbMemVigentes.Text = con.ToString();
+                listaVigentes.Add(row["id"].ToString());
+            }
+
+            //compruebo las membresias expiradas 
+            qMem = "select count(*) as Ex,idMemS as idEx from memSocio where estado = 'Expirado' group by idMemS";
+            DataSet dataMex = new DataSet();
+            dataMex = dts.consulta(qMem);
+            DataTable dtEx = dataMex.Tables[0];
+            int conEx = 0;
+            string idRec = "";
+            foreach (DataRow row in dtEx.Rows)
+            {
+                lbMemEx.Text=row["Ex"].ToString();  
+            }
+            #endregion
+
+           
+        }
+        #region consultaMemEx
+        string qEx1 = "";
+        public void memEx()
+        {
+            //agregar boton ver dentro del DGV
+            DataGridViewButtonColumn btnVer = new DataGridViewButtonColumn();
+            btnVer.Name = "Ver";
+            dtGWMemEx.Columns.Add(btnVer);
+            qEx1 = "select M.idMemS as [Clave Socio/Memebresia],(select S.nombre as Nombre from socio S where S.idSocio=idMems) Socio, M.idControl as [ID Membresia],M.tMem as Tipo, M.fechaIngreso as Inicio,M.fechatermino as Termino, M.prom as Promocion, M.estado as Estatus from memSocio M  where M.estado = 'Expirado'";
+            dtGWMemEx.DataSource = dts.consulta(qEx1).Tables[0];
+            
+        }
+        private void dtGWMemEx_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && this.dtGWMemEx.Columns[e.ColumnIndex].Name == "Ver" && e.RowIndex>=0)
+            {
+                e.Paint(e.CellBounds,DataGridViewPaintParts.All);
+                DataGridViewButtonCell celBoton = this.dtGWMemEx.Rows[e.RowIndex].Cells["Ver"] as DataGridViewButtonCell;
+                Icon iconAtomic = new Icon(Environment.CurrentDirectory + @"\\editar.ico");
+                e.Graphics.DrawIcon(iconAtomic,e.CellBounds.Left + 3,e.CellBounds.Top +3);
+
+                this.dtGWMemEx.Rows[e.RowIndex].Height = iconAtomic.Height + 8;
+                this.dtGWMemEx.Columns[e.ColumnIndex].Width = iconAtomic.Width + 8;
+                e.Handled = true;
+            }
+        }
+        #endregion
         private void Dashboard_Load(object sender, EventArgs e)
         {
+            memEx();
+            timer1.Enabled = true;
+            timer1.Start();
             timChecar.Enabled = true;
             timChecar.Interval = 25;
 
         }
         agregaCantMes vis = new agregaCantMes();
+
+        private void dtGWMemEx_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (this.dtGWMemEx.Columns[e.ColumnIndex].Name == "Estatus")
+            {
+                if (e.Value.ToString() == "0")
+                {
+                    e.CellStyle.ForeColor = Color.Green;
+                    e.CellStyle.BackColor = Color.LightGreen;
+
+                }
+                else if (e.Value.ToString() == "Expirado")
+                {
+                    e.CellStyle.ForeColor = Color.Red;
+                    e.CellStyle.BackColor = Color.Salmon;
+                }
+            }
+
+        }
+        vHistorialUs vH = new vHistorialUs();
+        private void dtGWMemEx_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (this.dtGWMemEx.Columns[e.ColumnIndex].Name=="Ver" )
+            {
+                string c = dtGWMemEx.CurrentRow.Cells[1].Value.ToString();
+                vH.consultaSocio2(c);
+                vH.consultaHistorial2(c);
+                vH.ShowDialog();
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            #region ComprueboExpiraciones
+            /*compruebo Expiraciones*/
+            string qActualiza = "";
+            DataSet dataC1 = new DataSet();
+            string qqAc = "select fechatermino as C1, idMemS as Id, estado as E from memSocio";
+            dataC1 = dts.consulta(qqAc);
+            DataTable dt2A = dataC1.Tables[0];
+            string compara = "", idAc = "",estado;
+            foreach (DataRow row in dt2A.Rows)
+            {
+                compara = row["C1"].ToString();
+                idAc = row["Id"].ToString();
+                estado = row["E"].ToString();
+                DateTime fechaF = Convert.ToDateTime(compara).Date;
+                DateTime FechAc = DateTime.Now.Date;
+                if (fechaF <= FechAc && estado !="Archivado") // Si la fecha indicada es menor o igual a la fecha actual
+                {
+                    //Operación Expirada
+                    // timer1.Stop();
+                    qActualiza = "update memSocio set estado='Expirado' where idMemS = '" + idAc + "'";
+                    if (dts.update(qActualiza) == true)
+                    {
+                        MessageBox.Show("Se Econtraron Membresias Expiradas!!", "Expirado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        // consultaHistorial(txtClaveS.Text);
+                        timer1.Stop();
+                    }
+                }
+                else
+                {
+
+                    //Operación Aun Vigente
+                    timer1.Stop();
+                    //MessageBox.Show("Aun Vigente");
+
+                }
+            }
+
+            #endregion
+        }
+
         private void btnNuevoVis_Click(object sender, EventArgs e)
         {
             vis.ShowDialog();

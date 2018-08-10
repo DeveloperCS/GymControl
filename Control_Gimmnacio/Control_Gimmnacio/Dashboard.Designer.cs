@@ -32,29 +32,33 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.p_esVisi = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lbMes = new System.Windows.Forms.Label();
             this.lbTHoy = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lbTotalVis = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.p_Mem = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lbTotalMem = new System.Windows.Forms.Label();
+            this.lbMemEx = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lbMemVigentes = new System.Windows.Forms.Label();
             this.p_Mem_ti = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.btnVenderProdc = new System.Windows.Forms.Button();
             this.btnNuevoVis = new System.Windows.Forms.Button();
             this.HoraFecha = new System.Windows.Forms.Timer(this.components);
             this.timChecar = new System.Windows.Forms.Timer(this.components);
-            this.lbMes = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.dtGWMemEx = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.p_esVisi.SuspendLayout();
             this.panel5.SuspendLayout();
             this.p_Mem.SuspendLayout();
             this.p_Mem_ti.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGWMemEx)).BeginInit();
             this.SuspendLayout();
             // 
             // p_esVisi
@@ -80,17 +84,43 @@
             this.panel5.Size = new System.Drawing.Size(319, 144);
             this.panel5.TabIndex = 1;
             // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label7.Location = new System.Drawing.Point(205, 26);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 28);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Mes";
+            this.label7.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // lbMes
+            // 
+            this.lbMes.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbMes.AutoSize = true;
+            this.lbMes.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbMes.Location = new System.Drawing.Point(220, 77);
+            this.lbMes.Name = "lbMes";
+            this.lbMes.Size = new System.Drawing.Size(22, 24);
+            this.lbMes.TabIndex = 0;
+            this.lbMes.Text = "0";
+            this.lbMes.Click += new System.EventHandler(this.label3_Click);
+            // 
             // lbTHoy
             // 
             this.lbTHoy.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbTHoy.AutoSize = true;
             this.lbTHoy.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTHoy.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbTHoy.Location = new System.Drawing.Point(60, 77);
+            this.lbTHoy.Location = new System.Drawing.Point(70, 77);
             this.lbTHoy.Name = "lbTHoy";
-            this.lbTHoy.Size = new System.Drawing.Size(46, 24);
+            this.lbTHoy.Size = new System.Drawing.Size(22, 24);
             this.lbTHoy.TabIndex = 0;
-            this.lbTHoy.Text = "585";
+            this.lbTHoy.Text = "0";
             this.lbTHoy.Click += new System.EventHandler(this.label3_Click);
             // 
             // label6
@@ -114,9 +144,9 @@
             this.lbTotalVis.ForeColor = System.Drawing.Color.MediumTurquoise;
             this.lbTotalVis.Location = new System.Drawing.Point(42, 77);
             this.lbTotalVis.Name = "lbTotalVis";
-            this.lbTotalVis.Size = new System.Drawing.Size(63, 24);
+            this.lbTotalVis.Size = new System.Drawing.Size(22, 24);
             this.lbTotalVis.TabIndex = 0;
-            this.lbTotalVis.Text = "1,274";
+            this.lbTotalVis.Text = "0";
             this.lbTotalVis.Click += new System.EventHandler(this.label3_Click);
             // 
             // label3
@@ -137,14 +167,14 @@
             this.p_Mem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.p_Mem.BackColor = System.Drawing.Color.DarkOrange;
             this.p_Mem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.p_Mem.Controls.Add(this.label15);
-            this.p_Mem.Controls.Add(this.label14);
+            this.p_Mem.Controls.Add(this.lbTotalMem);
+            this.p_Mem.Controls.Add(this.lbMemEx);
             this.p_Mem.Controls.Add(this.label12);
             this.p_Mem.Controls.Add(this.label13);
             this.p_Mem.Controls.Add(this.label11);
-            this.p_Mem.Controls.Add(this.label10);
+            this.p_Mem.Controls.Add(this.lbMemVigentes);
             this.p_Mem.Controls.Add(this.p_Mem_ti);
-            this.p_Mem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.p_Mem.Cursor = System.Windows.Forms.Cursors.Default;
             this.p_Mem.Location = new System.Drawing.Point(568, 26);
             this.p_Mem.Name = "p_Mem";
             this.p_Mem.Size = new System.Drawing.Size(427, 144);
@@ -156,33 +186,33 @@
             this.p_Mem.MouseHover += new System.EventHandler(this.p_Mem_MouseHover);
             this.p_Mem.MouseUp += new System.Windows.Forms.MouseEventHandler(this.p_Mem_MouseUp);
             // 
-            // label15
+            // lbTotalMem
             // 
-            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label15.AutoSize = true;
-            this.label15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label15.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label15.Location = new System.Drawing.Point(325, 90);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(58, 24);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "1035";
-            this.label15.Click += new System.EventHandler(this.label3_Click);
+            this.lbTotalMem.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbTotalMem.AutoSize = true;
+            this.lbTotalMem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbTotalMem.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalMem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbTotalMem.Location = new System.Drawing.Point(343, 90);
+            this.lbTotalMem.Name = "lbTotalMem";
+            this.lbTotalMem.Size = new System.Drawing.Size(22, 24);
+            this.lbTotalMem.TabIndex = 0;
+            this.lbTotalMem.Text = "0";
+            this.lbTotalMem.Click += new System.EventHandler(this.label3_Click);
             // 
-            // label14
+            // lbMemEx
             // 
-            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label14.AutoSize = true;
-            this.label14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label14.Location = new System.Drawing.Point(184, 90);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(58, 24);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "1035";
-            this.label14.Click += new System.EventHandler(this.label3_Click);
+            this.lbMemEx.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbMemEx.AutoSize = true;
+            this.lbMemEx.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbMemEx.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMemEx.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbMemEx.Location = new System.Drawing.Point(197, 90);
+            this.lbMemEx.Name = "lbMemEx";
+            this.lbMemEx.Size = new System.Drawing.Size(22, 24);
+            this.lbMemEx.TabIndex = 0;
+            this.lbMemEx.Text = "0";
+            this.lbMemEx.Click += new System.EventHandler(this.label3_Click);
             // 
             // label12
             // 
@@ -226,19 +256,19 @@
             this.label11.Text = "Vijentes";
             this.label11.Click += new System.EventHandler(this.label3_Click);
             // 
-            // label10
+            // lbMemVigentes
             // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label10.AutoSize = true;
-            this.label10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label10.Location = new System.Drawing.Point(41, 90);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(58, 24);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "1035";
-            this.label10.Click += new System.EventHandler(this.label3_Click);
+            this.lbMemVigentes.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbMemVigentes.AutoSize = true;
+            this.lbMemVigentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbMemVigentes.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMemVigentes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbMemVigentes.Location = new System.Drawing.Point(60, 90);
+            this.lbMemVigentes.Name = "lbMemVigentes";
+            this.lbMemVigentes.Size = new System.Drawing.Size(22, 24);
+            this.lbMemVigentes.TabIndex = 0;
+            this.lbMemVigentes.Text = "0";
+            this.lbMemVigentes.Click += new System.EventHandler(this.label3_Click);
             // 
             // p_Mem_ti
             // 
@@ -268,7 +298,7 @@
             // 
             this.btnVenderProdc.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnVenderProdc.BackColor = System.Drawing.Color.Chartreuse;
-            this.btnVenderProdc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVenderProdc.Cursor = System.Windows.Forms.Cursors.No;
             this.btnVenderProdc.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnVenderProdc.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chartreuse;
             this.btnVenderProdc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
@@ -320,31 +350,31 @@
             this.timChecar.Enabled = true;
             this.timChecar.Tick += new System.EventHandler(this.timChecar_Tick);
             // 
-            // lbMes
+            // dtGWMemEx
             // 
-            this.lbMes.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbMes.AutoSize = true;
-            this.lbMes.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbMes.Location = new System.Drawing.Point(205, 77);
-            this.lbMes.Name = "lbMes";
-            this.lbMes.Size = new System.Drawing.Size(58, 24);
-            this.lbMes.TabIndex = 0;
-            this.lbMes.Text = "1035";
-            this.lbMes.Click += new System.EventHandler(this.label3_Click);
+            this.dtGWMemEx.AllowUserToAddRows = false;
+            this.dtGWMemEx.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGWMemEx.Location = new System.Drawing.Point(29, 355);
+            this.dtGWMemEx.Name = "dtGWMemEx";
+            this.dtGWMemEx.Size = new System.Drawing.Size(1001, 226);
+            this.dtGWMemEx.TabIndex = 5;
+            this.dtGWMemEx.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGWMemEx_CellClick);
+            this.dtGWMemEx.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtGWMemEx_CellFormatting);
+            this.dtGWMemEx.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dtGWMemEx_CellPainting);
             // 
-            // label7
+            // label1
             // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label7.Location = new System.Drawing.Point(205, 26);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 28);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Mes";
-            this.label7.Click += new System.EventHandler(this.label3_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(472, 329);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(102, 23);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Expiradas";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Dashboard
             // 
@@ -352,6 +382,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1050, 600);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dtGWMemEx);
             this.Controls.Add(this.btnVenderProdc);
             this.Controls.Add(this.btnNuevoVis);
             this.Controls.Add(this.p_Mem);
@@ -370,7 +402,9 @@
             this.p_Mem.PerformLayout();
             this.p_Mem_ti.ResumeLayout(false);
             this.p_Mem_ti.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGWMemEx)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -383,12 +417,12 @@
         private System.Windows.Forms.Label lbTHoy;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lbTotalVis;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lbTotalMem;
+        private System.Windows.Forms.Label lbMemEx;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lbMemVigentes;
         private System.Windows.Forms.Panel p_Mem_ti;
         private System.Windows.Forms.Button btnNuevoVis;
         private System.Windows.Forms.Button btnVenderProdc;
@@ -396,5 +430,8 @@
         private System.Windows.Forms.Timer timChecar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lbMes;
+        private System.Windows.Forms.DataGridView dtGWMemEx;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
