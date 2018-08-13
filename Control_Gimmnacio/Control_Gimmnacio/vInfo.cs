@@ -32,7 +32,7 @@ namespace Control_Gimmnacio
 
         private void pictureBox2_Paint(object sender, PaintEventArgs e) 
         {
-            GraphicsPath figura = new GraphicsPath();
+          /*  GraphicsPath figura = new GraphicsPath();
 
             int x, y, ancho, alto;
             ancho = 260;
@@ -40,7 +40,7 @@ namespace Control_Gimmnacio
             x = (pictureBox2.Width - ancho) / 2;
             y = (pictureBox2.Height - alto) / 2;
             figura.AddEllipse(new Rectangle(x, y, ancho, alto));
-            pictureBox2.Region = new Region(figura);
+            pictureBox2.Region = new Region(figura);*/
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

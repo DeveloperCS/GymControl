@@ -309,39 +309,40 @@ namespace Control_Gimmnacio
             /*compruebo Expiraciones*/
             string qActualiza = "";
             DataSet dataC1 = new DataSet();
-            string qqAc = "select fechatermino as C1, idMemS as Id, estado as E from memSocio";
+            string qqAc = "select fechatermino as C1, idMemS as Id, estado as E,idControl as Control from memSocio";
             dataC1 = dts.consulta(qqAc);
             DataTable dt2A = dataC1.Tables[0];
-            string compara = "", idAc = "",estado;
+            string compara = "", idAc = "",estado="",idCo="";
             foreach (DataRow row in dt2A.Rows)
             {
                 compara = row["C1"].ToString();
                 idAc = row["Id"].ToString();
                 estado = row["E"].ToString();
+                idCo = row["Control"].ToString();
                 DateTime fechaF = Convert.ToDateTime(compara).Date;
                 DateTime FechAc = DateTime.Now.Date;
-                if (fechaF <= FechAc && estado !="Archivado") // Si la fecha indicada es menor o igual a la fecha actual
+                if (fechaF <= FechAc && estado == "Vigente") // Si la fecha indicada es menor o igual a la fecha actual
                 {
                     //Operación Expirada
-                    // timer1.Stop();
-                    qActualiza = "update memSocio set estado='Expirado' where idMemS = '" + idAc + "'";
+                   // timer1.Stop();
+                    qActualiza = "update memSocio set estado='Expirado' where idMemS = '" + idAc + "' and idControl ='" + idCo + "'";
                     if (dts.update(qActualiza) == true)
                     {
-                        MessageBox.Show("Se Econtraron Membresias Expiradas!!", "Expirado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        //  MessageBox.Show("Se Econtraron Membresias Expiradas!!", "Expirado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         // consultaHistorial(txtClaveS.Text);
-                        timer1.Stop();
+                       // timer1.Stop();
                     }
                 }
                 else
                 {
 
                     //Operación Aun Vigente
-                    timer1.Stop();
+                   // timer1.Stop();
                     //MessageBox.Show("Aun Vigente");
 
                 }
             }
-
+            
             #endregion
         }
 

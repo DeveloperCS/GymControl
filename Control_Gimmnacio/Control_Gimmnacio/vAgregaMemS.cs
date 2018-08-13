@@ -136,7 +136,7 @@ namespace Control_Gimmnacio
                 con = 0;
             }
         }
-
+        public TextBox txtnoms = new TextBox();
         public string idUPD = "",qrUPD="";
         string qm1= "";
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -162,8 +162,8 @@ namespace Control_Gimmnacio
                 else{
                      id = Convert.ToInt32(exten) + 1;
                 }
-                
 
+                string qH = "";
                 if (chekProm.Checked == true)
                 {
                     qm1 = "insert into memSocio values('" + txtclave.Text + "','" + cbTipoMem.Text + "','" + PickIni.Value.ToString("yyyy/MM/dd") + "','" + PickFin.Value.ToString("yyyy/MM/dd") + "','" + cbProm.Text + "','" + lbTotal.Text + "','Vigente','"+id+"')";
@@ -173,7 +173,13 @@ namespace Control_Gimmnacio
                         qrUPD = "update memSocio set estado='Archivado' where idControl = '" + idUPD + "'and idMemS ='"+txtclave.Text+"' ";
                         if (dts.update(qrUPD) == true)
                         {
-                            this.Close();
+                            qH = "insert into historialS values('" + txtclave.Text + "','"+txtnoms.Text+"','" + cbTipoMem.Text + "','" + PickIni.Value.ToString("yyyy/MM/dd") + "','" + PickFin.Value.ToString("yyyy/MM/dd") + "','" + cbProm.Text + "','" + lbTotal.Text + "','Vigente')";
+                            if (dts.insertar(qH) == true)
+                            {
+                                this.Close();
+
+                            }
+                           
                         }
                        // new vHistorialUs().consultaHistorial2(txtclave.Text);
                         
@@ -190,7 +196,12 @@ namespace Control_Gimmnacio
                         qrUPD = "update memSocio set estado='Archivado' where idControl = '" + idUPD + "'";
                         if (dts.update(qrUPD) == true)
                         {
-                            this.Close();
+                            qH = "insert into historialS values('" + txtclave.Text + "','" + txtnoms.Text + "','" + cbTipoMem.Text + "','" + PickIni.Value.ToString("yyyy/MM/dd") + "','" + PickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + lbTotal.Text + "','Vigente')";
+                            if (dts.insertar(qH) == true)
+                            {
+                                this.Close();
+
+                            }
                         }
 
                     }

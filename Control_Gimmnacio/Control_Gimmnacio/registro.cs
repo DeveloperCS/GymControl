@@ -209,14 +209,21 @@ namespace Control_Gimmnacio
                 {
                     id = Convert.ToInt32(exten) + 1;
                 }
+                string qH = "";
                 if (checkDesc.Checked == true)
                 {
                     qm1 = "insert into memSocio values('" + txtClaveM.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','" + cbDescProm.Text + "','" + lbTotal1.Text + "','Vigente','" + id + "')";
                     if (dts.insertar(qm1) == true)
                     {
-                        MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        limpiaSocio();
-                        limpiaMem();
+                        qH = "insert into historialS values('"+ txtClaveM.Text + "','"+txtNom.Text+"','"+ cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','" + cbDescProm.Text + "','" + lbTotal1.Text + "','Vigente')";
+                        if (dts.insertar(qH)==true)
+                        {
+                            MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            limpiaSocio();
+                            limpiaMem();
+
+                        }
+
                     }
                 }
                 else
@@ -224,9 +231,14 @@ namespace Control_Gimmnacio
                     qm1 = "insert into memSocio values('" + txtClaveM.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + lbTotal1.Text + "','Vigente','" + id + "')";
                     if (dts.insertar(qm1) == true)
                     {
-                        MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        limpiaSocio();
-                        limpiaMem();
+                        qH = "insert into historialS values('" + txtClaveM.Text + "','" + txtNom.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + lbTotal1.Text + "','Vigente')";
+                        if (dts.insertar(qH) == true)
+                        {
+                            MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            limpiaSocio();
+                            limpiaMem();
+
+                        }
                     }
                 }
                    

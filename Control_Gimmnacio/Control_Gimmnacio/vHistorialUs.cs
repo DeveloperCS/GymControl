@@ -111,37 +111,39 @@ namespace Control_Gimmnacio
 
         private void btnSelecionarS_Click(object sender, EventArgs e)
         {
-            string cl= dGWSocios.CurrentRow.Cells[0].Value.ToString();
-            consultaHistorial(cl);
-            btnGuardarS.Enabled = true;
-            btnEliminaMemS.Enabled = true;
-            btnAgregaMemS.Enabled = true;
-            btnActualizar.Enabled = true;
-            /*consulta de todo*/
-            DataSet dataC = new DataSet();
-            string qCompruena = "Select idSocio as c, nombre as n, fNacimiento as fn, sexo as s,dir as dr, tel as tl, fb as fb  from socio where idSocio ='"+cl+"'";
-            dataC = dts.consulta(qCompruena);
-            DataTable dt2 = dataC.Tables[0];
-            string f = "";
-            foreach (DataRow row in dt2.Rows)
+            if (dGWSocios.RowCount>0)
             {
-                txtClaveS.Text = row["c"].ToString();
-                txtNomS.Text = row["n"].ToString();
-                txtdir.Text = row["dr"].ToString();
-                txtTel.Text = row["tl"].ToString();
-                txtFB.Text = row["fb"].ToString();
-                txtS.Text = row["s"].ToString();
-                f = row["fn"].ToString();        
-                DateTime myDateTime = DateTime.Parse(f);
-                string dia = Convert.ToString(myDateTime.Day);
-                string mes = Convert.ToString(myDateTime.Month);
-                string ano = Convert.ToString(myDateTime.Year);
-                txtD.Text = dia;
-                txtM.Text = mes;
-                txtAñoF.Text = ano;
+                string cl = dGWSocios.CurrentRow.Cells[0].Value.ToString();
+                consultaHistorial(cl);
+                btnGuardarS.Enabled = true;
+                btnEliminaMemS.Enabled = true;
+                btnAgregaMemS.Enabled = true;
+                btnActualizar.Enabled = true;
+                /*consulta de todo*/
+                DataSet dataC = new DataSet();
+                string qCompruena = "Select idSocio as c, nombre as n, fNacimiento as fn, sexo as s,dir as dr, tel as tl, fb as fb  from socio where idSocio ='" + cl + "'";
+                dataC = dts.consulta(qCompruena);
+                DataTable dt2 = dataC.Tables[0];
+                string f = "";
+                foreach (DataRow row in dt2.Rows)
+                {
+                    txtClaveS.Text = row["c"].ToString();
+                    txtNomS.Text = row["n"].ToString();
+                    txtdir.Text = row["dr"].ToString();
+                    txtTel.Text = row["tl"].ToString();
+                    txtFB.Text = row["fb"].ToString();
+                    txtS.Text = row["s"].ToString();
+                    f = row["fn"].ToString();
+                    DateTime myDateTime = DateTime.Parse(f);
+                    string dia = Convert.ToString(myDateTime.Day);
+                    string mes = Convert.ToString(myDateTime.Month);
+                    string ano = Convert.ToString(myDateTime.Year);
+                    txtD.Text = dia;
+                    txtM.Text = mes;
+                    txtAñoF.Text = ano;
+                }
             }
-
-
+            
         }
         public void limpiar()
         {
@@ -167,21 +169,25 @@ namespace Control_Gimmnacio
 
         private void btnEliminarS_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea Eliminar?","Eliminar",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+            if (dGWSocios.RowCount>0)
             {
-                string c= dGWSocios.CurrentRow.Cells[0].Value.ToString();
-                string qr = "delete from memSocio where idMemS= '"+c+"' ";
-                if (dts.eliminar(qr)==true)
+                if (MessageBox.Show("¿Desea Eliminar?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    string qr2 = "delete from socio where idSocio = '"+c+"' ";
-                    if (dts.eliminar(qr2)==true)
+                    string c = dGWSocios.CurrentRow.Cells[0].Value.ToString();
+                    string qr = "delete from memSocio where idMemS= '" + c + "' ";
+                    if (dts.eliminar(qr) == true)
                     {
-                        MessageBox.Show("Socio Eliminado","Exito",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                        consultaSocio();
-                        limpiar();
+                        string qr2 = "delete from socio where idSocio = '" + c + "' ";
+                        if (dts.eliminar(qr2) == true)
+                        {
+                            MessageBox.Show("Socio Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            consultaSocio();
+                            limpiar();
+                        }
                     }
                 }
             }
+           
         }
 
         private void btnGuardarS_Click(object sender, EventArgs e)
@@ -222,9 +228,10 @@ namespace Control_Gimmnacio
                         MessageBox.Show("Aun no puede agregar otro plan a este socio\n \n Tiene un pla vigente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         break;
                     }
-                    else if(Valor1 == "Expirado")
+                    else if(Valor1 == "Expirado" || Valor1 =="Archivado")
                     {
                         vm.txtclave.Text = txtClaveS.Text;
+                        vm.txtnoms.Text = txtNomS.Text;
                         vm.idUPD = valid;
                         vm.ShowDialog();
                         break;
@@ -235,6 +242,7 @@ namespace Control_Gimmnacio
             else if(dGWHistorial.RowCount == 0)
             {
                 vm.txtclave.Text = txtClaveS.Text;
+                vm.txtnoms.Text = txtNomS.Text;
                 vm.ShowDialog();
             }
            
@@ -248,29 +256,38 @@ namespace Control_Gimmnacio
             {
                 /*compruebo Expiraciones*/
                 DataSet dataC1 = new DataSet();
-                string qqAc = "select fechatermino as C1, idMemS as Id from memSocio where idMemS = '" + txtClaveS.Text + "'";
+                string qqAc = "select fechatermino as C1, idControl as Id,estado as E from memSocio where idMemS = '" + txtClaveS.Text + "'";
                 dataC1 = dts.consulta(qqAc);
                 DataTable dt2 = dataC1.Tables[0];
-                string compara = "", idAc="";
+                string compara = "", idAc="",es="";
                 foreach (DataRow row in dt2.Rows)
                 {
                     compara = row["C1"].ToString();
                     idAc= row["Id"].ToString();
+                    es = row["E"].ToString();
 
                 }
                 DateTime fechaF = Convert.ToDateTime(compara).Date;
                 DateTime FechAc = DateTime.Now.Date;
                 if (fechaF <= FechAc) // Si la fecha indicada es menor o igual a la fecha actual
                 {
-                    //Operación Expirada
-                    timer1.Stop();
-                    qActualiza = "update memSocio set estado='Expirado' where idMemS = '"+idAc+"'";
-                    if (dts.update(qActualiza)==true)
+                    if (es=="Vigente")
                     {
-                        MessageBox.Show("Este Socio tiene un plan Expirado!!", "Expirado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        consultaHistorial(txtClaveS.Text);
+                        //Operación Expirada
                         timer1.Stop();
+                        qActualiza = "update memSocio set estado='Expirado' where idControl = '" + idAc + "' and idMemS = '"+txtClaveS.Text+"'";
+                        if (dts.update(qActualiza) == true)
+                        {
+                            MessageBox.Show("Este Socio tiene un plan Expirado!!", "Expirado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            consultaHistorial(txtClaveS.Text);
+                            timer1.Stop();
+                        }
                     }
+                    else if (es =="Archivado")
+                    {
+
+                    }
+                   
                 }
                 else
                 {
