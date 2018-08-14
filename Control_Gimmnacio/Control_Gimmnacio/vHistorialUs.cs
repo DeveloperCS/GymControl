@@ -99,13 +99,17 @@ namespace Control_Gimmnacio
         {
             q1 = "select idControl as ID,idMemS as Clave, tMem as Tipo, fechaIngreso as Fecha_Inicial, fechatermino as Fecha_Final,prom as Promocion, total as Monto_Pagado, estado as Estatus from memSocio where idMems = '" + clave + "' order  by Estatus desc";
             dGWHistorial.DataSource = dts.consulta(q1).Tables[0];
+            dGWHistorial.Columns["Monto_Pagado"].DefaultCellStyle.Format = "N2";
+            dGWHistorial.Columns["Monto_Pagado"].DefaultCellStyle.NullValue = "0.00";
             timer1.Start();
         }
         public void consultaHistorial2(string clave)
         {
             q1 = "select idControl as ID,idMemS as Clave, tMem as Tipo, fechaIngreso as Fecha_Inicial, fechatermino as Fecha_Final,prom as Promocion, total as Monto_Pagado, estado as Estatus from memSocio where idMems = '" + clave + "' order  by Estatus desc";
             dGWHistorial.DataSource = dts.consulta(q1).Tables[0];
-           // timer1.Start();
+            dGWHistorial.Columns["Monto_Pagado"].DefaultCellStyle.Format = "N2";
+            dGWHistorial.Columns["Monto_Pagado"].DefaultCellStyle.NullValue = "0.00";
+            // timer1.Start();
         }
         #endregion
 

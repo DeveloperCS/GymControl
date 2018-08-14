@@ -98,6 +98,7 @@ namespace Control_Gimmnacio
                 }
                 else if (lb4.Visible.Equals(true))
                 {
+                    decimal numDec=0;
                     switch (sctEle)
                     {
                         case 1:
@@ -106,8 +107,8 @@ namespace Control_Gimmnacio
                             num4.Enabled = true;
                             txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
                             txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                            txt3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-
+                            numDec = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[3].Value.ToString());
+                            txt3.Text = numDec.ToString("N2");
                             num4.Value = Convert.ToInt64(dataGridView1.CurrentRow.Cells[2].Value.ToString());
                             break;
                         case 2:
@@ -116,7 +117,8 @@ namespace Control_Gimmnacio
                             num4.Enabled = true;
                             txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
                             txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                            txt3.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                            numDec =Convert.ToDecimal( dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                            txt3.Text = numDec.ToString("N2");
                             num4.Value = Convert.ToInt64(dataGridView1.CurrentRow.Cells[3].Value.ToString());
                             break;
                     }
@@ -191,7 +193,7 @@ namespace Control_Gimmnacio
                 {
                     if (lbTitulo.Text == "Productos Registrados")
                     {
-                        qry = "Update produc set nomProduc ='" + txt2.Text + "',cantidad=" + num4.Value + ",precio=" + txt3.Text + " where idProduc = " + txt1.Text + "";
+                        qry = "Update produc set nomProduc ='" + txt2.Text + "',cantidad=" + num4.Value + ",precio=" +Convert.ToDecimal( txt3.Text) + " where idProduc = " + txt1.Text + "";
                         if (dts.update(qry) == true)
                         {
                             MessageBox.Show("Elemento Guardado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -204,7 +206,7 @@ namespace Control_Gimmnacio
                     }
                     if (lbTitulo.Text == "Membresias Registradas")
                     {
-                        qry = "update memb set nomMem='" + txt2.Text + "',precioMem=" + txt3.Text + ",dias="+num4.Value+" where idMem=" + txt1.Text + " ";
+                        qry = "update memb set nomMem='" + txt2.Text + "',precioMem=" + Convert.ToDecimal( txt3.Text) + ",dias="+num4.Value+" where idMem=" + txt1.Text + " ";
                         if (dts.update(qry) == true)
                         {
                             MessageBox.Show("Elemento Guardado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);

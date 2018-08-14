@@ -37,7 +37,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.chekProm = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.lbTotal = new System.Windows.Forms.Label();
             this.lbDesc = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -47,6 +46,7 @@
             this.PickIni = new System.Windows.Forms.DateTimePicker();
             this.PickFin = new System.Windows.Forms.DateTimePicker();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -142,17 +142,6 @@
             this.label5.Size = new System.Drawing.Size(75, 32);
             this.label5.TabIndex = 2;
             this.label5.Text = "Total";
-            // 
-            // lbTotal
-            // 
-            this.lbTotal.AutoSize = true;
-            this.lbTotal.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotal.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lbTotal.Location = new System.Drawing.Point(597, 236);
-            this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(24, 25);
-            this.lbTotal.TabIndex = 2;
-            this.lbTotal.Text = "0";
             // 
             // lbDesc
             // 
@@ -254,12 +243,22 @@
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
+            // txtTotal
+            // 
+            this.txtTotal.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.ForeColor = System.Drawing.Color.Red;
+            this.txtTotal.Location = new System.Drawing.Point(573, 238);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(100, 31);
+            this.txtTotal.TabIndex = 9;
+            // 
             // vAgregaMemS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.PickFin);
             this.Controls.Add(this.PickIni);
@@ -271,7 +270,6 @@
             this.Controls.Add(this.chekProm);
             this.Controls.Add(this.lbDesc);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.lbTotal);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -302,7 +300,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox chekProm;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lbTotal;
         private System.Windows.Forms.Label lbDesc;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnCancelar;
@@ -312,5 +309,6 @@
         private System.Windows.Forms.DateTimePicker PickFin;
         private System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.TextBox txtclave;
+        private System.Windows.Forms.TextBox txtTotal;
     }
 }

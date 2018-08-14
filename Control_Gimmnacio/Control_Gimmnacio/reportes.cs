@@ -33,6 +33,7 @@ namespace Control_Gimmnacio
         private void reportes_Load(object sender, EventArgs e)
         {
             llenarReporte();
+            btnRes.Visible = false;
         }
         conexionDatos dts = new conexionDatos();
         string q = "";
@@ -42,27 +43,32 @@ namespace Control_Gimmnacio
             {
                 q = "Select idSocio as Clave, nombre as Nombre, fNacimiento as [Fecha de Nacimiento], sexo as Sexo,dir as Direccion, tel as [Telefono de Contacto], fb as Facebook  from socio";
                 dataGridView1.DataSource = dts.consulta(q).Tables[0];
-               
+                btnRes.Visible = false;
+
             }
             if (cbTipoReporte.SelectedItem.ToString()== "Memebresias")
             {
                 q = "select M.idMemS as [Clave Socio/Memebresia],(select S.nombre as Nombre from socio S where S.idSocio=idMems) Socio, M.idControl as [ID Membresia],M.tMem as Tipo, M.fechaIngreso as Inicio,M.fechatermino as Termino, M.prom as Promocion, M.estado as Estatus from memSocio M  order by Socio";
                 dataGridView1.DataSource = dts.consulta(q).Tables[0];
+                btnRes.Visible = false;
             }
             if(cbTipoReporte.SelectedItem.ToString()== "Visitantes")
             {
                 q = "select v.cantidad as Cantidad, v.fecha as [Fecha de ingreso] from visitante v";
                 dataGridView1.DataSource = dts.consulta(q).Tables[0];
+                btnRes.Visible = true;
             }
             if (cbTipoReporte.SelectedItem.ToString()=="Productos")
             {
                 q = "select idProduc as Id,nomProduc as Producto,cantidad as Cantidad,precio as Precio from produc";
                 dataGridView1.DataSource = dts.consulta(q).Tables[0];
+                btnRes.Visible = false;
             }
             if (cbTipoReporte.SelectedItem.ToString()== "Historial de Memebresias")
             {
                 q = "select M.idHS as [Clave Socio/Memebresia],(select S.nombre as Nombre from socio S where S.idSocio=idHS) Socio,M.tMem as Tipo, M.fechaIngreso as Inicio,M.fechatermino as Termino, M.prom as Promocion from historialS M order by Socio";
                 dataGridView1.DataSource = dts.consulta(q).Tables[0];
+                btnRes.Visible = true;
             }
         }
         string h = "",f="";
@@ -93,14 +99,13 @@ namespace Control_Gimmnacio
                         writer.ViewerPreferences = PdfWriter.PageModeUseThumbs;
                         writer.ViewerPreferences = PdfWriter.PageLayoutOneColumn;
                         doc.Open();
-
                         doc.Add(new Paragraph(encab));
                         doc.Add(new Paragraph(fechaC));
                         doc.Add(new Paragraph("\n"));
                         GenerarDocumentos(doc);
-
                         Process.Start(filename);
                         doc.Close();
+                     
 
                     }
                     catch (Exception ex)
@@ -110,6 +115,7 @@ namespace Control_Gimmnacio
                    
                    
                 }
+               
             }
         }
         //Función que genera el documento Pdf
@@ -175,7 +181,38 @@ namespace Control_Gimmnacio
             }*/
                 
         }
-           
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            /*if (cbTipoReporte.SelectedItem.ToString() == "Historial de Memebresias" )
+            {
+                if (MessageBox.Show("¿Desea restablecer el registro?", "Restablecer", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    string d = "delete from historialS ";
+                    if (dts.eliminar(d) == true)
+                    {
+                        MessageBox.Show("Registro borrado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cbTipoReporte.Items.Clear();
+                        llenarReporte();
+                        dataGridView1.Rows.Clear();
+                    }
+                }
+            }else if (cbTipoReporte.SelectedItem.ToString() == "Visitantes")
+            {
+                if (MessageBox.Show("¿Desea restablecer el registro?", "Restablecer", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    string d = "delete from visitante ";
+                    if (dts.eliminar(d) == true)
+                    {
+                        MessageBox.Show("Registro borrado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cbTipoReporte.Items.Clear();
+                        llenarReporte();
+                        dataGridView1.Rows.Clear();
+                    }
+                }
+            }*/
+        }
+
         //Función que obtiene los tamaños de las columnas del datagridview
         public float[] GetTamañoColumnas(DataGridView dg)
         {

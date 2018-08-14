@@ -47,3 +47,7 @@ C:\Users\Josiel\Documents\empresa\Control de Gimmnacio\GymControl\Control_Gimmna
 C:\Users\Josiel\Documents\empresa\Control de Gimmnacio\GymControl\Control_Gimmnacio\Control_Gimmnacio\bin\Debug\itextsharp.xtra.dll
 C:\Users\Josiel\Documents\empresa\Control de Gimmnacio\GymControl\Control_Gimmnacio\Control_Gimmnacio\bin\Debug\itextsharp.xml
 C:\Users\Josiel\Documents\empresa\Control de Gimmnacio\GymControl\Control_Gimmnacio\Control_Gimmnacio\obj\Debug\Control_Gimmnacio.vInfo.resources
+C:\Users\Josiel\Documents\empresa\Control de Gimmnacio\GymControl\Control_Gimmnacio\Control_Gimmnacio\bin\Debug\Control_Gimmnacio.exe.manifest
+C:\Users\Josiel\Documents\empresa\Control de Gimmnacio\GymControl\Control_Gimmnacio\Control_Gimmnacio\bin\Debug\Control_Gimmnacio.application
+C:\Users\Josiel\Documents\empresa\Control de Gimmnacio\GymControl\Control_Gimmnacio\Control_Gimmnacio\obj\Debug\Control_Gimmnacio.exe.manifest
+C:\Users\Josiel\Documents\empresa\Control de Gimmnacio\GymControl\Control_Gimmnacio\Control_Gimmnacio\obj\Debug\Control_Gimmnacio.application

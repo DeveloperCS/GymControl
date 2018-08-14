@@ -24,6 +24,7 @@ namespace Control_Gimmnacio
             PickIni.Enabled = false;
             PickFin.Enabled = false;
             lbDesc.Visible = false;
+            txtTotal.Enabled = false;
             cbProm.Visible = false;
             chekProm.Checked = false;
             fecheac1 = DateTime.Now.ToShortDateString();
@@ -76,7 +77,7 @@ namespace Control_Gimmnacio
             llenaCbMem();
         }
         string qyr1="";
-        double t = 0;
+        decimal t = 0;
         private void cbTipoMem_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataSet dataC = new DataSet();
@@ -87,8 +88,9 @@ namespace Control_Gimmnacio
             foreach (DataRow row in dt2.Rows)
             {
                 //
-                lbTotal.Text = row["p"].ToString();
-                t = Convert.ToDouble(row["p"]);
+             
+                t = Convert.ToDecimal(row["p"]);
+                txtTotal.Text = t.ToString("N2");
                 dias = Convert.ToInt32(row["d"].ToString());
             }
             PickFin.Value = PickIni.Value;
@@ -120,14 +122,15 @@ namespace Control_Gimmnacio
                 qyr1 = "select descuento as ds from prom where nomPromocion = '" + cbProm.Text + "' ";
                 dataC = dts.consulta(qyr1);
                 DataTable dt2 = dataC.Tables[0];
-                double vT = 0, vO = 0, vTT = 0;
-                vT = Convert.ToDouble(t);
+                decimal vT = 0, vO = 0, vTT = 0;
+                vT = Convert.ToDecimal(t);
                 foreach (DataRow row in dt2.Rows)
                 {
                     //
-                    vO = Convert.ToDouble(row["ds"].ToString());
+                    vO = Convert.ToDecimal(row["ds"].ToString());
                     vTT = vT * vO;
-                    lbTotal.Text = vT - vTT + "";
+                    decimal ttt = vT - vTT;
+                    txtTotal.Text = ttt.ToString("N2");
                 }
                 con = 1;
             }
@@ -166,14 +169,14 @@ namespace Control_Gimmnacio
                 string qH = "";
                 if (chekProm.Checked == true)
                 {
-                    qm1 = "insert into memSocio values('" + txtclave.Text + "','" + cbTipoMem.Text + "','" + PickIni.Value.ToString("yyyy/MM/dd") + "','" + PickFin.Value.ToString("yyyy/MM/dd") + "','" + cbProm.Text + "','" + lbTotal.Text + "','Vigente','"+id+"')";
+                    qm1 = "insert into memSocio values('" + txtclave.Text + "','" + cbTipoMem.Text + "','" + PickIni.Value.ToString("yyyy/MM/dd") + "','" + PickFin.Value.ToString("yyyy/MM/dd") + "','" + cbProm.Text + "','" +Convert.ToDecimal(txtTotal.Text) + "','Vigente','"+id+"')";
                     if (dts.insertar(qm1) == true)
                     {
                         MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         qrUPD = "update memSocio set estado='Archivado' where idControl = '" + idUPD + "'and idMemS ='"+txtclave.Text+"' ";
                         if (dts.update(qrUPD) == true)
                         {
-                            qH = "insert into historialS values('" + txtclave.Text + "','"+txtnoms.Text+"','" + cbTipoMem.Text + "','" + PickIni.Value.ToString("yyyy/MM/dd") + "','" + PickFin.Value.ToString("yyyy/MM/dd") + "','" + cbProm.Text + "','" + lbTotal.Text + "','Vigente')";
+                            qH = "insert into historialS values('" + txtclave.Text + "','"+txtnoms.Text+"','" + cbTipoMem.Text + "','" + PickIni.Value.ToString("yyyy/MM/dd") + "','" + PickFin.Value.ToString("yyyy/MM/dd") + "','" + cbProm.Text + "','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente')";
                             if (dts.insertar(qH) == true)
                             {
                                 this.Close();
@@ -188,7 +191,7 @@ namespace Control_Gimmnacio
                 }
                 else
                 {
-                    qm1 = "insert into memSocio values('" + txtclave.Text + "','" + cbTipoMem.Text + "','" + PickIni.Value.ToString("yyyy/MM/dd") + "','" + PickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + lbTotal.Text + "','Vigente','"+id+"')";
+                    qm1 = "insert into memSocio values('" + txtclave.Text + "','" + cbTipoMem.Text + "','" + PickIni.Value.ToString("yyyy/MM/dd") + "','" + PickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente','"+id+"')";
                     if (dts.insertar(qm1) == true)
                     {
                         MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -196,7 +199,7 @@ namespace Control_Gimmnacio
                         qrUPD = "update memSocio set estado='Archivado' where idControl = '" + idUPD + "'";
                         if (dts.update(qrUPD) == true)
                         {
-                            qH = "insert into historialS values('" + txtclave.Text + "','" + txtnoms.Text + "','" + cbTipoMem.Text + "','" + PickIni.Value.ToString("yyyy/MM/dd") + "','" + PickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + lbTotal.Text + "','Vigente')";
+                            qH = "insert into historialS values('" + txtclave.Text + "','" + txtnoms.Text + "','" + cbTipoMem.Text + "','" + PickIni.Value.ToString("yyyy/MM/dd") + "','" + PickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente')";
                             if (dts.insertar(qH) == true)
                             {
                                 this.Close();

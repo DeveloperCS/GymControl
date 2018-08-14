@@ -24,10 +24,11 @@ namespace Control_Gimmnacio
             cbDescProm.DropDownStyle = ComboBoxStyle.DropDownList;
             pickFin.Enabled = false;
             pickIni.Enabled = false;
-            fecheac = DateTime.Now.ToShortDateString();
+            txtTotal.Enabled = false;
+           fecheac = DateTime.Now.ToShortDateString();
             pickIni.Text = fecheac;
-           // lbTotal1.Caption = Format(lbTotal1.Caption, "#######.00");
-            
+            // lbTotal1.Caption = Format(lbTotal1.Caption, "#######.00");
+            //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
 
 
         }
@@ -111,7 +112,7 @@ namespace Control_Gimmnacio
             this.Close();
         }
         string qyr1 = "";
-        double t = 0;
+        decimal t = 0;
         private void cbTipoMembrecia_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -121,11 +122,13 @@ namespace Control_Gimmnacio
                 dataC = dts.consulta(qyr1);
                 DataTable dt2 = dataC.Tables[0];
                 int dias = 0;
+            
                 foreach (DataRow row in dt2.Rows)
                 {
                     //
-                    lbTotal1.Text = row["p"].ToString();
-                    t = Convert.ToDouble(row["p"]);
+                    
+                    t = Convert.ToDecimal(row["p"]);
+                    txtTotal.Text = t.ToString("N2");
                     dias = Convert.ToInt32(row["d"].ToString());
                 }
                 pickFin.Value = pickIni.Value;
@@ -165,14 +168,16 @@ namespace Control_Gimmnacio
                 qyr1 = "select descuento as ds from prom where nomPromocion = '" + cbDescProm.Text + "' ";
                 dataC = dts.consulta(qyr1);
                 DataTable dt2 = dataC.Tables[0];
-                double vT=0, vO=0,vTT=0;
-                vT = Convert.ToDouble(t);
+                decimal vT=0, vO=0,vTT=0;
+                vT = Convert.ToDecimal(t);
+                decimal ttt;
                 foreach (DataRow row in dt2.Rows)
                 {
                     //
-                    vO =Convert.ToDouble( row["ds"].ToString());
+                    vO =Convert.ToDecimal( row["ds"].ToString());
                     vTT= vT*vO;
-                    lbTotal1.Text = vT - vTT+"";
+                    ttt = vT - vTT;
+                    txtTotal.Text = ttt.ToString("N2");
                 }
                 con = 1;
             }
@@ -212,11 +217,11 @@ namespace Control_Gimmnacio
                 string qH = "";
                 if (checkDesc.Checked == true)
                 {
-                    qm1 = "insert into memSocio values('" + txtClaveM.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','" + cbDescProm.Text + "','" + lbTotal1.Text + "','Vigente','" + id + "')";
+                    qm1 = "insert into memSocio values('" + txtClaveM.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','" + cbDescProm.Text + "','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente','" + id + "')";
                     if (dts.insertar(qm1) == true)
                     {
-                        qH = "insert into historialS values('"+ txtClaveM.Text + "','"+txtNom.Text+"','"+ cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','" + cbDescProm.Text + "','" + lbTotal1.Text + "','Vigente')";
-                        if (dts.insertar(qH)==true)
+                        qH = "insert into historialS values('" + txtClaveM.Text + "','" + txtNom.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','" + cbDescProm.Text + "','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente')";
+                        if (dts.insertar(qH) == true)
                         {
                             MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             limpiaSocio();
@@ -228,10 +233,10 @@ namespace Control_Gimmnacio
                 }
                 else
                 {
-                    qm1 = "insert into memSocio values('" + txtClaveM.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + lbTotal1.Text + "','Vigente','" + id + "')";
+                    qm1 = "insert into memSocio values('" + txtClaveM.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente','" + id + "')";
                     if (dts.insertar(qm1) == true)
                     {
-                        qH = "insert into historialS values('" + txtClaveM.Text + "','" + txtNom.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + lbTotal1.Text + "','Vigente')";
+                        qH = "insert into historialS values('" + txtClaveM.Text + "','" + txtNom.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente')";
                         if (dts.insertar(qH) == true)
                         {
                             MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -361,7 +366,8 @@ namespace Control_Gimmnacio
         {
             nombres = "";
             txtClaveM.Text = "";
-            lbTotal1.Text = "0.00";
+            //lbTotal1.Text = "0.00";
+            txtTotal.Text = "";
             cbDescProm.Refresh();
             cbTipoMembrecia.Refresh();
             checkDesc.Checked = false;

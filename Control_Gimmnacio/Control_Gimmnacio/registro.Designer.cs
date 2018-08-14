@@ -40,12 +40,15 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtFB = new System.Windows.Forms.TextBox();
             this.groupPersonales = new System.Windows.Forms.GroupBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.cbSexo = new System.Windows.Forms.ComboBox();
             this.txtAñoFecha = new System.Windows.Forms.TextBox();
             this.cbMesFecha = new System.Windows.Forms.ComboBox();
             this.cbNumeroFecha = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupMembresia = new System.Windows.Forms.GroupBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.txtClaveM = new System.Windows.Forms.TextBox();
             this.btnCancelarMem = new System.Windows.Forms.Button();
             this.btnPagaMem = new System.Windows.Forms.Button();
@@ -55,7 +58,7 @@
             this.pickIni = new System.Windows.Forms.DateTimePicker();
             this.pickFin = new System.Windows.Forms.DateTimePicker();
             this.cbDescProm = new System.Windows.Forms.ComboBox();
-            this.lbTotal1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.cbTipoMembrecia = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lbDesc = new System.Windows.Forms.Label();
@@ -65,15 +68,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.agregaSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historialDeSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.groupPersonales.SuspendLayout();
-            this.groupMembresia.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupMembresia.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAgregaSocio
@@ -214,6 +216,16 @@
             this.groupPersonales.TabStop = false;
             this.groupPersonales.Text = "Datos de Socio";
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(767, 105);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 4;
+            this.pictureBox3.TabStop = false;
+            // 
             // cbSexo
             // 
             this.cbSexo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -251,6 +263,15 @@
             this.cbNumeroFecha.Size = new System.Drawing.Size(63, 29);
             this.cbNumeroFecha.TabIndex = 2;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(19, 47);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -265,6 +286,9 @@
             // groupMembresia
             // 
             this.groupMembresia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupMembresia.Controls.Add(this.radioButton3);
+            this.groupMembresia.Controls.Add(this.radioButton1);
+            this.groupMembresia.Controls.Add(this.txtTotal);
             this.groupMembresia.Controls.Add(this.txtClaveM);
             this.groupMembresia.Controls.Add(this.btnCancelarMem);
             this.groupMembresia.Controls.Add(this.btnPagaMem);
@@ -275,7 +299,6 @@
             this.groupMembresia.Controls.Add(this.pickFin);
             this.groupMembresia.Controls.Add(this.cbDescProm);
             this.groupMembresia.Controls.Add(this.pictureBox2);
-            this.groupMembresia.Controls.Add(this.lbTotal1);
             this.groupMembresia.Controls.Add(this.cbTipoMembrecia);
             this.groupMembresia.Controls.Add(this.label10);
             this.groupMembresia.Controls.Add(this.lbDesc);
@@ -289,6 +312,14 @@
             this.groupMembresia.TabIndex = 4;
             this.groupMembresia.TabStop = false;
             this.groupMembresia.Text = "Datos de Membresia";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.ForeColor = System.Drawing.Color.Red;
+            this.txtTotal.Location = new System.Drawing.Point(830, 111);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(125, 33);
+            this.txtTotal.TabIndex = 13;
             // 
             // txtClaveM
             // 
@@ -306,7 +337,7 @@
             this.btnCancelarMem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarMem.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarMem.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCancelarMem.Location = new System.Drawing.Point(701, 205);
+            this.btnCancelarMem.Location = new System.Drawing.Point(781, 188);
             this.btnCancelarMem.Name = "btnCancelarMem";
             this.btnCancelarMem.Size = new System.Drawing.Size(100, 42);
             this.btnCancelarMem.TabIndex = 11;
@@ -322,7 +353,7 @@
             this.btnPagaMem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPagaMem.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPagaMem.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnPagaMem.Location = new System.Drawing.Point(817, 205);
+            this.btnPagaMem.Location = new System.Drawing.Point(897, 188);
             this.btnPagaMem.Name = "btnPagaMem";
             this.btnPagaMem.Size = new System.Drawing.Size(100, 42);
             this.btnPagaMem.TabIndex = 10;
@@ -337,7 +368,7 @@
             this.checkDesc.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkDesc.ForeColor = System.Drawing.Color.Black;
             this.checkDesc.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.checkDesc.Location = new System.Drawing.Point(23, 135);
+            this.checkDesc.Location = new System.Drawing.Point(19, 159);
             this.checkDesc.Name = "checkDesc";
             this.checkDesc.Size = new System.Drawing.Size(243, 36);
             this.checkDesc.TabIndex = 9;
@@ -351,7 +382,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(294, 94);
+            this.label13.Location = new System.Drawing.Point(303, 96);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(55, 19);
             this.label13.TabIndex = 7;
@@ -362,7 +393,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(294, 135);
+            this.label8.Location = new System.Drawing.Point(303, 137);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 19);
             this.label8.TabIndex = 7;
@@ -371,7 +402,7 @@
             // pickIni
             // 
             this.pickIni.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pickIni.Location = new System.Drawing.Point(351, 92);
+            this.pickIni.Location = new System.Drawing.Point(360, 94);
             this.pickIni.Name = "pickIni";
             this.pickIni.Size = new System.Drawing.Size(259, 23);
             this.pickIni.TabIndex = 6;
@@ -380,7 +411,7 @@
             // pickFin
             // 
             this.pickFin.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pickFin.Location = new System.Drawing.Point(351, 137);
+            this.pickFin.Location = new System.Drawing.Point(360, 139);
             this.pickFin.Name = "pickFin";
             this.pickFin.Size = new System.Drawing.Size(259, 23);
             this.pickFin.TabIndex = 6;
@@ -394,21 +425,21 @@
             "Descuento 25%",
             "Descuento 50%",
             "Promocion por cumpleaños"});
-            this.cbDescProm.Location = new System.Drawing.Point(279, 202);
+            this.cbDescProm.Location = new System.Drawing.Point(205, 215);
             this.cbDescProm.Name = "cbDescProm";
             this.cbDescProm.Size = new System.Drawing.Size(229, 25);
             this.cbDescProm.TabIndex = 5;
             this.cbDescProm.SelectedIndexChanged += new System.EventHandler(this.cbDescProm_SelectedIndexChanged);
             // 
-            // lbTotal1
+            // pictureBox2
             // 
-            this.lbTotal1.AutoSize = true;
-            this.lbTotal1.ForeColor = System.Drawing.Color.DimGray;
-            this.lbTotal1.Location = new System.Drawing.Point(796, 119);
-            this.lbTotal1.Name = "lbTotal1";
-            this.lbTotal1.Size = new System.Drawing.Size(54, 25);
-            this.lbTotal1.TabIndex = 3;
-            this.lbTotal1.Text = "0.00";
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(730, 76);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(89, 62);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
             // 
             // cbTipoMembrecia
             // 
@@ -426,7 +457,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(745, 82);
+            this.label10.Location = new System.Drawing.Point(825, 65);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(152, 25);
             this.label10.TabIndex = 0;
@@ -437,7 +468,7 @@
             this.lbDesc.AutoSize = true;
             this.lbDesc.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDesc.ForeColor = System.Drawing.Color.Black;
-            this.lbDesc.Location = new System.Drawing.Point(89, 203);
+            this.lbDesc.Location = new System.Drawing.Point(15, 216);
             this.lbDesc.Name = "lbDesc";
             this.lbDesc.Size = new System.Drawing.Size(185, 19);
             this.lbDesc.TabIndex = 0;
@@ -509,34 +540,29 @@
             this.historialDeSociosToolStripMenuItem.Name = "historialDeSociosToolStripMenuItem";
             this.historialDeSociosToolStripMenuItem.Size = new System.Drawing.Size(12, 21);
             // 
-            // pictureBox2
+            // radioButton1
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(650, 93);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(89, 62);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(370, 51);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(97, 23);
+            this.radioButton1.TabIndex = 14;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Semanal";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // pictureBox3
+            // radioButton3
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(767, 105);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(19, 47);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton3.Location = new System.Drawing.Point(493, 51);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(92, 23);
+            this.radioButton3.TabIndex = 14;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Mensual";
+            this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // registro
             // 
@@ -557,13 +583,13 @@
             this.Load += new System.EventHandler(this.registro_Load);
             this.groupPersonales.ResumeLayout(false);
             this.groupPersonales.PerformLayout();
-            this.groupMembresia.ResumeLayout(false);
-            this.groupMembresia.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupMembresia.ResumeLayout(false);
+            this.groupMembresia.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -584,7 +610,6 @@
         private System.Windows.Forms.ComboBox cbMesFecha;
         private System.Windows.Forms.ComboBox cbNumeroFecha;
         private System.Windows.Forms.GroupBox groupMembresia;
-        private System.Windows.Forms.Label lbTotal1;
         private System.Windows.Forms.ComboBox cbTipoMembrecia;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label1;
@@ -609,5 +634,8 @@
         public System.Windows.Forms.TextBox txtAñoFecha;
         private System.Windows.Forms.TextBox txtClaveM;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }

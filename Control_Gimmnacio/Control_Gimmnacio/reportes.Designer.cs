@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbTipoReporte = new System.Windows.Forms.ComboBox();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnRes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,11 +86,23 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // btnRes
+            // 
+            this.btnRes.Cursor = System.Windows.Forms.Cursors.No;
+            this.btnRes.Location = new System.Drawing.Point(820, 61);
+            this.btnRes.Name = "btnRes";
+            this.btnRes.Size = new System.Drawing.Size(75, 23);
+            this.btnRes.TabIndex = 7;
+            this.btnRes.Text = "Restablecer";
+            this.btnRes.UseVisualStyleBackColor = true;
+            this.btnRes.Click += new System.EventHandler(this.button1_Click);
+            // 
             // reportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1050, 600);
+            this.Controls.Add(this.btnRes);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.cbTipoReporte);
             this.Controls.Add(this.label1);
@@ -111,5 +124,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbTipoReporte;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnRes;
     }
 }
