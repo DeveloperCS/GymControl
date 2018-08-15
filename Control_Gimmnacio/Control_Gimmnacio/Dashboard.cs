@@ -161,7 +161,15 @@ namespace Control_Gimmnacio
             string usExist = "";
             foreach (DataRow row in dt2.Rows)
             {
-                lbTotalVis.Text = row["T"].ToString();
+                if (row["T"].ToString().Equals(""))
+                {
+                    lbTotalVis.Text ="0";
+                }
+                else
+                {
+                    lbTotalVis.Text = row["T"].ToString();
+                }
+                
             }
             //compruebo los que hoy 
             qVis = " SELECT Sum(cantidad) as H FROM visitante where fecha = CONVERT(date, SYSDATETIME())";
@@ -171,7 +179,15 @@ namespace Control_Gimmnacio
 
             foreach (DataRow row in dt22.Rows)
             {
-                lbTHoy.Text = row["H"].ToString();
+                
+                if (row["H"].ToString().Equals(""))
+                {
+                    lbTHoy.Text = "0";
+                }
+                else
+                {
+                    lbTHoy.Text = row["H"].ToString();
+                }
             }
             //comprueb en mes 
             qVis = "select Sum(cantidad) as M from visitante where  MONTH(fecha) = Month(CONVERT (date, SYSDATETIME()))";
@@ -180,7 +196,15 @@ namespace Control_Gimmnacio
             DataTable dt3 = dataC3.Tables[0];
             foreach (DataRow row in dt3.Rows)
             {
-                lbMes.Text = row["M"].ToString();
+                
+                if (row["M"].ToString().Equals(""))
+                {
+                    lbMes.Text = "0";
+                }
+                else
+                {
+                    lbMes.Text = row["M"].ToString();
+                }
             }
             #endregion
 
@@ -344,6 +368,11 @@ namespace Control_Gimmnacio
             }
             
             #endregion
+        }
+
+        private void btnVenderProdc_Click(object sender, EventArgs e)
+        {
+            new vVender().ShowDialog();
         }
 
         private void btnNuevoVis_Click(object sender, EventArgs e)

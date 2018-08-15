@@ -68,6 +68,7 @@ namespace Control_Gimmnacio
             }
             else
             {
+                btnEliminar.Enabled = false;
                 if (lb4.Visible.Equals(false))
                 {
                     if (cPorcent == 0)
@@ -102,24 +103,27 @@ namespace Control_Gimmnacio
                     switch (sctEle)
                     {
                         case 1:
+                            //productos
                             txt2.Enabled = true;
                             txt3.Enabled = true;
                             num4.Enabled = true;
                             txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                            txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                            numDec = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[3].Value.ToString());
+                            txt2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                            numDec = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[4].Value.ToString());
                             txt3.Text = numDec.ToString("N2");
-                            num4.Value = Convert.ToInt64(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                            // num4.Value = Convert.ToInt64(dataGridView1.CurrentRow.Cells[3].Value.ToString());
+                            num4.Value = 0;
                             break;
                         case 2:
-                            txt2.Enabled = true;
+                            //membresias 
+                            txt2.Enabled = false;
                             txt3.Enabled = true;
-                            num4.Enabled = true;
+                            num4.Enabled = false;
                             txt1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                            txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                            numDec =Convert.ToDecimal( dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                            txt2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString()+" "+ dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                            numDec =Convert.ToDecimal( dataGridView1.CurrentRow.Cells[3].Value.ToString());
                             txt3.Text = numDec.ToString("N2");
-                            num4.Value = Convert.ToInt64(dataGridView1.CurrentRow.Cells[3].Value.ToString());
+                           // num4.Value = Convert.ToInt64(dataGridView1.CurrentRow.Cells[2].Value.ToString());
                             break;
                     }
 
@@ -193,12 +197,31 @@ namespace Control_Gimmnacio
                 {
                     if (lbTitulo.Text == "Productos Registrados")
                     {
-                        qry = "Update produc set nomProduc ='" + txt2.Text + "',cantidad=" + num4.Value + ",precio=" +Convert.ToDecimal( txt3.Text) + " where idProduc = " + txt1.Text + "";
+                        //sacar la cantidad de producto que hay
+                        string q12 = "select stock as s from product where idProduc = '" + txt1.Text + "'";
+                        DataSet dtset = new DataSet();
+                        dtset = dts.consulta(q12);
+                        DataTable tD = dtset.Tables[0];
+                        int cant = 0;
+                        foreach (DataRow row in tD.Rows)
+                        {
+                            if (row["s"].ToString().Equals(""))
+                            {
+                                cant = 0;
+                            }
+                            else
+                            {
+                                cant = Convert.ToInt32(row["s"].ToString());
+                            }
+                        }
+                        cant = cant + Convert.ToInt32( num4.Value);
+                    
+                        qry = "Update product set nomProduc ='" + txt2.Text + "',stock=" + cant + ",precio=" +Convert.ToDecimal( txt3.Text) + " where idProduc = " + txt1.Text + "";
                         if (dts.update(qry) == true)
                         {
                             MessageBox.Show("Elemento Guardado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             limpiar();
-                            q2 = "select idProduc as Id,nomProduc as Producto,cantidad as Cantidad,precio as Precio from produc";
+                            q2 = "select idProduc as Id,cod as Codigo,nomProduc as Producto,stock as Cantidad,precio as Precio from product";
                             consultar(q2);
                             bloqueaEliminar(2);
                         }
@@ -206,12 +229,12 @@ namespace Control_Gimmnacio
                     }
                     if (lbTitulo.Text == "Membresias Registradas")
                     {
-                        qry = "update memb set nomMem='" + txt2.Text + "',precioMem=" + Convert.ToDecimal( txt3.Text) + ",dias="+num4.Value+" where idMem=" + txt1.Text + " ";
+                        qry = "update memb set  precioMem=" + Convert.ToDecimal( txt3.Text) + " where idMem=" + txt1.Text + " ";
                         if (dts.update(qry) == true)
                         {
                             MessageBox.Show("Elemento Guardado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             limpiar();
-                            q2 = "select idMem as Id, nomMem as Membresia,precioMem as Precio,dias as Dias from memb";
+                            q2 = "select idMem as Id, nomMem as Membresia,tipoPersona as [Tipo Persona],precioMem as Precio from memb";
                             consultar(q2);
                             bloqueaEliminar(2);
                         }
@@ -250,12 +273,12 @@ namespace Control_Gimmnacio
                 {
                     if (lbTitulo.Text == "Productos Registrados")
                     {
-                        qry = "Delete from produc Where idProduc=" + dataGridView1.CurrentRow.Cells[0].Value.ToString() + "";
+                        qry = "Delete from product Where idProduc=" + dataGridView1.CurrentRow.Cells[0].Value.ToString() + "";
                         if (dts.eliminar(qry) == true)
                         {
                             MessageBox.Show("Elemento Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             limpiar();
-                            q2 = "select idProduc as Id,nomProduc as Producto,cantidad as Cantidad,precio as Precio from produc";
+                            q2 = "select idProduc as Id,cod as Codigo,nomProduc as Producto,stock as Cantidad,precio as Precio from product";
                             consultar(q2);
                         }
 

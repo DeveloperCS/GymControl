@@ -181,6 +181,12 @@
     <Compile Include="vInfo.Designer.cs">
       <DependentUpon>vInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="vVender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vVender.Designer.cs">
+      <DependentUpon>vVender.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="agregaCantMes.resx">
       <DependentUpon>agregaCantMes.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="vInfo.resx">
       <DependentUpon>vInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vVender.resx">
+      <DependentUpon>vVender.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="controlGymDataSet.xsc">
       <DependentUpon>controlGymDataSet.xsd</DependentUpon>

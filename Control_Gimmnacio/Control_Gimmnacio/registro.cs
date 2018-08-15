@@ -59,10 +59,10 @@ namespace Control_Gimmnacio
         }
         public void llenaCbMem()
         {
-            string q1 = "select * from memb order by precioMem";
+            string q1 = "select nomMem+'-'+tipoPersona as T from memb order by precioMem";
             cbTipoMembrecia.DataSource = dts.consulta(q1).Tables[0];
             cbTipoMembrecia.DisplayMember = "Membresia";
-            cbTipoMembrecia.ValueMember = "nomMem";
+            cbTipoMembrecia.ValueMember = "T";
         }
 
        
@@ -113,26 +113,63 @@ namespace Control_Gimmnacio
         }
         string qyr1 = "";
         decimal t = 0;
+        string sex = "";
         private void cbTipoMembrecia_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-          
+            string cb = cbTipoMembrecia.Text;
+            string[] res = cb.Split('-');
+           
                 DataSet dataC = new DataSet();
-                qyr1 = "select precioMem as p,dias as d from memb where nomMem = '" + cbTipoMembrecia.Text + "' ";
+                qyr1 = "select precioMem as p,tipoPersona as tp from memb where nomMem = '" + res[0] + "' ";
                 dataC = dts.consulta(qyr1);
                 DataTable dt2 = dataC.Tables[0];
-                int dias = 0;
-            
+                int dias = 0,mes =0, anio=0;
+                pickFin.Value = pickIni.Value;
+                int diasPlus = 0, mesP =0;
+                dias = pickFin.Value.Day;
+                mes = pickFin.Value.Month;
+                anio=pickFin.Value.Year;
+         
                 foreach (DataRow row in dt2.Rows)
                 {
-                    //
-                    
-                    t = Convert.ToDecimal(row["p"]);
-                    txtTotal.Text = t.ToString("N2");
-                    dias = Convert.ToInt32(row["d"].ToString());
+                //
+                        t = Convert.ToDecimal(row["p"]);
+                        txtTotal.Text = t.ToString("N2");
+                    if (dias == 28 && mes == 2)
+                    {
+                        //diasPlus = dias;
+                         if (res[0] == "Mensual")
+                         {
+                            mesP++;
+                            pickFin.Value = DateTime.Now.AddMonths(mesP);
+                            break;
+                         }
+                         else if (res[0] == "Semanal")
+                         {
+                            diasPlus = 7;
+                            pickFin.Value = DateTime.Now.AddDays(diasPlus);
+                            break;
+                         }
+                    }
+                    else if(mes !=2)
+                    {
+                        if (res[0] == "Mensual")
+                        {
+                            mesP++;
+                            pickFin.Value = DateTime.Now.AddMonths(mesP);
+                            break;
+                        }
+                        else if (res[0] == "Semanal")
+                        {
+                            diasPlus = 7;
+                            pickFin.Value = DateTime.Now.AddDays(diasPlus);
+                            break;
+                        }
+                      
+                    }   
+                   // dias = Convert.ToInt32(row["d"].ToString());
                 }
-                pickFin.Value = pickIni.Value;
-                pickFin.Value = DateTime.Now.AddDays(dias);
+               
            // }
             /*saco los datos de membresias*/
            
@@ -192,63 +229,70 @@ namespace Control_Gimmnacio
 
         private void btnPagaMem_Click(object sender, EventArgs e)
         {
-           
-            if (MessageBox.Show("¿Agregar Membresia?","Agregar",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+            if (cbSexo.Text.Equals(sex))
             {
-                /*Para generar id de Mem*/
-                DataSet dataC1 = new DataSet();
-                string qqAc = "select Max(idControl) as C1 from memSocio";
-                dataC1 = dts.consulta(qqAc);
-                DataTable dt2 = dataC1.Tables[0];
-                string exten = "";
-                foreach (DataRow row in dt2.Rows)
+                if (MessageBox.Show("¿Agregar Membresia?", "Agregar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    exten = row["C1"].ToString();
-                }
-                int id = 0;
-                if (exten == null || exten == "")
-                {
-                    id++;
-                }
-                else
-                {
-                    id = Convert.ToInt32(exten) + 1;
-                }
-                string qH = "";
-                if (checkDesc.Checked == true)
-                {
-                    qm1 = "insert into memSocio values('" + txtClaveM.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','" + cbDescProm.Text + "','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente','" + id + "')";
-                    if (dts.insertar(qm1) == true)
+                    /*Para generar id de Mem*/
+                    DataSet dataC1 = new DataSet();
+                    string qqAc = "select Max(idControl) as C1 from memSocio";
+                    dataC1 = dts.consulta(qqAc);
+                    DataTable dt2 = dataC1.Tables[0];
+                    string exten = "";
+                    foreach (DataRow row in dt2.Rows)
                     {
-                        qH = "insert into historialS values('" + txtClaveM.Text + "','" + txtNom.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','" + cbDescProm.Text + "','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente')";
-                        if (dts.insertar(qH) == true)
-                        {
-                            MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            limpiaSocio();
-                            limpiaMem();
-
-                        }
-
+                        exten = row["C1"].ToString();
                     }
-                }
-                else
-                {
-                    qm1 = "insert into memSocio values('" + txtClaveM.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente','" + id + "')";
-                    if (dts.insertar(qm1) == true)
+                    int id = 0;
+                    if (exten == null || exten == "")
                     {
-                        qH = "insert into historialS values('" + txtClaveM.Text + "','" + txtNom.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente')";
-                        if (dts.insertar(qH) == true)
+                        id++;
+                    }
+                    else
+                    {
+                        id = Convert.ToInt32(exten) + 1;
+                    }
+                    string qH = "";
+                    if (checkDesc.Checked == true)
+                    {
+                        qm1 = "insert into memSocio values('" + txtClaveM.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','" + cbDescProm.Text + "','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente','" + id + "')";
+                        if (dts.insertar(qm1) == true)
                         {
-                            MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            limpiaSocio();
-                            limpiaMem();
+                            qH = "insert into historialS values('" + txtClaveM.Text + "','" + txtNom.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','" + cbDescProm.Text + "','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente')";
+                            if (dts.insertar(qH) == true)
+                            {
+                                MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                limpiaSocio();
+                                limpiaMem();
+
+                            }
 
                         }
                     }
+                    else
+                    {
+                        qm1 = "insert into memSocio values('" + txtClaveM.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente','" + id + "')";
+                        if (dts.insertar(qm1) == true)
+                        {
+                            qH = "insert into historialS values('" + txtClaveM.Text + "','" + txtNom.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente')";
+                            if (dts.insertar(qH) == true)
+                            {
+                                MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                limpiaSocio();
+                                limpiaMem();
+
+                            }
+                        }
+                    }
+
+
                 }
-                   
-                    
             }
+            else
+            {
+                MessageBox.Show("Memebresia no compatible con el sexo del socio \n \n Eliga otra membresia","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+           
             
         }
         #region validacion

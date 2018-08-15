@@ -347,7 +347,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.NumericUpDown num4;
@@ -359,5 +358,6 @@
         public System.Windows.Forms.Label lb2;
         public System.Windows.Forms.Label lb1;
         public System.Windows.Forms.Label lbPN;
+        public System.Windows.Forms.Button btnEliminar;
     }
 }

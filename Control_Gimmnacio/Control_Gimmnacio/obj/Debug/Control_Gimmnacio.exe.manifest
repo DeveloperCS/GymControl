@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Control_Gimmnacio.exe" size="2610152">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Control_Gimmnacio.exe" size="2643944">
       <assemblyIdentity name="Control_Gimmnacio" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DYMPl6uhnJy1oJdAbidDN6At/bTQAUlUQ89Zc3gc51M=</dsig:DigestValue>
+        <dsig:DigestValue>bEQe2a6BfRMEDzVs2Dyk3uIHOjcRxKIOj0jv8nvbSDQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -20,6 +20,8 @@ namespace Control_Gimmnacio
             //deshabilita controles
             txtOtroProm.Visible = false;
             labelOtroProm.Visible = false;
+            groupBox5.Enabled = false;
+            groupBox5.Visible = false;
         }
 
         private void cbDescuento_SelectedIndexChanged(object sender, EventArgs e)
@@ -81,7 +83,7 @@ namespace Control_Gimmnacio
         string q = "";
         private void verListaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            q = "select idProduc as Id,nomProduc as Producto,cantidad as Cantidad,precio as Precio from produc";
+            q = "select idProduc as Id,cod as Codigo,nomProduc as Producto,stock as Cantidad,precio as Precio from product";
             edit.dataGridView1.DataSource = dts.consulta(q).Tables[0];
             edit.dataGridView1.Columns["Precio"].DefaultCellStyle.Format = "N2";
             edit.dataGridView1.Columns["Precio"].DefaultCellStyle.NullValue = "0.00";
@@ -104,7 +106,7 @@ namespace Control_Gimmnacio
 
         private void verListaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            q = "select idMem as Id, nomMem as Membresia,precioMem as Precio,dias as Dias from memb";
+            q = "select idMem as Id, nomMem as Membresia,tipoPersona as [Tipo Persona],precioMem as Precio from memb";
             edit.dataGridView1.DataSource = dts.consulta(q).Tables[0];
             edit.dataGridView1.Columns["Precio"].DefaultCellStyle.Format = "N2";
             edit.dataGridView1.Columns["Precio"].DefaultCellStyle.NullValue = "0.00";
@@ -113,9 +115,11 @@ namespace Control_Gimmnacio
             edit.lb2.Text = "Membresia";
             edit.lb3.Text = "Precio";
             edit.lbPN.Text = "MNX";
-            edit.lb4.Text = "Dias";
+            edit.lb4.Text ="";
             edit.lb4.Visible = true;
-            edit.num4.Visible = true;
+            edit.num4.Visible = false;
+            edit.btnEliminar.Visible = false;
+            edit.btnEliminar.Enabled = false;
             edit.caso = 2;
             edit.cPorcent = 0;
             edit.sctEle = 2;
@@ -167,7 +171,7 @@ namespace Control_Gimmnacio
         public void limpiarM()
         {
             txtPMem.Text = "";
-            txtNMem.Text = "";
+            //txtNMem.Text = "";
             numDiasMem.Value = 0;
             /*txtNMem.ForeColor = Color.LightGray;
             txtPMem.ForeColor = Color.LightGray;*/
@@ -176,7 +180,7 @@ namespace Control_Gimmnacio
         {
 
             
-            if (txtNMem.Text == "" || txtPMem.Text == ""||numDiasMem.Value ==0)
+            if (/*txtNMem.Text == "" ||*/ txtPMem.Text == ""||numDiasMem.Value ==0)
             {
                 MessageBox.Show("Falto llenar algun campo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -184,7 +188,7 @@ namespace Control_Gimmnacio
             {
                 if (MessageBox.Show("¿Desea Agregar?", "Agregar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    string qry1 = "Insert into memb values('" + txtNMem.Text + "'," + Convert.ToDouble(txtPMem.Text) + ","+numDiasMem.Value+")";
+                    string qry1 = "Insert into memb values('" + /*txtNMem.Text +*/ "'," + Convert.ToDouble(txtPMem.Text) + ","+numDiasMem.Value+")";
                     if (dts.insertar(qry1) == true)
                     {
                         MessageBox.Show("Membresia Agregada", "Exito!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -197,7 +201,7 @@ namespace Control_Gimmnacio
 
         private void btnCMem_Click(object sender, EventArgs e)
         {
-            if (txtNMem.Text != "" && txtPMem.Text !="")
+            if (/*txtNMem.Text != "" &&*/ txtPMem.Text !="")
             {
                 if (MessageBox.Show("¿Desea Cancelar?", "Cancelar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -265,7 +269,18 @@ namespace Control_Gimmnacio
         }
         private void btnAProduc_Click(object sender, EventArgs e)
         {
-
+            string cod = "";
+            cod = txtNombreProduc.Text;
+            var datos = (from c in cod.Split(' ') where Char.IsUpper(Convert.ToChar(c.Substring(0, 1))) select c.Substring(0, 1));
+            // Ahora probamos que funcione...
+           string clave = "", codFinal="";
+            int con = 0;
+            foreach (string s in datos)
+            {
+                clave += s;
+                con++;
+            }
+            codFinal = clave + "-" + con;
             if (txtNombreProduc.Text == "" || txtPrecioProduc.Text == "")
             {
                 MessageBox.Show("Falto llenar algun campo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -280,7 +295,7 @@ namespace Control_Gimmnacio
                 {
                     if (MessageBox.Show("¿Desea Agregar?","Agregar",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
                     {
-                        string qry2 = "insert into produc values('" + txtNombreProduc.Text + "'," + cantProduc.Value + "," + txtPrecioProduc.Text + ")";
+                        string qry2 = "insert into product values('"+codFinal+"','" + txtNombreProduc.Text + "'," + cantProduc.Value + "," + txtPrecioProduc.Text + ")";
                         if (dts.insertar(qry2) == true)
                         {
                             MessageBox.Show("Producto Agregado", "Exito!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -418,7 +433,7 @@ namespace Control_Gimmnacio
         }
         private void txtNMem_TextChanged(object sender, EventArgs e)
         {
-            LetrasMayus(txtNMem);
+            /*LetrasMayus(txtNMem);*/
         }
         private void txtNP1_TextChanged(object sender, EventArgs e)
         {
@@ -428,8 +443,34 @@ namespace Control_Gimmnacio
         {
             LetrasMayus(txtNombreProduc);
         }
+
         #endregion
 
+       
+        private void limpiarListaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string q = "";
+            if (MessageBox.Show("¿Desea eliminar los visitantes? \n \n Puedes Generar un reporte desde la opcion 'REPORTES' en el menú","Eliminar",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+            {
+                q = "Delete from visitante";
+                if (dts.eliminar(q)==true)
+                {
+                    MessageBox.Show("Datos eliminados con exito!!","Exito",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                }
+            }
+        }
 
+        private void limpiarListaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            string q = "";
+            if (MessageBox.Show("¿Desea eliminar el Historial de Membresias? \n \n Puedes Generar un reporte desde la opcion 'REPORTES' en el menú", "Eliminar", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                q = "Delete from historialS";
+                if (dts.eliminar(q) == true)
+                {
+                    MessageBox.Show("Datos eliminados con exito!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
     }
 }

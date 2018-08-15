@@ -137,7 +137,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label5.Location = new System.Drawing.Point(582, 181);
+            this.label5.Location = new System.Drawing.Point(603, 194);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 32);
             this.label5.TabIndex = 2;
@@ -236,7 +236,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Control_Gimmnacio.Properties.Resources.dolar;
-            this.pictureBox1.Location = new System.Drawing.Point(440, 219);
+            this.pictureBox1.Location = new System.Drawing.Point(451, 211);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -245,11 +245,11 @@
             // 
             // txtTotal
             // 
-            this.txtTotal.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.ForeColor = System.Drawing.Color.Red;
             this.txtTotal.Location = new System.Drawing.Point(573, 238);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(100, 31);
+            this.txtTotal.Size = new System.Drawing.Size(140, 43);
             this.txtTotal.TabIndex = 9;
             // 
             // vAgregaMemS

@@ -68,8 +68,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.agregaSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historialDeSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.groupPersonales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -286,8 +284,6 @@
             // groupMembresia
             // 
             this.groupMembresia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupMembresia.Controls.Add(this.radioButton3);
-            this.groupMembresia.Controls.Add(this.radioButton1);
             this.groupMembresia.Controls.Add(this.txtTotal);
             this.groupMembresia.Controls.Add(this.txtClaveM);
             this.groupMembresia.Controls.Add(this.btnCancelarMem);
@@ -315,10 +311,11 @@
             // 
             // txtTotal
             // 
+            this.txtTotal.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.ForeColor = System.Drawing.Color.Red;
-            this.txtTotal.Location = new System.Drawing.Point(830, 111);
+            this.txtTotal.Location = new System.Drawing.Point(830, 97);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(125, 33);
+            this.txtTotal.Size = new System.Drawing.Size(147, 41);
             this.txtTotal.TabIndex = 13;
             // 
             // txtClaveM
@@ -540,30 +537,6 @@
             this.historialDeSociosToolStripMenuItem.Name = "historialDeSociosToolStripMenuItem";
             this.historialDeSociosToolStripMenuItem.Size = new System.Drawing.Size(12, 21);
             // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(370, 51);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(97, 23);
-            this.radioButton1.TabIndex = 14;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Semanal";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(493, 51);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(92, 23);
-            this.radioButton3.TabIndex = 14;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Mensual";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
             // registro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -635,7 +608,5 @@
         private System.Windows.Forms.TextBox txtClaveM;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton1;
     }
 }

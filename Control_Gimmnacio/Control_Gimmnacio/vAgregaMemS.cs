@@ -64,10 +64,10 @@ namespace Control_Gimmnacio
         }
         public void llenaCbMem()
         {
-            string q1 = "select * from memb order by precioMem";
+            string q1 = "select nomMem+'-'+tipoPersona as T from memb order by precioMem";
             cbTipoMem.DataSource = dts.consulta(q1).Tables[0];
             cbTipoMem.DisplayMember = "Membresia";
-            cbTipoMem.ValueMember = "nomMem";
+            cbTipoMem.ValueMember = "T";
         }
         #endregion
 
@@ -80,21 +80,62 @@ namespace Control_Gimmnacio
         decimal t = 0;
         private void cbTipoMem_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            string cb = cbTipoMem.Text;
+            string[] res = cb.Split('-');
+
             DataSet dataC = new DataSet();
-            qyr1 = "select precioMem as p,dias as d from memb where nomMem = '" + cbTipoMem.Text + "' ";
+            qyr1 = "select precioMem as p,tipoPersona as tp from memb where nomMem = '" + res[0] + "' ";
             dataC = dts.consulta(qyr1);
             DataTable dt2 = dataC.Tables[0];
-            int dias = 0;
+            int dias = 0, mes = 0, anio = 0;
+            PickFin.Value = PickIni.Value;
+            int diasPlus = 0, mesP = 0;
+            dias = PickFin.Value.Day;
+            mes = PickFin.Value.Month;
+            anio = PickFin.Value.Year;
             foreach (DataRow row in dt2.Rows)
             {
                 //
              
                 t = Convert.ToDecimal(row["p"]);
                 txtTotal.Text = t.ToString("N2");
-                dias = Convert.ToInt32(row["d"].ToString());
+                // dias = Convert.ToInt32(row["d"].ToString());
+                if (dias == 28 && mes == 2)
+                {
+                    //diasPlus = dias;
+                    if (res[0] == "Mensual")
+                    {
+                        mesP++;
+                        PickFin.Value = DateTime.Now.AddMonths(mesP);
+                        break;
+                    }
+                    else if (res[0] == "Semanal")
+                    {
+                        diasPlus = 7;
+                        PickFin.Value = DateTime.Now.AddDays(diasPlus);
+                        break;
+                    }
+                }
+                else if (mes != 2)
+                {
+                    if (res[0] == "Mensual")
+                    {
+                        mesP++;
+                        PickFin.Value = DateTime.Now.AddMonths(mesP);
+                        break;
+                    }
+                    else if (res[0] == "Semanal")
+                    {
+                        diasPlus = 7;
+                        PickFin.Value = DateTime.Now.AddDays(diasPlus);
+                        break;
+                    }
+
+                }
             }
-            PickFin.Value = PickIni.Value;
-            PickFin.Value = DateTime.Now.AddDays(dias);
+            /*PickFin.Value = PickIni.Value;
+            PickFin.Value = DateTime.Now.AddDays(dias);*/
         }
         int con = 0;
         private void chekProm_CheckedChanged(object sender, EventArgs e)

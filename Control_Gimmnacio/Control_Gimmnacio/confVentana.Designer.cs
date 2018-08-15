@@ -61,6 +61,8 @@
             this.verListaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.productoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verListaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.visitantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.limpiarListaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtProcentProm = new System.Windows.Forms.TextBox();
@@ -70,10 +72,12 @@
             this.txtNP1 = new System.Windows.Forms.TextBox();
             this.btnAProm = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.numDiasMem = new System.Windows.Forms.NumericUpDown();
+            this.label16 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtPMem = new System.Windows.Forms.TextBox();
-            this.txtNMem = new System.Windows.Forms.TextBox();
             this.btnCMem = new System.Windows.Forms.Button();
             this.btnAMem = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -85,8 +89,8 @@
             this.btnCancelaProduc = new System.Windows.Forms.Button();
             this.txtNombreProduc = new System.Windows.Forms.TextBox();
             this.btnAProduc = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            this.numDiasMem = new System.Windows.Forms.NumericUpDown();
+            this.historialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.limpiarListaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -94,9 +98,9 @@
             this.menuStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDiasMem)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cantProduc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numDiasMem)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -399,7 +403,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.promocionesToolStripMenuItem,
             this.membresiasToolStripMenuItem,
-            this.productoToolStripMenuItem});
+            this.productoToolStripMenuItem,
+            this.visitantesToolStripMenuItem,
+            this.historialToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
@@ -456,6 +462,22 @@
             this.verListaToolStripMenuItem2.Text = "Ver Lista";
             this.verListaToolStripMenuItem2.Click += new System.EventHandler(this.verListaToolStripMenuItem2_Click);
             // 
+            // visitantesToolStripMenuItem
+            // 
+            this.visitantesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.limpiarListaToolStripMenuItem});
+            this.visitantesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.visitantesToolStripMenuItem.Name = "visitantesToolStripMenuItem";
+            this.visitantesToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
+            this.visitantesToolStripMenuItem.Text = "Visitantes";
+            // 
+            // limpiarListaToolStripMenuItem
+            // 
+            this.limpiarListaToolStripMenuItem.Name = "limpiarListaToolStripMenuItem";
+            this.limpiarListaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.limpiarListaToolStripMenuItem.Text = "Limpiar lista";
+            this.limpiarListaToolStripMenuItem.Click += new System.EventHandler(this.limpiarListaToolStripMenuItem_Click);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label15);
@@ -469,7 +491,7 @@
             this.groupBox4.ForeColor = System.Drawing.Color.Goldenrod;
             this.groupBox4.Location = new System.Drawing.Point(12, 47);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(480, 248);
+            this.groupBox4.Size = new System.Drawing.Size(480, 278);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Promociones";
@@ -563,22 +585,50 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.comboBox1);
             this.groupBox5.Controls.Add(this.numDiasMem);
             this.groupBox5.Controls.Add(this.label16);
             this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.txtPMem);
-            this.groupBox5.Controls.Add(this.txtNMem);
             this.groupBox5.Controls.Add(this.btnCMem);
             this.groupBox5.Controls.Add(this.btnAMem);
             this.groupBox5.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.ForeColor = System.Drawing.Color.Goldenrod;
-            this.groupBox5.Location = new System.Drawing.Point(528, 47);
+            this.groupBox5.Location = new System.Drawing.Point(12, 331);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(481, 248);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Membresias";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(96, 70);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(216, 27);
+            this.comboBox1.TabIndex = 10;
+            // 
+            // numDiasMem
+            // 
+            this.numDiasMem.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDiasMem.Location = new System.Drawing.Point(144, 163);
+            this.numDiasMem.Name = "numDiasMem";
+            this.numDiasMem.Size = new System.Drawing.Size(43, 27);
+            this.numDiasMem.TabIndex = 9;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.DimGray;
+            this.label16.Location = new System.Drawing.Point(92, 165);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(45, 19);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Dias:";
             // 
             // label11
             // 
@@ -614,18 +664,6 @@
             this.txtPMem.Enter += new System.EventHandler(this.txtPMem_Enter);
             this.txtPMem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPMem_KeyPress);
             this.txtPMem.Leave += new System.EventHandler(this.txtPMem_Leave);
-            // 
-            // txtNMem
-            // 
-            this.txtNMem.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNMem.ForeColor = System.Drawing.Color.DimGray;
-            this.txtNMem.Location = new System.Drawing.Point(96, 74);
-            this.txtNMem.Name = "txtNMem";
-            this.txtNMem.Size = new System.Drawing.Size(299, 27);
-            this.txtNMem.TabIndex = 5;
-            this.txtNMem.TextChanged += new System.EventHandler(this.txtNMem_TextChanged);
-            this.txtNMem.Enter += new System.EventHandler(this.txtNMem_Enter);
-            this.txtNMem.Leave += new System.EventHandler(this.txtNMem_Leave);
             // 
             // btnCMem
             // 
@@ -673,7 +711,7 @@
             this.groupBox6.Controls.Add(this.btnAProduc);
             this.groupBox6.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.ForeColor = System.Drawing.Color.Goldenrod;
-            this.groupBox6.Location = new System.Drawing.Point(12, 312);
+            this.groupBox6.Location = new System.Drawing.Point(518, 47);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(480, 276);
             this.groupBox6.TabIndex = 4;
@@ -780,24 +818,21 @@
             this.btnAProduc.UseVisualStyleBackColor = true;
             this.btnAProduc.Click += new System.EventHandler(this.btnAProduc_Click);
             // 
-            // label16
+            // historialToolStripMenuItem
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.DimGray;
-            this.label16.Location = new System.Drawing.Point(92, 165);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(45, 19);
-            this.label16.TabIndex = 3;
-            this.label16.Text = "Dias:";
+            this.historialToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.limpiarListaToolStripMenuItem1});
+            this.historialToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.historialToolStripMenuItem.Name = "historialToolStripMenuItem";
+            this.historialToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
+            this.historialToolStripMenuItem.Text = "Historial";
             // 
-            // numDiasMem
+            // limpiarListaToolStripMenuItem1
             // 
-            this.numDiasMem.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numDiasMem.Location = new System.Drawing.Point(144, 163);
-            this.numDiasMem.Name = "numDiasMem";
-            this.numDiasMem.Size = new System.Drawing.Size(43, 27);
-            this.numDiasMem.TabIndex = 9;
+            this.limpiarListaToolStripMenuItem1.Name = "limpiarListaToolStripMenuItem1";
+            this.limpiarListaToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
+            this.limpiarListaToolStripMenuItem1.Text = "Limpiar lista";
+            this.limpiarListaToolStripMenuItem1.Click += new System.EventHandler(this.limpiarListaToolStripMenuItem1_Click);
             // 
             // confVentana
             // 
@@ -831,10 +866,10 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDiasMem)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cantProduc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numDiasMem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -884,7 +919,6 @@
         private System.Windows.Forms.Button btnCancelaProduc;
         private System.Windows.Forms.Button btnAProduc;
         private System.Windows.Forms.TextBox txtPMem;
-        private System.Windows.Forms.TextBox txtNMem;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown cantProduc;
         private System.Windows.Forms.TextBox txtPrecioProduc;
@@ -900,5 +934,10 @@
         private System.Windows.Forms.TextBox txtProcentProm;
         private System.Windows.Forms.NumericUpDown numDiasMem;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ToolStripMenuItem visitantesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem limpiarListaToolStripMenuItem;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ToolStripMenuItem historialToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem limpiarListaToolStripMenuItem1;
     }
 }

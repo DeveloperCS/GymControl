@@ -298,7 +298,7 @@
             // 
             this.btnVenderProdc.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnVenderProdc.BackColor = System.Drawing.Color.Chartreuse;
-            this.btnVenderProdc.Cursor = System.Windows.Forms.Cursors.No;
+            this.btnVenderProdc.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVenderProdc.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnVenderProdc.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chartreuse;
             this.btnVenderProdc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
@@ -315,6 +315,7 @@
             this.btnVenderProdc.Text = "Vender Producto";
             this.btnVenderProdc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnVenderProdc.UseVisualStyleBackColor = false;
+            this.btnVenderProdc.Click += new System.EventHandler(this.btnVenderProdc_Click);
             // 
             // btnNuevoVis
             // 

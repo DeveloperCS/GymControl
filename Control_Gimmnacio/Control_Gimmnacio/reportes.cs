@@ -33,7 +33,7 @@ namespace Control_Gimmnacio
         private void reportes_Load(object sender, EventArgs e)
         {
             llenarReporte();
-            btnRes.Visible = false;
+           // btnRes.Visible = false;
         }
         conexionDatos dts = new conexionDatos();
         string q = "";
@@ -41,34 +41,37 @@ namespace Control_Gimmnacio
         {
             if(cbTipoReporte.SelectedItem.ToString()=="Socios")
             {
-                q = "Select idSocio as Clave, nombre as Nombre, fNacimiento as [Fecha de Nacimiento], sexo as Sexo,dir as Direccion, tel as [Telefono de Contacto], fb as Facebook  from socio";
+                //SELECT CONVERT(VARCHAR, fecha,103) FROM prueba
+                q = "Select idSocio as Clave, nombre as Nombre, CONVERT(VARCHAR,fNacimiento,103) as [Fecha de Nacimiento], sexo as Sexo,dir as Direccion, tel as [Telefono de Contacto], fb as Facebook  from socio";
                 dataGridView1.DataSource = dts.consulta(q).Tables[0];
-                btnRes.Visible = false;
+               // btnRes.Visible = false;
 
             }
             if (cbTipoReporte.SelectedItem.ToString()== "Memebresias")
             {
-                q = "select M.idMemS as [Clave Socio/Memebresia],(select S.nombre as Nombre from socio S where S.idSocio=idMems) Socio, M.idControl as [ID Membresia],M.tMem as Tipo, M.fechaIngreso as Inicio,M.fechatermino as Termino, M.prom as Promocion, M.estado as Estatus from memSocio M  order by Socio";
+                q = "select M.idMemS as [Clave Socio/Memebresia],(select S.nombre as Nombre from socio S where S.idSocio=idMems) Socio, M.idControl as [ID Membresia],M.tMem as Tipo,CONVERT(VARCHAR,M.fechaIngreso,103)  as Inicio,CONVERT(VARCHAR,M.fechatermino,103) as Termino, M.prom as Promocion, M.estado as Estatus from memSocio M  order by Socio";
                 dataGridView1.DataSource = dts.consulta(q).Tables[0];
-                btnRes.Visible = false;
+               // btnRes.Visible = false;
             }
             if(cbTipoReporte.SelectedItem.ToString()== "Visitantes")
             {
-                q = "select v.cantidad as Cantidad, v.fecha as [Fecha de ingreso] from visitante v";
+                q = "select v.cantidad as Cantidad,CONVERT(VARCHAR,v.fecha,103) as [Fecha de ingreso] from visitante v";
                 dataGridView1.DataSource = dts.consulta(q).Tables[0];
-                btnRes.Visible = true;
+                //btnRes.Visible = true;
             }
             if (cbTipoReporte.SelectedItem.ToString()=="Productos")
             {
-                q = "select idProduc as Id,nomProduc as Producto,cantidad as Cantidad,precio as Precio from produc";
+                q = "select idProduc as Id,cod as Codigo,nomProduc as Producto,stock as Cantidad,precio as Precio from product";
                 dataGridView1.DataSource = dts.consulta(q).Tables[0];
-                btnRes.Visible = false;
+                dataGridView1.Columns["Precio"].DefaultCellStyle.Format = "N2";
+                dataGridView1.Columns["Precio"].DefaultCellStyle.NullValue = "0.00";
+                //btnRes.Visible = false;
             }
             if (cbTipoReporte.SelectedItem.ToString()== "Historial de Memebresias")
             {
-                q = "select M.idHS as [Clave Socio/Memebresia],(select S.nombre as Nombre from socio S where S.idSocio=idHS) Socio,M.tMem as Tipo, M.fechaIngreso as Inicio,M.fechatermino as Termino, M.prom as Promocion from historialS M order by Socio";
+                q = "select M.idHS as [Clave Socio/Memebresia],(select S.nombre as Nombre from socio S where S.idSocio=idHS) Socio,M.tMem as Tipo,CONVERT(VARCHAR,M.fechaIngreso,103) as Inicio, CONVERT(VARCHAR,M.fechatermino,103)  as Termino, M.prom as Promocion from historialS M order by Socio";
                 dataGridView1.DataSource = dts.consulta(q).Tables[0];
-                btnRes.Visible = true;
+                //btnRes.Visible = true;
             }
         }
         string h = "",f="";
@@ -78,7 +81,7 @@ namespace Control_Gimmnacio
             {
                 MessageBox.Show("No Hay Datos Para Realizar Un Reporte","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
-            else
+            else if(dataGridView1.RowCount >=1)
             {
                 //hora y fecha
                 h = DateTime.Now.ToLongTimeString();
@@ -92,6 +95,7 @@ namespace Control_Gimmnacio
                     Document doc = new Document(PageSize.A3, 9, 9, 9, 9);
                     Chunk encab = new Chunk("GYM CONTROL REPORT: "+cbTipoReporte.SelectedItem.ToString(), FontFactory.GetFont("COURIER", 18));
                     Chunk fechaC = new Chunk(f+"."+"\n"+h, FontFactory.GetFont("COURIER", 12));
+                    Chunk Usuario = new Chunk("Usuario: "+new Form_inicial().lbNomUS.Text,FontFactory.GetFont("COURIER",14));
                     try
                     {
                         FileStream file = new FileStream(filename, FileMode.OpenOrCreate);
@@ -101,6 +105,7 @@ namespace Control_Gimmnacio
                         doc.Open();
                         doc.Add(new Paragraph(encab));
                         doc.Add(new Paragraph(fechaC));
+                        doc.Add(new Paragraph(Usuario));
                         doc.Add(new Paragraph("\n"));
                         GenerarDocumentos(doc);
                         Process.Start(filename);
