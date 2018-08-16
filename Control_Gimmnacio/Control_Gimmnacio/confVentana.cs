@@ -462,8 +462,27 @@ namespace Control_Gimmnacio
 
         private void limpiarListaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            string qD = "delete from ventas";
+            if (MessageBox.Show("¿Desea eliminar el Historial de Ventas? \n \n Puedes Generar un reporte desde la opcion 'REPORTES' en el menú", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+             
+                if (dts.eliminar(qD) == true)
+                {
+                    MessageBox.Show("Datos eliminados con exito!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void limpiarHistorialRegistrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+           
+        }
+
+        private void limpiarHistorialDeRegistrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             string q = "";
-            if (MessageBox.Show("¿Desea eliminar el Historial de Membresias? \n \n Puedes Generar un reporte desde la opcion 'REPORTES' en el menú", "Eliminar", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("¿Desea eliminar el Historial de Membresias? \n \n Puedes Generar un reporte desde la opcion 'REPORTES' en el menú", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 q = "Delete from historialS";
                 if (dts.eliminar(q) == true)

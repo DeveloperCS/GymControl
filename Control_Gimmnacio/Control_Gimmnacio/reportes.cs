@@ -29,6 +29,7 @@ namespace Control_Gimmnacio
             cbTipoReporte.Items.Add("Historial de Memebresias");
             cbTipoReporte.Items.Add("Visitantes");
             cbTipoReporte.Items.Add("Productos");
+            cbTipoReporte.Items.Add("Ventas");
         }
         private void reportes_Load(object sender, EventArgs e)
         {
@@ -72,6 +73,11 @@ namespace Control_Gimmnacio
                 q = "select M.idHS as [Clave Socio/Memebresia],(select S.nombre as Nombre from socio S where S.idSocio=idHS) Socio,M.tMem as Tipo,CONVERT(VARCHAR,M.fechaIngreso,103) as Inicio, CONVERT(VARCHAR,M.fechatermino,103)  as Termino, M.prom as Promocion from historialS M order by Socio";
                 dataGridView1.DataSource = dts.consulta(q).Tables[0];
                 //btnRes.Visible = true;
+            }
+            if (cbTipoReporte.SelectedItem.ToString()=="Ventas")
+            {
+                q = "select cod as [Codigo del Producto], nomProduc as [Nombre del Producto], cantidad as [Cantidad], total as [Total],CONVERT(VARCHAR,fechaVenta,103) as [Fecha de la Venta] from ventas";
+                dataGridView1.DataSource = dts.consulta(q).Tables[0];
             }
         }
         string h = "",f="";
@@ -160,7 +166,7 @@ namespace Control_Gimmnacio
                 datatable.AddCell(objP);
 
             }
-            datatable.HeaderRows = 2;
+            datatable.HeaderRows = 1;
             
             datatable.DefaultCell.BorderWidth = 1;
 

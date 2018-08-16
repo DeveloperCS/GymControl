@@ -63,6 +63,8 @@
             this.verListaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.visitantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.limpiarListaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.historialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.limpiarListaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtProcentProm = new System.Windows.Forms.TextBox();
@@ -89,8 +91,7 @@
             this.btnCancelaProduc = new System.Windows.Forms.Button();
             this.txtNombreProduc = new System.Windows.Forms.TextBox();
             this.btnAProduc = new System.Windows.Forms.Button();
-            this.historialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.limpiarListaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.limpiarHistorialDeRegistrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -432,7 +433,8 @@
             // membresiasToolStripMenuItem
             // 
             this.membresiasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verListaToolStripMenuItem1});
+            this.verListaToolStripMenuItem1,
+            this.limpiarHistorialDeRegistrosToolStripMenuItem});
             this.membresiasToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.membresiasToolStripMenuItem.Name = "membresiasToolStripMenuItem";
             this.membresiasToolStripMenuItem.Size = new System.Drawing.Size(109, 24);
@@ -441,7 +443,7 @@
             // verListaToolStripMenuItem1
             // 
             this.verListaToolStripMenuItem1.Name = "verListaToolStripMenuItem1";
-            this.verListaToolStripMenuItem1.Size = new System.Drawing.Size(135, 24);
+            this.verListaToolStripMenuItem1.Size = new System.Drawing.Size(280, 24);
             this.verListaToolStripMenuItem1.Text = "Ver lista";
             this.verListaToolStripMenuItem1.Click += new System.EventHandler(this.verListaToolStripMenuItem1_Click);
             // 
@@ -458,7 +460,7 @@
             // verListaToolStripMenuItem2
             // 
             this.verListaToolStripMenuItem2.Name = "verListaToolStripMenuItem2";
-            this.verListaToolStripMenuItem2.Size = new System.Drawing.Size(139, 24);
+            this.verListaToolStripMenuItem2.Size = new System.Drawing.Size(180, 24);
             this.verListaToolStripMenuItem2.Text = "Ver Lista";
             this.verListaToolStripMenuItem2.Click += new System.EventHandler(this.verListaToolStripMenuItem2_Click);
             // 
@@ -474,9 +476,25 @@
             // limpiarListaToolStripMenuItem
             // 
             this.limpiarListaToolStripMenuItem.Name = "limpiarListaToolStripMenuItem";
-            this.limpiarListaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.limpiarListaToolStripMenuItem.Size = new System.Drawing.Size(160, 24);
             this.limpiarListaToolStripMenuItem.Text = "Limpiar lista";
             this.limpiarListaToolStripMenuItem.Click += new System.EventHandler(this.limpiarListaToolStripMenuItem_Click);
+            // 
+            // historialToolStripMenuItem
+            // 
+            this.historialToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.limpiarListaToolStripMenuItem1});
+            this.historialToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.historialToolStripMenuItem.Name = "historialToolStripMenuItem";
+            this.historialToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
+            this.historialToolStripMenuItem.Text = "Ventas";
+            // 
+            // limpiarListaToolStripMenuItem1
+            // 
+            this.limpiarListaToolStripMenuItem1.Name = "limpiarListaToolStripMenuItem1";
+            this.limpiarListaToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
+            this.limpiarListaToolStripMenuItem1.Text = "Limpiar lista";
+            this.limpiarListaToolStripMenuItem1.Click += new System.EventHandler(this.limpiarListaToolStripMenuItem1_Click);
             // 
             // groupBox4
             // 
@@ -818,21 +836,12 @@
             this.btnAProduc.UseVisualStyleBackColor = true;
             this.btnAProduc.Click += new System.EventHandler(this.btnAProduc_Click);
             // 
-            // historialToolStripMenuItem
+            // limpiarHistorialDeRegistrosToolStripMenuItem
             // 
-            this.historialToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.limpiarListaToolStripMenuItem1});
-            this.historialToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.historialToolStripMenuItem.Name = "historialToolStripMenuItem";
-            this.historialToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
-            this.historialToolStripMenuItem.Text = "Historial";
-            // 
-            // limpiarListaToolStripMenuItem1
-            // 
-            this.limpiarListaToolStripMenuItem1.Name = "limpiarListaToolStripMenuItem1";
-            this.limpiarListaToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
-            this.limpiarListaToolStripMenuItem1.Text = "Limpiar lista";
-            this.limpiarListaToolStripMenuItem1.Click += new System.EventHandler(this.limpiarListaToolStripMenuItem1_Click);
+            this.limpiarHistorialDeRegistrosToolStripMenuItem.Name = "limpiarHistorialDeRegistrosToolStripMenuItem";
+            this.limpiarHistorialDeRegistrosToolStripMenuItem.Size = new System.Drawing.Size(280, 24);
+            this.limpiarHistorialDeRegistrosToolStripMenuItem.Text = "Limpiar Historial de Registros";
+            this.limpiarHistorialDeRegistrosToolStripMenuItem.Click += new System.EventHandler(this.limpiarHistorialDeRegistrosToolStripMenuItem_Click);
             // 
             // confVentana
             // 
@@ -939,5 +948,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ToolStripMenuItem historialToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem limpiarListaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem limpiarHistorialDeRegistrosToolStripMenuItem;
     }
 }
