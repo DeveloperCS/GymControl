@@ -198,8 +198,8 @@ namespace Control_Gimmnacio
         {
             if (MessageBox.Show("¿Desea Guardar?", "Guardar", MessageBoxButtons.YesNo,MessageBoxIcon.Question)== DialogResult.Yes)
             {
-                string fn = txtD.Text + "/" + txtM.Text + "/" + txtAñoF.Text;
-               string qry = "update socio set nombre='"+txtNomS.Text+ "', fNacimiento='"+fn+ "', sexo='"+txtS.Text+"', dir ='"+txtdir.Text+"',tel = '"+txtTel.Text+"', fb='"+txtFB.Text+"' where idSocio='"+txtClaveS.Text+"' ";
+                string fn = txtD.Text.Trim() + "/" + txtM.Text.Trim() + "/" + txtAñoF.Text.Trim();
+               string qry = "update socio set nombre='"+txtNomS.Text.Trim() + "', fNacimiento='"+fn+ "', sexo='"+txtS.Text.Trim() + "', dir ='"+txtdir.Text.Trim() + "',tel = '"+txtTel.Text.Trim() + "', fb='"+txtFB.Text.Trim() + "' where idSocio='"+txtClaveS.Text.Trim() + "' ";
                 if (dts.update(qry)==true)
                 {
                     /*qry = "update memSocio set ";

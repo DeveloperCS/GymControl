@@ -105,7 +105,7 @@ namespace Control_Gimmnacio
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-            string qry = "select cast(case when pass = HASHBYTES('SHA2_512', '" + txtPass.Text + "') then 1 else 0 end as bit) FlagPwdCorrecto from usuarios where usuario = '" + txtUsuario.Text + "'";
+            string qry = "select cast(case when pass = HASHBYTES('SHA2_512', '" + txtPass.Text.Trim() + "') then 1 else 0 end as bit) FlagPwdCorrecto from usuarios where usuario = '" + txtUsuario.Text.Trim() + "'";
             if (txtPass.Text == "" || txtUsuario.Text == "" || txtUsuario.Text == "Usuario" | txtPass.Text == "Contraseña")
             {
                 MessageBox.Show("Falto llenar un campo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -119,7 +119,7 @@ namespace Control_Gimmnacio
 
                     /*Sacar el nombre de usuario y tipo de usuario*/
                     DataSet dataC = new DataSet();
-                    string qry2 = "Select nombreUs as nom, tipoUs as tipo from usuarios where usuario = '" + txtUsuario.Text + "'";
+                    string qry2 = "Select nombreUs as nom, tipoUs as tipo from usuarios where usuario = '" + txtUsuario.Text.Trim() + "'";
                     dataC = dts.consulta(qry2);
                     DataTable dt2 = dataC.Tables[0];
 

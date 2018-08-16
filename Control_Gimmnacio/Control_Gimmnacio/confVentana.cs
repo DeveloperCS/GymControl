@@ -188,7 +188,7 @@ namespace Control_Gimmnacio
             {
                 if (MessageBox.Show("¿Desea Agregar?", "Agregar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    string qry1 = "Insert into memb values('" + /*txtNMem.Text +*/ "'," + Convert.ToDouble(txtPMem.Text) + ","+numDiasMem.Value+")";
+                    string qry1 = "Insert into memb values('" + /*txtNMem.Text +*/ "'," + Convert.ToDouble(txtPMem.Text.Trim()) + ","+numDiasMem.Value+")";
                     if (dts.insertar(qry1) == true)
                     {
                         MessageBox.Show("Membresia Agregada", "Exito!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -270,7 +270,7 @@ namespace Control_Gimmnacio
         private void btnAProduc_Click(object sender, EventArgs e)
         {
             string cod = "";
-            cod = txtNombreProduc.Text;
+            cod = txtNombreProduc.Text.Trim();//evitar espacios al inicio y al final
             var datos = (from c in cod.Split(' ') where Char.IsUpper(Convert.ToChar(c.Substring(0, 1))) select c.Substring(0, 1));
             // Ahora probamos que funcione...
            string clave = "", codFinal="";
@@ -295,7 +295,7 @@ namespace Control_Gimmnacio
                 {
                     if (MessageBox.Show("¿Desea Agregar?","Agregar",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
                     {
-                        string qry2 = "insert into product values('"+codFinal+"','" + txtNombreProduc.Text + "'," + cantProduc.Value + "," + txtPrecioProduc.Text + ")";
+                        string qry2 = "insert into product values('" + codFinal + "','" + txtNombreProduc.Text.Trim() + "'," + cantProduc.Value + "," + txtPrecioProduc.Text.Trim() + ")";
                         if (dts.insertar(qry2) == true)
                         {
                             MessageBox.Show("Producto Agregado", "Exito!!", MessageBoxButtons.OK, MessageBoxIcon.Information);

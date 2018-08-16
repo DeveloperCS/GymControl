@@ -255,10 +255,10 @@ namespace Control_Gimmnacio
                     string qH = "";
                     if (checkDesc.Checked == true)
                     {
-                        qm1 = "insert into memSocio values('" + txtClaveM.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','" + cbDescProm.Text + "','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente','" + id + "')";
+                        qm1 = "insert into memSocio values('" + txtClaveM.Text.Trim() + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','" + cbDescProm.Text + "','" + Convert.ToDecimal(txtTotal.Text.Trim()) + "','Vigente','" + id + "')";
                         if (dts.insertar(qm1) == true)
                         {
-                            qH = "insert into historialS values('" + txtClaveM.Text + "','" + txtNom.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','" + cbDescProm.Text + "','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente')";
+                            qH = "insert into historialS values('" + txtClaveM.Text.Trim() + "','" + txtNom.Text.Trim() + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','" + cbDescProm.Text + "','" + Convert.ToDecimal(txtTotal.Text.Trim()) + "','Vigente')";
                             if (dts.insertar(qH) == true)
                             {
                                 MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -271,10 +271,10 @@ namespace Control_Gimmnacio
                     }
                     else
                     {
-                        qm1 = "insert into memSocio values('" + txtClaveM.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente','" + id + "')";
+                        qm1 = "insert into memSocio values('" + txtClaveM.Text.Trim() + "','" + cbTipoMembrecia.Text+ "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + Convert.ToDecimal(txtTotal.Text.Trim()) + "','Vigente','" + id + "')";
                         if (dts.insertar(qm1) == true)
                         {
-                            qH = "insert into historialS values('" + txtClaveM.Text + "','" + txtNom.Text + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + Convert.ToDecimal(txtTotal.Text) + "','Vigente')";
+                            qH = "insert into historialS values('" + txtClaveM.Text.Trim() + "','" + txtNom.Text.Trim() + "','" + cbTipoMembrecia.Text + "','" + pickIni.Value.ToString("yyyy/MM/dd") + "','" + pickFin.Value.ToString("yyyy/MM/dd") + "','S/N','" + Convert.ToDecimal(txtTotal.Text.Trim()) + "','Vigente')";
                             if (dts.insertar(qH) == true)
                             {
                                 MessageBox.Show("Datos Agregados!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -348,7 +348,7 @@ namespace Control_Gimmnacio
                 //pagar o no la membresia
                 //string nombre = "Michael Jose Jackson del Carmen";
                 string nombre="";
-                nombre = txtNom.Text;
+                nombre = txtNom.Text.Trim();
                 var datos = (from c in nombre.Split(' ') where Char.IsUpper(Convert.ToChar(c.Substring(0, 1))) select c.Substring(0, 1));
                 // Ahora probamos que funcione...
                 clave = "";
@@ -356,12 +356,12 @@ namespace Control_Gimmnacio
                 {
                     clave += s;
                 }
-                nombres = clave + txtAñoFecha.Text;
+                nombres = clave + txtAñoFecha.Text.Trim();
                 if (MessageBox.Show("¿Agregar Socio?","Agregar",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
                 {
-                    string fechaT = cbNumeroFecha.SelectedItem.ToString()+ "/"+ cbMesFecha.SelectedItem.ToString()+"/"+ txtAñoFecha.Text;
+                    string fechaT = cbNumeroFecha.SelectedItem.ToString()+ "/"+ cbMesFecha.SelectedItem.ToString()+"/"+ txtAñoFecha.Text.Trim();
 
-                    qs = "insert into socio values('S-"+nombres+"','"+txtNom.Text+"','"+fechaT+"','"+cbSexo.SelectedItem.ToString() + "','"+txtDireccion.Text+"','"+txtTel.Text+"','"+txtFB.Text+"')";
+                    qs = "insert into socio values('S-"+nombres+"','"+txtNom.Text.Trim() + "','"+fechaT+"','"+cbSexo.SelectedItem.ToString() + "','"+txtDireccion.Text.Trim() + "','"+txtTel.Text.Trim() + "','"+txtFB.Text.Trim() + "')";
                     
                     if (dts.insertar(qs)==true)
                     {

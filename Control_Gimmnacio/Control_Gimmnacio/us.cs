@@ -104,7 +104,7 @@ namespace Control_Gimmnacio
                 {
                     if (txtConfirmPass.Text.Equals(txtPassUs.Text))
                     {
-                        string q2 = "INSERT into usuarios (nombreUs,usuario,pass,tipoUs)values('" + txtNombreUs.Text + "','" + txtUs.Text + "', HASHBYTES('SHA2_512', '" + txtPassUs.Text + "'),'" + cbTipoUs.SelectedItem.ToString() + "')";
+                        string q2 = "INSERT into usuarios (nombreUs,usuario,pass,tipoUs)values('" + txtNombreUs.Text.Trim() + "','" + txtUs.Text.Trim() + "', HASHBYTES('SHA2_512', '" + txtPassUs.Text.Trim() + "'),'" + cbTipoUs.SelectedItem.ToString() + "')";
                         if (MessageBox.Show("¿Desea agregar nuevo Usuario?", "Usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             if (dts.insertar(q2) == true)
@@ -216,7 +216,7 @@ namespace Control_Gimmnacio
                     {
                         if (MessageBox.Show("¿Desea seguir sin Contraseña?\n \n -Solo se actualizará los demas datos-", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            string q4 = "UPDATE usuarios SET nombreUs='" + txtNombreUs.Text + "',usuario='" + txtUs.Text + "',tipoUs='" + cbTipoUs.SelectedItem.ToString() + "' WHERE id='" + txtID.Text + "'";
+                            string q4 = "UPDATE usuarios SET nombreUs='" + txtNombreUs.Text.Trim() + "',usuario='" + txtUs.Text.Trim() + "',tipoUs='" + cbTipoUs.SelectedItem.ToString() + "' WHERE id='" + txtID.Text.Trim() + "'";
                             if (dts.update(q4) == true)
                             {
                                 if (MessageBox.Show("Datos Actualizados", "Exito", MessageBoxButtons.OK) == DialogResult.OK)
@@ -247,8 +247,8 @@ namespace Control_Gimmnacio
                     }
                     else
                     {
-                        string q3 = "UPDATE usuarios SET nombreUs='" + txtNombreUs.Text + "',usuario='" + txtUs.Text + "',pass=HASHBYTES('SHA2_512', '" + txtPassUs.Text + "'),tipoUs='" + cbTipoUs.SelectedItem.ToString() + "' WHERE id='" + txtID.Text + "'";
-                        if (txtPassUs.Text.Equals(txtConfirmPass.Text))
+                        string q3 = "UPDATE usuarios SET nombreUs='" + txtNombreUs.Text.Trim() + "',usuario='" + txtUs.Text.Trim() + "',pass=HASHBYTES('SHA2_512', '" + txtPassUs.Text.Trim() + "'),tipoUs='" + cbTipoUs.SelectedItem.ToString() + "' WHERE id='" + txtID.Text.Trim() + "'";
+                        if (txtPassUs.Text.Trim().Equals(txtConfirmPass.Text.Trim()))
                         {
                             if (dts.update(q3) == true)
                             {

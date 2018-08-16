@@ -198,7 +198,7 @@ namespace Control_Gimmnacio
                     if (lbTitulo.Text == "Productos Registrados")
                     {
                         //sacar la cantidad de producto que hay
-                        string q12 = "select stock as s from product where idProduc = '" + txt1.Text + "'";
+                        string q12 = "select stock as s from product where idProduc = '" + txt1.Text.Trim() + "'";
                         DataSet dtset = new DataSet();
                         dtset = dts.consulta(q12);
                         DataTable tD = dtset.Tables[0];
@@ -216,7 +216,7 @@ namespace Control_Gimmnacio
                         }
                         cant = cant + Convert.ToInt32( num4.Value);
                     
-                        qry = "Update product set nomProduc ='" + txt2.Text + "',stock=" + cant + ",precio=" +Convert.ToDecimal( txt3.Text) + " where idProduc = " + txt1.Text + "";
+                        qry = "Update product set nomProduc ='" + txt2.Text.Trim() + "',stock=" + cant + ",precio=" +Convert.ToDecimal( txt3.Text.Trim()) + " where idProduc = " + txt1.Text.Trim() + "";
                         if (dts.update(qry) == true)
                         {
                             MessageBox.Show("Elemento Guardado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -229,7 +229,7 @@ namespace Control_Gimmnacio
                     }
                     if (lbTitulo.Text == "Membresias Registradas")
                     {
-                        qry = "update memb set  precioMem=" + Convert.ToDecimal( txt3.Text) + " where idMem=" + txt1.Text + " ";
+                        qry = "update memb set  precioMem=" + Convert.ToDecimal( txt3.Text.Trim()) + " where idMem=" + txt1.Text.Trim() + " ";
                         if (dts.update(qry) == true)
                         {
                             MessageBox.Show("Elemento Guardado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -243,7 +243,7 @@ namespace Control_Gimmnacio
                     {
                         double pCon=0;
                         pCon = Convert.ToDouble(txt3.Text)/100;
-                        qry = "update prom set nomPromocion = '"+txt2.Text+"',descuento = "+pCon+" where idProm ="+txt1.Text+"";
+                        qry = "update prom set nomPromocion = '"+txt2.Text.Trim() + "',descuento = "+pCon+" where idProm ="+txt1.Text.Trim() + "";
                         if (dts.update(qry) == true)
                         {
                             MessageBox.Show("Elemento Guardado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
