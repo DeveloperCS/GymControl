@@ -278,6 +278,7 @@ namespace Control_Gimmnacio
                 e.Paint(e.CellBounds,DataGridViewPaintParts.All);
                 DataGridViewButtonCell celBoton = this.dtGWMemEx.Rows[e.RowIndex].Cells["Ver"] as DataGridViewButtonCell;
                 Icon iconAtomic = new Icon(Environment.CurrentDirectory + @"\\editar.ico");
+                //Icon iconAtomic = new Icon(Environment.CurrentDirectory + Properties.Resources.e);
                 e.Graphics.DrawIcon(iconAtomic,e.CellBounds.Left + 3,e.CellBounds.Top +3);
 
                 this.dtGWMemEx.Rows[e.RowIndex].Height = iconAtomic.Height + 8;

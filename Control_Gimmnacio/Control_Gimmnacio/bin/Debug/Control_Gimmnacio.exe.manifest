@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>qfRcQKqqHMJ1HJWXNjyhON6foQfiyx26Tg2rKqTH8ag=</dsig:DigestValue>
+        <dsig:DigestValue>+1/GCDs4ueCkInOU9sJnxAUiRSNSFeMaKKqE1EV38pE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -109,6 +109,24 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>4WXnRsQinjwJk/g5itOO5arX0/3YOvVFtKcJJ+LMs48=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="icono\editar.ico" size="3310">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>jrc3E+84Nxgoo0tSOs89f/CLwEc8IIyt3JkzUiWT5SY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\icons8-editar-propiedad-48.png" size="746">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>V5+GJBv1zAUk3q/1C1NflT4fF2bxAB/xMR4s/Tjszg8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\Ver.ico" size="502">

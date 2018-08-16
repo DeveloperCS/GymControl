@@ -300,6 +300,8 @@
     <None Include="Resources\icons8-sincronizar-64.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icono\editar.ico" />
+    <Content Include="Resources\icons8-editar-propiedad-48.png" />
     <Content Include="solo.ico" />
     <None Include="Resources\WIN_20180226_10_53_34_Pro.jpg" />
     <None Include="Resources\icons8-exportar-pdf-50.png" />
