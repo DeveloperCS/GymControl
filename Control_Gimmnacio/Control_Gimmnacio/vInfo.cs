@@ -13,9 +13,9 @@ using System.Runtime.InteropServices;
 
 namespace Control_Gimmnacio
 {
-    public partial class vInfo : Form
+    public partial class Informacion : Form
     {
-        public vInfo()
+        public Informacion()
         {
             InitializeComponent();
         }

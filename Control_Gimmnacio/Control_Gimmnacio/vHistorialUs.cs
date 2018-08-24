@@ -88,9 +88,7 @@ namespace Control_Gimmnacio
                 string dia = Convert.ToString(myDateTime.Day);
                 string mes = Convert.ToString(myDateTime.Month);
                 string ano = Convert.ToString(myDateTime.Year);
-                txtD.Text = dia;
-                txtM.Text = mes;
-                txtAñoF.Text = ano;
+                dtNacimiento.Value = myDateTime;
             }
 
         }
@@ -120,6 +118,7 @@ namespace Control_Gimmnacio
                 string cl = dGWSocios.CurrentRow.Cells[0].Value.ToString();
                 consultaHistorial(cl);
                 btnGuardarS.Enabled = true;
+                btnEliminarS.Enabled = false;
                 btnEliminaMemS.Enabled = true;
                 btnAgregaMemS.Enabled = true;
                 btnActualizar.Enabled = true;
@@ -142,9 +141,10 @@ namespace Control_Gimmnacio
                     string dia = Convert.ToString(myDateTime.Day);
                     string mes = Convert.ToString(myDateTime.Month);
                     string ano = Convert.ToString(myDateTime.Year);
-                    txtD.Text = dia;
+                    dtNacimiento.Value = myDateTime;
+                   /* txtD.Text = dia;
                     txtM.Text = mes;
-                    txtAñoF.Text = ano;
+                    txtAñoF.Text = ano;*/
                 }
             }
             
@@ -157,10 +157,12 @@ namespace Control_Gimmnacio
             txtTel.Text = "";
             txtFB.Text = "";
             txtS.Text = "";
-            txtD.Text = "";
-            txtM.Text = "";
-            txtAñoF.Text = "";
+            /*  txtD.Text = "";
+              txtM.Text = "";
+              txtAñoF.Text = "";*/
+            btnEliminarS.Enabled = true;
             dGWHistorial.DataSource = null;
+            btnActualizar.Enabled = false;
             btnGuardarS.Enabled = false;
             btnAgregaMemS.Enabled = false;
             btnEliminaMemS.Enabled = false;
@@ -198,13 +200,14 @@ namespace Control_Gimmnacio
         {
             if (MessageBox.Show("¿Desea Guardar?", "Guardar", MessageBoxButtons.YesNo,MessageBoxIcon.Question)== DialogResult.Yes)
             {
-                string fn = txtD.Text.Trim() + "/" + txtM.Text.Trim() + "/" + txtAñoF.Text.Trim();
+                string fn = dtNacimiento.Value.ToString("yyyy/MM/dd");
                string qry = "update socio set nombre='"+txtNomS.Text.Trim() + "', fNacimiento='"+fn+ "', sexo='"+txtS.Text.Trim() + "', dir ='"+txtdir.Text.Trim() + "',tel = '"+txtTel.Text.Trim() + "', fb='"+txtFB.Text.Trim() + "' where idSocio='"+txtClaveS.Text.Trim() + "' ";
                 if (dts.update(qry)==true)
                 {
                     /*qry = "update memSocio set ";
                     if (dts.update(qry)==true)
                     {*/
+                    btnEliminarS.Enabled = true;
                         MessageBox.Show("Socio Actualizado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         consultaSocio();
                         limpiar();

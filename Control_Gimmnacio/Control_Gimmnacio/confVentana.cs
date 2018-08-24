@@ -95,6 +95,8 @@ namespace Control_Gimmnacio
             edit.lbPN.Text = "MNX";
             edit.lb4.Visible = true;
             edit.num4.Visible = true;
+            edit.btnEliminar.Visible = true;
+            edit.btnEliminar.Enabled = true;
             edit.caso = 2;
             edit.cPorcent = 0;
             edit.sctEle = 1;
@@ -160,6 +162,8 @@ namespace Control_Gimmnacio
             edit.lbPN.Text = "%";
             edit.lb4.Visible = false;
             edit.num4.Visible = false;
+            edit.btnEliminar.Visible = true;
+            edit.btnEliminar.Enabled = true;
             edit.caso = 1;
             edit.cPorcent = 1;
             limpiarT();
@@ -269,24 +273,25 @@ namespace Control_Gimmnacio
         }
         private void btnAProduc_Click(object sender, EventArgs e)
         {
-            string cod = "";
-            cod = txtNombreProduc.Text.Trim();//evitar espacios al inicio y al final
-            var datos = (from c in cod.Split(' ') where Char.IsUpper(Convert.ToChar(c.Substring(0, 1))) select c.Substring(0, 1));
-            // Ahora probamos que funcione...
-           string clave = "", codFinal="";
-            int con = 0;
-            foreach (string s in datos)
-            {
-                clave += s;
-                con++;
-            }
-            codFinal = clave + "-" + con;
+           
             if (txtNombreProduc.Text == "" || txtPrecioProduc.Text == "")
             {
                 MessageBox.Show("Falto llenar algun campo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
+                string cod = "";
+                cod = txtNombreProduc.Text.Trim();//evitar espacios al inicio y al final
+                var datos = (from c in cod.Split(' ') where Char.IsUpper(Convert.ToChar(c.Substring(0, 1))) select c.Substring(0, 1));
+                // Ahora probamos que funcione...
+                string clave = "", codFinal = "";
+                int con = 0;
+                foreach (string s in datos)
+                {
+                    clave += s;
+                    con++;
+                }
+                codFinal = clave + "-" + con;
                 if (cantProduc.Value == 0)
                 {
                     MessageBox.Show("Agregue Cantidad", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

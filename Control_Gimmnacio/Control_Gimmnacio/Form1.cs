@@ -275,7 +275,7 @@ namespace Control_Gimmnacio
 
         private void label3_Click(object sender, EventArgs e)
         {
-            new vInfo().Show();
+            new Informacion().Show();
         }
     }
 }

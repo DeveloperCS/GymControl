@@ -11,7 +11,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Josiel\Desktop\GymControl 1.0\nueva_connection\</PublishUrl>
+    <PublishUrl>C:\Users\Josiel\Desktop\GymControl 2.0\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,7 +24,7 @@
     <ProductName>Gym Control</ProductName>
     <PublisherName>Carlos Josiel Hernandez sanchez</PublisherName>
     <SuiteName>CJ-Developer´s</SuiteName>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -300,7 +300,7 @@
     <None Include="Resources\icons8-sincronizar-64.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icono\editar.ico" />
+    <Content Include="Resources\editar.ico" />
     <Content Include="Resources\icons8-editar-propiedad-48.png" />
     <Content Include="solo.ico" />
     <None Include="Resources\WIN_20180226_10_53_34_Pro.jpg" />
@@ -313,6 +313,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="icono\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

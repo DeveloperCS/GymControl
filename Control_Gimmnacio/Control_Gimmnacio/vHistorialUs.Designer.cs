@@ -35,10 +35,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnActualizar = new System.Windows.Forms.PictureBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtD = new System.Windows.Forms.TextBox();
-            this.txtM = new System.Windows.Forms.TextBox();
             this.txtS = new System.Windows.Forms.TextBox();
             this.btnEliminaMemS = new System.Windows.Forms.PictureBox();
             this.btnAgregaMemS = new System.Windows.Forms.PictureBox();
@@ -46,7 +42,6 @@
             this.btnGuardarS = new System.Windows.Forms.Button();
             this.txtFB = new System.Windows.Forms.TextBox();
             this.txtTel = new System.Windows.Forms.TextBox();
-            this.txtAñoF = new System.Windows.Forms.TextBox();
             this.txtdir = new System.Windows.Forms.TextBox();
             this.txtNomS = new System.Windows.Forms.TextBox();
             this.txtClaveS = new System.Windows.Forms.TextBox();
@@ -64,6 +59,7 @@
             this.btnEliminarS = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label12 = new System.Windows.Forms.Label();
+            this.dtNacimiento = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dGWHistorial)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnActualizar)).BeginInit();
@@ -106,11 +102,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.panel1.Controls.Add(this.dtNacimiento);
             this.panel1.Controls.Add(this.btnActualizar);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.txtD);
-            this.panel1.Controls.Add(this.txtM);
             this.panel1.Controls.Add(this.txtS);
             this.panel1.Controls.Add(this.btnEliminaMemS);
             this.panel1.Controls.Add(this.btnAgregaMemS);
@@ -118,7 +111,6 @@
             this.panel1.Controls.Add(this.btnGuardarS);
             this.panel1.Controls.Add(this.txtFB);
             this.panel1.Controls.Add(this.txtTel);
-            this.panel1.Controls.Add(this.txtAñoF);
             this.panel1.Controls.Add(this.txtdir);
             this.panel1.Controls.Add(this.txtNomS);
             this.panel1.Controls.Add(this.txtClaveS);
@@ -149,48 +141,6 @@
             this.btnActualizar.TabIndex = 12;
             this.btnActualizar.TabStop = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label11.Location = new System.Drawing.Point(84, 131);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(16, 19);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "/";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label10.Location = new System.Drawing.Point(154, 133);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(16, 19);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "/";
-            // 
-            // txtD
-            // 
-            this.txtD.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtD.Location = new System.Drawing.Point(29, 131);
-            this.txtD.MaxLength = 2;
-            this.txtD.Name = "txtD";
-            this.txtD.Size = new System.Drawing.Size(52, 27);
-            this.txtD.TabIndex = 10;
-            this.txtD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtD_KeyPress);
-            // 
-            // txtM
-            // 
-            this.txtM.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtM.Location = new System.Drawing.Point(101, 131);
-            this.txtM.MaxLength = 2;
-            this.txtM.Name = "txtM";
-            this.txtM.Size = new System.Drawing.Size(52, 27);
-            this.txtM.TabIndex = 10;
-            this.txtM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtM_KeyPress);
             // 
             // txtS
             // 
@@ -269,16 +219,6 @@
             this.txtTel.Size = new System.Drawing.Size(250, 27);
             this.txtTel.TabIndex = 3;
             this.txtTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_KeyPress);
-            // 
-            // txtAñoF
-            // 
-            this.txtAñoF.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAñoF.Location = new System.Drawing.Point(171, 132);
-            this.txtAñoF.MaxLength = 4;
-            this.txtAñoF.Name = "txtAñoF";
-            this.txtAñoF.Size = new System.Drawing.Size(100, 27);
-            this.txtAñoF.TabIndex = 3;
-            this.txtAñoF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAñoF_KeyPress);
             // 
             // txtdir
             // 
@@ -450,6 +390,14 @@
             this.label12.TabIndex = 6;
             this.label12.Text = "Buscar";
             // 
+            // dtNacimiento
+            // 
+            this.dtNacimiento.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtNacimiento.Location = new System.Drawing.Point(30, 130);
+            this.dtNacimiento.Name = "dtNacimiento";
+            this.dtNacimiento.Size = new System.Drawing.Size(263, 23);
+            this.dtNacimiento.TabIndex = 13;
+            // 
             // vHistorialUs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -507,17 +455,13 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnLimpiarS;
         private System.Windows.Forms.Button btnGuardarS;
-        private System.Windows.Forms.TextBox txtAñoF;
         private System.Windows.Forms.Button btnEliminarS;
         private System.Windows.Forms.PictureBox btnAgregaMemS;
         private System.Windows.Forms.PictureBox btnEliminaMemS;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtD;
-        private System.Windows.Forms.TextBox txtM;
         private System.Windows.Forms.TextBox txtS;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox btnActualizar;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DateTimePicker dtNacimiento;
     }
 }

@@ -272,6 +272,7 @@
             // 
             // p_Mem_ti
             // 
+            this.p_Mem_ti.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.p_Mem_ti.BackColor = System.Drawing.Color.Black;
             this.p_Mem_ti.Controls.Add(this.label4);
             this.p_Mem_ti.Location = new System.Drawing.Point(0, 0);
@@ -296,7 +297,7 @@
             // 
             // btnVenderProdc
             // 
-            this.btnVenderProdc.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnVenderProdc.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnVenderProdc.BackColor = System.Drawing.Color.Chartreuse;
             this.btnVenderProdc.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVenderProdc.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -319,7 +320,7 @@
             // 
             // btnNuevoVis
             // 
-            this.btnNuevoVis.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnNuevoVis.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnNuevoVis.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.btnNuevoVis.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNuevoVis.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -354,6 +355,8 @@
             // dtGWMemEx
             // 
             this.dtGWMemEx.AllowUserToAddRows = false;
+            this.dtGWMemEx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGWMemEx.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGWMemEx.Location = new System.Drawing.Point(29, 355);
             this.dtGWMemEx.Name = "dtGWMemEx";

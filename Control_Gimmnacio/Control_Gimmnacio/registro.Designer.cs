@@ -42,9 +42,6 @@
             this.groupPersonales = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.cbSexo = new System.Windows.Forms.ComboBox();
-            this.txtAñoFecha = new System.Windows.Forms.TextBox();
-            this.cbMesFecha = new System.Windows.Forms.ComboBox();
-            this.cbNumeroFecha = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupMembresia = new System.Windows.Forms.GroupBox();
@@ -68,6 +65,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.agregaSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historialDeSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dtNacimiento = new System.Windows.Forms.DateTimePicker();
             this.groupPersonales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -88,7 +86,7 @@
             this.btnAgregaSocio.Location = new System.Drawing.Point(382, 243);
             this.btnAgregaSocio.Name = "btnAgregaSocio";
             this.btnAgregaSocio.Size = new System.Drawing.Size(129, 51);
-            this.btnAgregaSocio.TabIndex = 2;
+            this.btnAgregaSocio.TabIndex = 9;
             this.btnAgregaSocio.Text = "Agregar Socio";
             this.btnAgregaSocio.UseVisualStyleBackColor = true;
             this.btnAgregaSocio.Click += new System.EventHandler(this.btnAgregaSocio_Click);
@@ -189,11 +187,9 @@
             // 
             this.groupPersonales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.groupPersonales.BackColor = System.Drawing.SystemColors.Control;
+            this.groupPersonales.Controls.Add(this.dtNacimiento);
             this.groupPersonales.Controls.Add(this.pictureBox3);
             this.groupPersonales.Controls.Add(this.cbSexo);
-            this.groupPersonales.Controls.Add(this.txtAñoFecha);
-            this.groupPersonales.Controls.Add(this.cbMesFecha);
-            this.groupPersonales.Controls.Add(this.cbNumeroFecha);
             this.groupPersonales.Controls.Add(this.pictureBox1);
             this.groupPersonales.Controls.Add(this.txtFB);
             this.groupPersonales.Controls.Add(this.label2);
@@ -232,34 +228,6 @@
             this.cbSexo.Name = "cbSexo";
             this.cbSexo.Size = new System.Drawing.Size(64, 29);
             this.cbSexo.TabIndex = 5;
-            // 
-            // txtAñoFecha
-            // 
-            this.txtAñoFecha.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAñoFecha.Location = new System.Drawing.Point(364, 107);
-            this.txtAñoFecha.MaxLength = 4;
-            this.txtAñoFecha.Name = "txtAñoFecha";
-            this.txtAñoFecha.Size = new System.Drawing.Size(100, 27);
-            this.txtAñoFecha.TabIndex = 4;
-            this.txtAñoFecha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAñoFecha_KeyPress);
-            // 
-            // cbMesFecha
-            // 
-            this.cbMesFecha.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMesFecha.FormattingEnabled = true;
-            this.cbMesFecha.Location = new System.Drawing.Point(282, 106);
-            this.cbMesFecha.Name = "cbMesFecha";
-            this.cbMesFecha.Size = new System.Drawing.Size(76, 29);
-            this.cbMesFecha.TabIndex = 3;
-            // 
-            // cbNumeroFecha
-            // 
-            this.cbNumeroFecha.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbNumeroFecha.FormattingEnabled = true;
-            this.cbNumeroFecha.Location = new System.Drawing.Point(212, 105);
-            this.cbNumeroFecha.Name = "cbNumeroFecha";
-            this.cbNumeroFecha.Size = new System.Drawing.Size(63, 29);
-            this.cbNumeroFecha.TabIndex = 2;
             // 
             // pictureBox1
             // 
@@ -337,7 +305,7 @@
             this.btnCancelarMem.Location = new System.Drawing.Point(781, 188);
             this.btnCancelarMem.Name = "btnCancelarMem";
             this.btnCancelarMem.Size = new System.Drawing.Size(100, 42);
-            this.btnCancelarMem.TabIndex = 11;
+            this.btnCancelarMem.TabIndex = 16;
             this.btnCancelarMem.Text = "Cancelar";
             this.btnCancelarMem.UseVisualStyleBackColor = true;
             this.btnCancelarMem.Click += new System.EventHandler(this.btnCancelarMem_Click);
@@ -353,7 +321,7 @@
             this.btnPagaMem.Location = new System.Drawing.Point(897, 188);
             this.btnPagaMem.Name = "btnPagaMem";
             this.btnPagaMem.Size = new System.Drawing.Size(100, 42);
-            this.btnPagaMem.TabIndex = 10;
+            this.btnPagaMem.TabIndex = 17;
             this.btnPagaMem.Text = "Pagar";
             this.btnPagaMem.UseVisualStyleBackColor = true;
             this.btnPagaMem.Click += new System.EventHandler(this.btnPagaMem_Click);
@@ -368,7 +336,7 @@
             this.checkDesc.Location = new System.Drawing.Point(19, 159);
             this.checkDesc.Name = "checkDesc";
             this.checkDesc.Size = new System.Drawing.Size(243, 36);
-            this.checkDesc.TabIndex = 9;
+            this.checkDesc.TabIndex = 14;
             this.checkDesc.Text = "Agregar Descuento/Promocion";
             this.checkDesc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.checkDesc.UseVisualStyleBackColor = true;
@@ -402,7 +370,7 @@
             this.pickIni.Location = new System.Drawing.Point(360, 94);
             this.pickIni.Name = "pickIni";
             this.pickIni.Size = new System.Drawing.Size(259, 23);
-            this.pickIni.TabIndex = 6;
+            this.pickIni.TabIndex = 12;
             this.pickIni.Value = new System.DateTime(2018, 7, 25, 0, 0, 0, 0);
             // 
             // pickFin
@@ -411,7 +379,7 @@
             this.pickFin.Location = new System.Drawing.Point(360, 139);
             this.pickFin.Name = "pickFin";
             this.pickFin.Size = new System.Drawing.Size(259, 23);
-            this.pickFin.TabIndex = 6;
+            this.pickFin.TabIndex = 13;
             this.pickFin.Value = new System.DateTime(2018, 7, 25, 0, 0, 0, 0);
             // 
             // cbDescProm
@@ -425,7 +393,7 @@
             this.cbDescProm.Location = new System.Drawing.Point(205, 215);
             this.cbDescProm.Name = "cbDescProm";
             this.cbDescProm.Size = new System.Drawing.Size(229, 25);
-            this.cbDescProm.TabIndex = 5;
+            this.cbDescProm.TabIndex = 15;
             this.cbDescProm.SelectedIndexChanged += new System.EventHandler(this.cbDescProm_SelectedIndexChanged);
             // 
             // pictureBox2
@@ -448,7 +416,7 @@
             this.cbTipoMembrecia.Location = new System.Drawing.Point(65, 90);
             this.cbTipoMembrecia.Name = "cbTipoMembrecia";
             this.cbTipoMembrecia.Size = new System.Drawing.Size(150, 25);
-            this.cbTipoMembrecia.TabIndex = 1;
+            this.cbTipoMembrecia.TabIndex = 11;
             this.cbTipoMembrecia.SelectedIndexChanged += new System.EventHandler(this.cbTipoMembrecia_SelectedIndexChanged);
             // 
             // label10
@@ -505,7 +473,7 @@
             this.btnCancelaSocio.Location = new System.Drawing.Point(532, 243);
             this.btnCancelaSocio.Name = "btnCancelaSocio";
             this.btnCancelaSocio.Size = new System.Drawing.Size(129, 51);
-            this.btnCancelaSocio.TabIndex = 5;
+            this.btnCancelaSocio.TabIndex = 10;
             this.btnCancelaSocio.Text = "Cancelar";
             this.btnCancelaSocio.UseVisualStyleBackColor = true;
             this.btnCancelaSocio.Click += new System.EventHandler(this.btnCancelaSocio_Click);
@@ -536,6 +504,14 @@
             this.historialDeSociosToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.historialDeSociosToolStripMenuItem.Name = "historialDeSociosToolStripMenuItem";
             this.historialDeSociosToolStripMenuItem.Size = new System.Drawing.Size(12, 21);
+            // 
+            // dtNacimiento
+            // 
+            this.dtNacimiento.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtNacimiento.Location = new System.Drawing.Point(189, 102);
+            this.dtNacimiento.Name = "dtNacimiento";
+            this.dtNacimiento.Size = new System.Drawing.Size(321, 23);
+            this.dtNacimiento.TabIndex = 2;
             // 
             // registro
             // 
@@ -580,8 +556,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtFB;
         private System.Windows.Forms.GroupBox groupPersonales;
-        private System.Windows.Forms.ComboBox cbMesFecha;
-        private System.Windows.Forms.ComboBox cbNumeroFecha;
         private System.Windows.Forms.GroupBox groupMembresia;
         private System.Windows.Forms.ComboBox cbTipoMembrecia;
         private System.Windows.Forms.Label label10;
@@ -604,9 +578,9 @@
         private System.Windows.Forms.Button btnCancelarMem;
         private System.Windows.Forms.Button btnPagaMem;
         public System.Windows.Forms.TextBox txtNom;
-        public System.Windows.Forms.TextBox txtAñoFecha;
         private System.Windows.Forms.TextBox txtClaveM;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.DateTimePicker dtNacimiento;
     }
 }

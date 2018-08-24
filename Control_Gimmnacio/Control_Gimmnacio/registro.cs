@@ -17,8 +17,8 @@ namespace Control_Gimmnacio
         {
             InitializeComponent();
             //evitar modificar combobox
-            cbMesFecha.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbNumeroFecha.DropDownStyle = ComboBoxStyle.DropDownList;
+           /* cbMesFecha.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbNumeroFecha.DropDownStyle = ComboBoxStyle.DropDownList;*/
             cbTipoMembrecia.DropDownStyle = ComboBoxStyle.DropDownList;
             cbSexo.DropDownStyle = ComboBoxStyle.DropDownList;
             cbDescProm.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -73,11 +73,11 @@ namespace Control_Gimmnacio
             {
                 if (i < 10)
                 {
-                    cbNumeroFecha.Items.Add("0" + i);
+                   // cbNumeroFecha.Items.Add("0" + i);
                 }
                 else
                 {
-                    cbNumeroFecha.Items.Add(i);
+                    //cbNumeroFecha.Items.Add(i);
                 }
 
             }
@@ -91,11 +91,11 @@ namespace Control_Gimmnacio
             {
                 if (i < 10)
                 {
-                    cbMesFecha.Items.Add("0"+i);
+                   // cbMesFecha.Items.Add("0"+i);
                 }
                 else
                 {
-                    cbMesFecha.Items.Add(i);
+                    //cbMesFecha.Items.Add(i);
                 }
 
             }
@@ -229,8 +229,6 @@ namespace Control_Gimmnacio
 
         private void btnPagaMem_Click(object sender, EventArgs e)
         {
-            if (cbSexo.Text.Equals(sex))
-            {
                 if (MessageBox.Show("¿Agregar Membresia?", "Agregar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     /*Para generar id de Mem*/
@@ -287,11 +285,6 @@ namespace Control_Gimmnacio
 
 
                 }
-            }
-            else
-            {
-                MessageBox.Show("Memebresia no compatible con el sexo del socio \n \n Eliga otra membresia","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
            
             
         }
@@ -339,7 +332,7 @@ namespace Control_Gimmnacio
 
         private void btnAgregaSocio_Click(object sender, EventArgs e)
         {
-            if (txtNom.Text == "" || txtTel.Text == "" || txtAñoFecha.Text == "" || txtDireccion.Text == "" || txtFB.Text == "" || cbMesFecha.Text == ""||cbNumeroFecha.Text==""||cbSexo.Text=="")
+            if (txtNom.Text == "" || txtTel.Text == "" || txtDireccion.Text == "" || txtFB.Text == "" ||cbSexo.Text=="")
             {
                 MessageBox.Show("Flato llenar algunos Campos","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
@@ -356,10 +349,10 @@ namespace Control_Gimmnacio
                 {
                     clave += s;
                 }
-                nombres = clave + txtAñoFecha.Text.Trim();
+                nombres = clave + dtNacimiento.Value.Year;
                 if (MessageBox.Show("¿Agregar Socio?","Agregar",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
                 {
-                    string fechaT = cbNumeroFecha.SelectedItem.ToString()+ "/"+ cbMesFecha.SelectedItem.ToString()+"/"+ txtAñoFecha.Text.Trim();
+                    string fechaT = dtNacimiento.Value.ToString("yyyy/MM/dd");//
 
                     qs = "insert into socio values('S-"+nombres+"','"+txtNom.Text.Trim() + "','"+fechaT+"','"+cbSexo.SelectedItem.ToString() + "','"+txtDireccion.Text.Trim() + "','"+txtTel.Text.Trim() + "','"+txtFB.Text.Trim() + "')";
                     
@@ -395,13 +388,13 @@ namespace Control_Gimmnacio
         {
             nombres = "";
             txtNom.Text = "";
-            txtAñoFecha.Text = "";
+            //txtAñoFecha.Text = "";
             txtDireccion.Text = "";
             txtFB.Text = "";
             txtTel.Text = "";
             cbSexo.Items.Clear();
-            cbMesFecha.Items.Clear();
-            cbNumeroFecha.Items.Clear();
+            //cbMesFecha.Items.Clear();
+            //cbNumeroFecha.Items.Clear();
             llenaMesFehc();
             llenaNumFech();
             llenaSex();

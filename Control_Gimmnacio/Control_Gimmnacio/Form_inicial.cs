@@ -143,7 +143,7 @@ namespace Control_Gimmnacio
 
         private void label1_Click(object sender, EventArgs e)
         {
-            new vInfo().Show();
+            new Informacion().Show();
         }
     }
 }

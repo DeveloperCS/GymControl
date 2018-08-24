@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,9 @@ namespace Control_Gimmnacio
         {
             InitializeComponent();
             //lbNomDash.Text = lbCon.Text;
+            DoubleBuffered = true;
+            
+
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -278,7 +282,10 @@ namespace Control_Gimmnacio
                 e.Paint(e.CellBounds,DataGridViewPaintParts.All);
                 DataGridViewButtonCell celBoton = this.dtGWMemEx.Rows[e.RowIndex].Cells["Ver"] as DataGridViewButtonCell;
                 Icon iconAtomic = new Icon(Environment.CurrentDirectory + @"\\editar.ico");
-                //Icon iconAtomic = new Icon(Environment.CurrentDirectory + Properties.Resources.e);
+              /*  string str = "Control_Gimmnacio.editar.ico";
+                Stream s = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(str);
+                Icon iconAtomic = new Icon(s);*/
+
                 e.Graphics.DrawIcon(iconAtomic,e.CellBounds.Left + 3,e.CellBounds.Top +3);
 
                 this.dtGWMemEx.Rows[e.RowIndex].Height = iconAtomic.Height + 8;
